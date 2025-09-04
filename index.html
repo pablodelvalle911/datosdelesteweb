@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del Este - Plataforma de IA Computacional Líder en Uruguay</title>
+    <meta name="description" content="La plataforma de IA computacional más avanzada de Uruguay. Supera a la competencia con simulación integrada, tiempo real y optimización especializada para empresas uruguayas.">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇺🇾</text></svg>">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            overflow-x: hidden;
+        }
+        
+        /* Variables CSS para colores uruguayos */
+        :root {
+            --celeste-uruguay: #55ACEE;
+            --azul-uruguay: #1E3A8A;
+            --dorado-uruguay: #F59E0B;
+            --blanco: #FFFFFF;
+            --gris-claro: #F8FAFC;
+            --gris-medio: #64748B;
+            --negro: #0F172A;
+            --verde-exito: #10B981;
+            --rojo-alerta: #EF4444;
+        }
+        
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(85, 172, 238, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--azul-uruguay);
+            text-decoration: none;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gris-medio);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--celeste-uruguay);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--celeste-uruguay);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(85, 172, 238, 0.3);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #bae6fd 100%);
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%2355ACEE" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            background: rgba(85, 172, 238, 0.1);
+            color: var(--azul-uruguay);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(85, 172, 238, 0.2);
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--azul-uruguay), var(--celeste-uruguay));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--gris-medio);
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 0.6s ease 0.4s both;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.6s both;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(85, 172, 238, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: var(--azul-uruguay);
+            padding: 1rem 2rem;
+            border: 2px solid var(--celeste-uruguay);
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--celeste-uruguay);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Stats Section */
+        .stats {
+            background: white;
+            padding: 4rem 2rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--celeste-uruguay);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--gris-medio);
+            font-weight: 500;
+        }
+        
+        .stat-description {
+            font-size: 0.9rem;
+            color: var(--gris-medio);
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+        
+        /* Comparison Section */
+        .comparison {
+            background: var(--gris-claro);
+            padding: 6rem 2rem;
+        }
+        
+        .comparison-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--negro);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gris-medio);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 3rem;
+        }
+        
+        .table-header {
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+            color: white;
+            padding: 1.5rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            font-weight: 600;
+        }
+        
+        .table-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            transition: background 0.3s ease;
+        }
+        
+        .table-row:hover {
+            background: rgba(85, 172, 238, 0.05);
+        }
+        
+        .table-row:last-child {
+            border-bottom: none;
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: var(--negro);
+        }
+        
+        .voxel-value {
+            color: var(--rojo-alerta);
+            font-weight: 500;
+        }
+        
+        .dataeste-value {
+            color: var(--verde-exito);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .improvement {
+            background: var(--verde-exito);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: white;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--celeste-uruguay), var(--azul-uruguay));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--negro);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-description {
+            color: var(--gris-medio);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-benefits {
+            list-style: none;
+        }
+        
+        .feature-benefits li {
+            color: var(--gris-medio);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .feature-benefits li::before {
+            content: '✓';
+            color: var(--verde-exito);
+            font-weight: bold;
+        }
+        
+        /* Uruguay Section */
+        .uruguay-section {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .uruguay-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .uruguay-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .uruguay-text h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--negro);
+            margin-bottom: 1.5rem;
+        }
+        
+        .uruguay-text p {
+            font-size: 1.1rem;
+            color: var(--gris-medio);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+        
+        .uruguay-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+        
+        .uruguay-stat {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .uruguay-stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--celeste-uruguay);
+            display: block;
+        }
+        
+        .uruguay-stat-label {
+            color: var(--gris-medio);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .sectors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .sector-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .sector-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sector-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sector-name {
+            font-weight: 600;
+            color: var(--negro);
+            margin-bottom: 0.5rem;
+        }
+        
+        .sector-description {
+            font-size: 0.9rem;
+            color: var(--gris-medio);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--azul-uruguay), var(--celeste-uruguay));
+            padding: 6rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .cta-section h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--azul-uruguay);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--azul-uruguay);
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--negro);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+        
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--celeste-uruguay);
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: var(--celeste-uruguay);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 2rem;
+            text-align: center;
+            color: #64748b;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .uruguay-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .table-header,
+            .table-row {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+            }
+            
+            .table-header > div,
+            .table-row > div {
+                padding: 0.5rem 0;
+            }
+        }
+        
+        /* Loading Animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">
+                <div class="logo-icon">DE</div>
+                <span>Datos del Este</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#plataforma">Plataforma</a></li>
+                <li><a href="#sectores">Sectores</a></li>
+                <li><a href="#comparacion">vs Competencia</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <a href="#demo" class="cta-button">Solicitar Demo</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="hero-content">
+            <div class="hero-badge">
+                🇺🇾 Líder en IA Computacional en Uruguay
+            </div>
+            <h1>La Plataforma de IA que Supera a todos</h1>
+            <p>
+                Datos del Este es la primera plataforma de IA computacional diseñada específicamente para empresas uruguayas. 
+                Con performance 55x superior a la competencia internacional, simulación integrada y optimización especifica.
+            </p>
+            <div class="hero-buttons">
+                <a href="#demo" class="btn-primary">
+                    🚀 Comenzar Gratis
+                </a>
+                <a href="#comparacion" class="btn-secondary">
+                    📊 Ver Comparación
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item fade-in">
+                <span class="stat-number">55x</span>
+                <div class="stat-label">Más Rápido</div>
+                <div class="stat-description">2.3ms vs 127ms latencia</div>
+            </div>
+            <div class="stat-item fade-in">
+                <span class="stat-number">150+</span>
+                <div class="stat-label">Empresas</div>
+                <div class="stat-description">Desde startups hasta grandes corporaciones</div>
+            </div>
+            <div class="stat-item fade-in">
+                <span class="stat-number">Millones</span>
+                <div class="stat-label">Ahorros Generados</div>
+                <div class="stat-description">En optimización y automatización</div>
+            </div>
+            <div class="stat-item fade-in">
+                <span class="stat-number">99.8%</span>
+                <div class="stat-label">Disponibilidad</div>
+                <div class="stat-description">Infraestructura confiable 24/7</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="comparison" id="comparacion">
+        <div class="comparison-container">
+            <div class="section-header">
+                <h2 class="section-title">¿Por Qué Elegir Datos del Este?</h2>
+                <p class="section-subtitle">
+                    Comparación técnica directa con competencia internacional - La diferencia es abrumadora
+                </p>
+            </div>
+            
+            <div class="comparison-table fade-in">
+                <div class="table-header">
+                    <div>Métrica Técnica</div>
+                    <div>Competencia</div>
+                    <div>Datos del Este</div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Latencia de Inferencia</div>
+                    <div class="voxel-value">127ms</div>
+                    <div class="dataeste-value">
+                        2.3ms
+                        <span class="improvement">55x mejor</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Throughput (imágenes/seg)</div>
+                    <div class="voxel-value">800</div>
+                    <div class="dataeste-value">
+                        10,000+
+                        <span class="improvement">12.5x mejor</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Usuarios Concurrentes</div>
+                    <div class="voxel-value">50</div>
+                    <div class="dataeste-value">
+                        10,000+
+                        <span class="improvement">200x mejor</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Dominios Soportados</div>
+                    <div class="voxel-value">1 (Solo CV)</div>
+                    <div class="dataeste-value">
+                        6+ (CV+CFD+Quantum+Bio+Aero)
+                        <span class="improvement">6x más amplio</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Simulación Integrada</div>
+                    <div class="voxel-value">❌ No disponible</div>
+                    <div class="dataeste-value">
+                        ✅ Nativa
+                        <span class="improvement">Exclusivo</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Tiempo Real</div>
+                    <div class="voxel-value">❌ Solo batch</div>
+                    <div class="dataeste-value">
+                        ✅ <10ms garantizado
+                        <span class="improvement">Exclusivo</span>
+                    </div>
+                </div>
+                <div class="table-row">
+                    <div class="metric-name">Soporte Local Uruguay</div>
+                    <div class="voxel-value">❌ Sin soporte</div>
+                    <div class="dataeste-value">
+                        ✅ Equipo en Montevideo y el interior.
+                        <span class="improvement">Exclusivo</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="plataforma">
+        <div class="features-container">
+            <div class="section-header">
+                <h2 class="section-title">Capacidades Técnicas Avanzadas</h2>
+                <p class="section-subtitle">
+                    Ecosistema integral de IA computacional que va más allá de la simple gestión de datasets
+                </p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">👁️</div>
+                    <h3 class="feature-title">DataVisión</h3>
+                    <p class="feature-description">
+                        Computer vision de próxima generación con capacidades de tiempo real, 
+                        synthetic data generation y 3D scene understanding.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Detección de objetos en tiempo real</li>
+                        <li>Generación de datos sintéticos</li>
+                        <li>Reconstrucción 3D de escenas</li>
+                        <li>Edge computing optimizado</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🌊</div>
+                    <h3 class="feature-title">DataFlow CFD</h3>
+                    <p class="feature-description">
+                        Dinámica de fluidos computacional integrada con machine learning. 
+                        Primera plataforma en combinar CFD nativo con IA.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Simulación de fluidos en tiempo real</li>
+                        <li>Optimización aerodinámica</li>
+                        <li>Análisis de transferencia de calor</li>
+                        <li>50-100x más rápido que OpenFOAM</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">⚛️</div>
+                    <h3 class="feature-title">DataQuantum</h3>
+                    <p class="feature-description">
+                        Computación para optimización financiera, 
+                        logística y problemas complejos de Uruguay.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Optimización de portafolios</li>
+                        <li>Algoritmos cuánticos QAOA</li>
+                        <li>Rutas logísticas optimizadas</li>
+                        <li>Speedup exponencial</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🧬</div>
+                    <h3 class="feature-title">DataBio</h3>
+                    <p class="feature-description">
+                        Biología computacional y análisis médico para el sistema 
+                        de salud uruguayo y telemedicina.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Diagnóstico médico asistido</li>
+                        <li>Análisis de imágenes médicas</li>
+                        <li>Medicina personalizada</li>
+                        <li>Telemedicina rural</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">✈️</div>
+                    <h3 class="feature-title">DataAero</h3>
+                    <p class="feature-description">
+                        Ingeniería aeroespacial y análisis estructural para 
+                        aplicaciones industriales y de transporte.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Análisis aerodinámico</li>
+                        <li>Simulación estructural</li>
+                        <li>Optimización de diseño</li>
+                        <li>Multidisciplinary optimization</li>
+                    </ul>
+                </div>
+                
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">🏭</div>
+                    <h3 class="feature-title">DataCore</h3>
+                    <p class="feature-description">
+                        Motor de ejecución híbrido que orquesta todos los módulos 
+                        con performance garantizada y escalabilidad masiva.
+                    </p>
+                    <ul class="feature-benefits">
+                        <li>Procesamiento paralelo</li>
+                        <li>Memory-mapped structures</li>
+                        <li>GPU kernel fusion</li>
+                        <li>Predictive caching</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Uruguay Section -->
+    <section class="uruguay-section" id="sectores">
+        <div class="uruguay-container">
+            <div class="section-header">
+                <h2 class="section-title">Diseñado para Uruguay</h2>
+                <p class="section-subtitle">
+                    Optimizado específicamente para los sectores estratégicos y necesidades del mercado uruguayo
+                </p>
+            </div>
+            
+            <div class="uruguay-content">
+                <div class="uruguay-text">
+                    <h2>🇺🇾 Ventaja Competitiva Local</h2>
+                    <p>
+                        Datos del Este es la única plataforma de IA computacional diseñada específicamente 
+                        para las necesidades, regulaciones y oportunidades del mercado uruguayo.
+                    </p>
+                    <p>
+                        Con sede en Montevideo, cumplimiento LPDP, precios en pesos uruguayos y 
+                        soporte técnico local en español.
+                    </p>
+                    
+                    <div class="uruguay-stats">
+                        <div class="uruguay-stat">
+                            <span class="uruguay-stat-number">150+</span>
+                            <div class="uruguay-stat-label">Empresas Uruguayas</div>
+                        </div>
+                        <div class="uruguay-stat">
+                            <span class="uruguay-stat-number">6</span>
+                            <div class="uruguay-stat-label">Sectores Estratégicos</div>
+                        </div>
+                        <div class="uruguay-stat">
+                            <span class="uruguay-stat-number">24/7</span>
+                            <div class="uruguay-stat-label">Soporte Local</div>
+                        </div>
+                        <div class="uruguay-stat">
+                            <span class="uruguay-stat-number">LPDP</span>
+                            <div class="uruguay-stat-label">Compliance Total</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sectors-grid">
+                    <div class="sector-card">
+                        <div class="sector-icon">🐄</div>
+                        <div class="sector-name">Agropecuario</div>
+                        <div class="sector-description">Ganadería inteligente y precision agriculture</div>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">🏖️</div>
+                        <div class="sector-name">Turismo</div>
+                        <div class="sector-description">Predicción de demanda y optimización</div>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">💳</div>
+                        <div class="sector-name">Fintech</div>
+                        <div class="sector-description">Risk management y compliance</div>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">🏥</div>
+                        <div class="sector-name">Salud</div>
+                        <div class="sector-description">Diagnóstico asistido y telemedicina</div>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">🚛</div>
+                        <div class="sector-name">Logística</div>
+                        <div class="sector-description">Rutas optimizadas y supply chain</div>
+                    </div>
+                    <div class="sector-card">
+                        <div class="sector-icon">🎓</div>
+                        <div class="sector-name">Educación</div>
+                        <div class="sector-description">Personalización del aprendizaje</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="demo">
+        <div class="cta-container">
+            <h2>¿Listo para Superar a la Competencia?</h2>
+            <p>
+                Únete a las empresas que ya están usando Datos del Este 
+                para obtener ventajas competitivas con IA de próxima generación.
+            </p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-white" onclick="requestDemo()">
+                    🚀 Solicitar Demo Gratuita
+                </a>
+                <a href="#" class="btn-outline" onclick="contactSales()">
+                    💬 Hablar con Ventas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contacto">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Datos del Este</h3>
+                    <p>
+                        La plataforma de IA computacional líder en Uruguay. 
+                        Con tecnología de próxima generación.
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <strong>by Riva Labs LLC</strong><br>
+                        Colorado, USA
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Plataforma</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">DataVisión</a></li>
+                        <li><a href="#">DataFlow CFD</a></li>
+                        <li><a href="#">DataQuantum</a></li>
+                        <li><a href="#">DataBio</a></li>
+                        <li><a href="#">DataAero</a></li>
+                        <li><a href="#">DataCore</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Sectores</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Agropecuario</a></li>
+                        <li><a href="#">Turismo</a></li>
+                        <li><a href="#">Fintech</a></li>
+                        <li><a href="#">Salud</a></li>
+                        <li><a href="#">Logística</a></li>
+                        <li><a href="#">Educación</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Contacto Uruguay</h3>
+                    <ul class="footer-links">
+                        <li>📧 soporte@datosdeleste.uy</li>
+                        <li>📞 +598 96 308 883</li>
+                        <li>📍 Montevideo, Uruguay</li>
+                        <li>🌐 datosdeleste.uy</li>
+                        <li>🌐 datosdeleste.com.uy</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>
+                    © 2025 Datos del Este (by Riva Labs LLC). Todos los derechos reservados. 
+                    | Cumplimiento LPDP Uruguay | 99.8% Uptime SLA
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Counter animation for stats
+        function animateCounter(element, target, duration = 2000) {
+            let start = 0;
+            const increment = target / (duration / 16);
+            
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    element.textContent = target;
+                    clearInterval(timer);
+                } else {
+                    element.textContent = Math.floor(start);
+                }
+            }, 16);
+        }
+
+        // Animate counters when they come into view
+        const statNumbers = document.querySelectorAll('.stat-number');
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = entry.target;
+                    const text = target.textContent;
+                    
+                    // Extract number from text like "55x", "150+", etc.
+                    const number = parseInt(text.replace(/[^\d]/g, ''));
+                    if (!isNaN(number)) {
+                        target.textContent = '0' + text.replace(/\d+/, '');
+                        animateCounter(target, number);
+                        setTimeout(() => {
+                            target.textContent = text; // Restore original text
+                        }, 2000);
+                    }
+                    
+                    statObserver.unobserve(target);
+                }
+            });
+        });
+
+        statNumbers.forEach(stat => {
+            statObserver.observe(stat);
+        });
+
+        // Demo request function
+        function requestDemo() {
+            // Show loading state
+            const button = event.target;
+            const originalText = button.innerHTML;
+            button.innerHTML = '<span class="loading"></span> Procesando...';
+            button.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                alert('¡Gracias por tu interés! Un especialista de Datos del Este se contactará contigo en las próximas 24 horas.\n\n📧 Email: soporte@datosdeleste.uy\n📞 Teléfono: +598 96 308 883');
+                button.innerHTML = originalText;
+                button.disabled = false;
+            }, 2000);
+        }
+
+        // Contact sales function
+        function contactSales() {
+            const message = `¡Hola! Estoy interesado en conocer más sobre Datos del Este y cómo puede ayudar a mi empresa uruguaya a superar a la competencia con IA de próxima generación.
+
+Información de mi empresa:
+- Sector: [Agropecuario/Turismo/Fintech/Salud/Logística/Educación/Otro]
+- Tamaño: [Startup/PYME/Gran empresa]
+- Ubicación: [Ciudad, Uruguay]
+
+¿Podrían contactarme para una consulta personalizada?
+
+Saludos desde Uruguay 🇺🇾`;
+            
+            const encodedMessage = encodeURIComponent(message);
+            window.open(`mailto:soporte@datosdeleste.uy?subject=Consulta sobre Datos del Este Platform&body=${encodedMessage}`, '_blank');
+        }
+
+        // Add some interactive effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add typing effect to hero title
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect when page loads
+        window.addEventListener('load', () => {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 50);
+            }
+        });
+
+        // Add real-time performance simulation
+        function updatePerformanceMetrics() {
+            const latencyElement = document.querySelector('[data-metric="latency"]');
+            const throughputElement = document.querySelector('[data-metric="throughput"]');
+            
+            if (latencyElement) {
+                const latency = (2.1 + Math.random() * 0.4).toFixed(1);
+                latencyElement.textContent = `${latency}ms`;
+            }
+            
+            if (throughputElement) {
+                const throughput = Math.floor(9800 + Math.random() * 400);
+                throughputElement.textContent = `${throughput.toLocaleString()}`;
+            }
+        }
+
+        // Update metrics every 3 seconds
+        setInterval(updatePerformanceMetrics, 3000);
+
+        // Add Easter egg for developers
+        console.log(`
+🇺🇾 Datos del Este Platform - Desarrollado en Uruguay
+====================================================
+
+¿Eres desarrollador? ¡Únete a nuestro equipo!
+
+Estamos buscando:
+- Ingenieros de Machine Learning
+- Especialistas en Prompts y Monitoreo
+- Especialistas en Computer Vision
+- Expertos en CFD y Simulación
+- DevOps Engineers
+
+Contacto: soporte@datosdeleste.uy
+
+¡Construyamos el futuro de la IA en Uruguay! 🚀
+        `);
+
+        // Add performance monitoring
+        if ('performance' in window) {
+            window.addEventListener('load', () => {
+                const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+                console.log(`⚡ Página cargada en ${loadTime}ms - Optimizada para performance superior`);
+            });
+        }
+    </script>
+</body>
+</html>
