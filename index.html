@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos del Este — IA Computacional para el Este de Uruguay | Riva Labs</title>
-    <meta name="description" content="Datos del Este es el departamento regional de Riva Labs para Maldonado, Rocha, Lavalleja, Treinta y Tres y Cerro Largo. IA computacional aplicada a Real Estate, Agro, Turismo, Salud, Logística y más.">
+    <meta name="description" content="Tres pilares de IA computacional: Territorio (Inmobiliario, Agro, Marítimo, Ambiental), Educación & Inteligencia (Participación estudiantil, Análisis pedagógico) y Desarrollo a Medida / Financiero.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -23,6 +23,9 @@
             --texto: #0E1C2F;
             --verde: #1DB97B;
             --rojo: #E84545;
+            --naranja: #F97316;
+            --purpura: #8B5CF6;
+            --cyan: #06B6D4;
         }
 
         html { scroll-behavior: smooth; }
@@ -40,257 +43,559 @@
         /* ── NAV ── */
         .nav-wrap {
             position: fixed; top: 0; width: 100%; z-index: 9000;
-            background: rgba(250,251,252,0.93);
-            backdrop-filter: blur(14px);
+            background: rgba(250,251,252,0.95);
+            backdrop-filter: blur(20px);
             border-bottom: 1px solid var(--gris-30);
-            transition: box-shadow .3s;
+            transition: box-shadow .3s, transform .3s;
         }
-        .nav-wrap.scrolled { box-shadow: 0 4px 24px rgba(14,28,47,0.07); }
+        .nav-wrap.scrolled { box-shadow: 0 4px 24px rgba(14,28,47,0.1); }
+        .nav-wrap.hidden { transform: translateY(-100%); }
+        
         .nav {
-            max-width: 1280px; margin: 0 auto;
+            max-width: 1400px; margin: 0 auto;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 68px;
+            padding: 0 2rem; height: 72px;
         }
         .logo-block { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
         .logo-mark {
-            width: 38px; height: 38px; border-radius: 8px;
+            width: 42px; height: 42px; border-radius: 10px;
             background: linear-gradient(135deg, var(--celeste), var(--azul));
             display: flex; align-items: center; justify-content: center;
             font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; font-size: 14px;
+            box-shadow: 0 4px 12px rgba(27,63,139,0.25);
         }
         .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .logo-main { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; color: var(--azul); }
-        .logo-sub { font-size: .68rem; font-weight: 500; color: var(--gris-60); letter-spacing: .08em; text-transform: uppercase; }
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { text-decoration: none; color: var(--gris-60); font-size: .88rem; font-weight: 500; transition: color .2s; }
-        .nav-links a:hover { color: var(--azul); }
-        .nav-cta {
-            background: var(--azul); color: #fff;
-            padding: .55rem 1.3rem; border-radius: 6px;
-            text-decoration: none; font-weight: 600; font-size: .88rem;
-            transition: background .2s, transform .2s;
+        .logo-main { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--azul); }
+        .logo-sub { font-size: .7rem; font-weight: 500; color: var(--gris-60); letter-spacing: .08em; text-transform: uppercase; }
+
+        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--gris-60); font-size: .88rem; font-weight: 500; 
+            transition: color .2s; position: relative; 
         }
-        .nav-cta:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
+            background: var(--celeste); transition: width .3s;
+        }
+        .nav-links a:hover { color: var(--azul); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro)); 
+            color: #fff;
+            padding: .6rem 1.4rem; border-radius: 8px;
+            text-decoration: none; font-weight: 600; font-size: .88rem;
+            transition: all .3s; box-shadow: 0 4px 12px rgba(27,63,139,0.25);
+        }
+        .nav-cta:hover { 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 20px rgba(27,63,139,0.35);
+        }
 
         /* ── HERO ── */
         .hero {
-            padding: 130px 2rem 90px;
-            background: linear-gradient(160deg, #EBF4FF 0%, #F6FAFE 50%, #fff 100%);
+            min-height: 100vh;
+            padding: 140px 2rem 100px;
+            background: linear-gradient(160deg, #EBF4FF 0%, #F6FAFE 40%, #fff 100%);
             position: relative; overflow: hidden;
+            display: flex; align-items: center;
         }
-        .hero::before {
-            content: ''; position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 600px 400px at 80% 30%, rgba(85,172,238,.12) 0%, transparent 70%),
-                radial-gradient(ellipse 400px 300px at 10% 80%, rgba(27,63,139,.07) 0%, transparent 70%);
+        
+        .hero-bg-pattern {
+            position: absolute; inset: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(85,172,238,0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(27,63,139,0.05) 0%, transparent 50%);
             pointer-events: none;
         }
+
         .hero-grid {
-            max-width: 1280px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center;
         }
-        .hero-tag {
-            display: inline-flex; align-items: center; gap: .5rem;
-            background: rgba(85,172,238,.1); border: 1px solid rgba(85,172,238,.25);
-            color: var(--azul); font-size: .78rem; font-weight: 600;
-            padding: .35rem .85rem; border-radius: 50px; margin-bottom: 1.5rem;
+
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: .6rem;
+            background: rgba(85,172,238,.12); border: 1px solid rgba(85,172,238,.25);
+            color: var(--azul); font-size: .8rem; font-weight: 700;
+            padding: .4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
             letter-spacing: .04em; text-transform: uppercase;
         }
-        .hero-tag span { width: 7px; height: 7px; background: var(--verde); border-radius: 50%; animation: pdot 2s infinite; }
-        @keyframes pdot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.7)} }
+        .hero-badge span { 
+            width: 8px; height: 8px; background: var(--verde); border-radius: 50%; 
+            animation: pulse 2s infinite; box-shadow: 0 0 0 3px rgba(29,185,123,0.3);
+        }
+        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(0.8)} }
 
-        .hero h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800; margin-bottom: 1.25rem; }
-        .hero h1 em { font-style: normal; color: var(--celeste); }
-        .hero-lead { font-size: 1.05rem; color: var(--gris-60); max-width: 520px; margin-bottom: 2.2rem; font-weight: 300; }
+        .hero h1 { 
+            font-size: clamp(2.8rem, 5vw, 4.2rem); 
+            font-weight: 800; 
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+        .hero h1 span { color: var(--celeste); position: relative; }
+        .hero h1 span::after {
+            content: ''; position: absolute; bottom: 5px; left: 0; right: 0; height: 8px;
+            background: rgba(85,172,238,0.2); z-index: -1;
+        }
+        
+        .hero-lead { 
+            font-size: 1.15rem; 
+            color: var(--gris-60); 
+            max-width: 540px; 
+            margin-bottom: 2.5rem; 
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        .hero-pillars-preview {
+            display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
+        }
+        .pillar-mini {
+            display: flex; align-items: center; gap: .5rem;
+            padding: .6rem 1rem; background: #fff;
+            border-radius: 50px; border: 1px solid var(--gris-30);
+            font-size: .85rem; font-weight: 600; color: var(--texto);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .pillar-mini-icon { font-size: 1.1rem; }
+
         .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
         .btn-solid {
             background: var(--azul); color: #fff;
-            padding: .8rem 1.8rem; border-radius: 8px; text-decoration: none;
-            font-weight: 600; font-size: .95rem; display: inline-flex; align-items: center; gap: .5rem;
-            transition: background .2s, transform .2s, box-shadow .2s;
+            padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: .5rem;
+            transition: all .3s; box-shadow: 0 4px 12px rgba(27,63,139,0.25);
         }
-        .btn-solid:hover { background: var(--azul-oscuro); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(27,63,139,.3); }
+        .btn-solid:hover { 
+            background: var(--azul-oscuro); 
+            transform: translateY(-2px); 
+            box-shadow: 0 8px 24px rgba(27,63,139,0.35);
+        }
         .btn-ghost {
             background: transparent; color: var(--azul);
-            padding: .8rem 1.8rem; border-radius: 8px; text-decoration: none;
-            font-weight: 600; font-size: .95rem; border: 2px solid var(--azul);
+            padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
+            font-weight: 600; font-size: 1rem; border: 2px solid var(--azul);
             display: inline-flex; align-items: center; gap: .5rem;
-            transition: background .2s, color .2s, transform .2s;
+            transition: all .3s;
         }
         .btn-ghost:hover { background: var(--azul); color: #fff; transform: translateY(-2px); }
 
-        .hero-visual { display: flex; align-items: center; justify-content: center; }
+        /* Hero Visual - 3D Card Stack */
+        .hero-visual {
+            position: relative;
+            perspective: 1000px;
+        }
+        .pillars-showcase {
+            position: relative; width: 100%; height: 500px;
+        }
+        .pillar-card {
+            position: absolute; width: 340px; height: 420px;
+            background: #fff; border-radius: 24px;
+            padding: 2rem; border: 1px solid var(--gris-30);
+            box-shadow: 0 20px 60px rgba(14,28,47,0.15);
+            transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+        .pillar-card:nth-child(1) { 
+            top: 0; left: 0; 
+            transform: rotateY(-5deg) rotateX(5deg) translateZ(0);
+            z-index: 3;
+        }
+        .pillar-card:nth-child(2) { 
+            top: 30px; left: 40px; 
+            transform: rotateY(-3deg) rotateX(3deg) translateZ(-50px);
+            z-index: 2; opacity: 0.9;
+        }
+        .pillar-card:nth-child(3) { 
+            top: 60px; left: 80px; 
+            transform: rotateY(-1deg) rotateX(1deg) translateZ(-100px);
+            z-index: 1; opacity: 0.8;
+        }
+        
+        .pillar-card:hover {
+            transform: rotateY(0deg) rotateX(0deg) translateZ(50px) scale(1.05);
+            z-index: 10; opacity: 1;
+        }
+
+        .pillar-card-icon {
+            width: 60px; height: 60px; border-radius: 16px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.8rem; margin-bottom: 1.5rem;
+        }
+        .pillar-card:nth-child(1) .pillar-card-icon { background: linear-gradient(135deg, #10B981, #059669); }
+        .pillar-card:nth-child(2) .pillar-card-icon { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
+        .pillar-card:nth-child(3) .pillar-card-icon { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
+
+        .pillar-card h3 {
+            font-size: 1.4rem; font-weight: 700; margin-bottom: .5rem;
+        }
+        .pillar-card p {
+            font-size: .9rem; color: var(--gris-60); line-height: 1.6;
+        }
+        .pillar-card-tags {
+            margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .4rem;
+        }
+        .pillar-tag {
+            font-size: .7rem; font-weight: 600; padding: .25rem .6rem;
+            border-radius: 4px; background: var(--gris-10); color: var(--gris-60);
+        }
+
+        /* ── 3 PILARS SECTION ── */
+        .pillars-section { padding: 8rem 2rem; background: #fff; }
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        .section-header {
+            text-align: center; max-width: 700px; margin: 0 auto 4rem;
+        }
+        .section-tag { 
+            display: inline-block; 
+            font-size: .75rem; font-weight: 700; 
+            letter-spacing: .15em; text-transform: uppercase; 
+            color: var(--celeste); margin-bottom: 1rem;
+            padding: .4rem 1rem; background: rgba(85,172,238,0.1);
+            border-radius: 50px;
+        }
+        .section-title { 
+            font-size: clamp(2rem, 4vw, 3rem); 
+            font-weight: 800; 
+            margin-bottom: 1rem;
+            color: var(--texto);
+        }
+        .section-lead { 
+            font-size: 1.1rem; 
+            color: var(--gris-60); 
+            font-weight: 400;
+            line-height: 1.7;
+        }
+
+        /* Pillar Tabs */
+        .pillars-tabs {
+            display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+        .pillar-tab {
+            padding: 1rem 2rem; border-radius: 12px;
+            border: 2px solid var(--gris-30); background: #fff;
+            cursor: pointer; transition: all .3s;
+            display: flex; align-items: center; gap: .75rem;
+            font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem;
+        }
+        .pillar-tab:hover { border-color: var(--celeste); transform: translateY(-2px); }
+        .pillar-tab.active {
+            border-color: var(--azul); background: var(--azul); color: #fff;
+            box-shadow: 0 8px 24px rgba(27,63,139,0.25);
+        }
+        .pillar-tab-icon { font-size: 1.4rem; }
+
+        .pillar-content {
+            display: none;
+            animation: fadeIn .5s ease;
+        }
+        .pillar-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .pillar-grid {
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem;
+            align-items: start;
+        }
+        
+        .pillar-info h3 {
+            font-size: 2rem; font-weight: 800; margin-bottom: 1rem;
+            display: flex; align-items: center; gap: .75rem;
+        }
+        .pillar-info p {
+            font-size: 1.05rem; color: var(--gris-60); line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .subservices-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+        }
+        .subservice-card {
+            padding: 1.5rem; background: var(--gris-10);
+            border-radius: 12px; border: 1px solid transparent;
+            transition: all .3s;
+        }
+        .subservice-card:hover {
+            background: #fff; border-color: var(--gris-30);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            transform: translateY(-4px);
+        }
+        .subservice-icon {
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; margin-bottom: 1rem;
+        }
+        .subservice-card h4 {
+            font-size: 1rem; font-weight: 700; margin-bottom: .5rem;
+        }
+        .subservice-card p {
+            font-size: .85rem; color: var(--gris-60); margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Pillar Visual - Dashboard Preview */
+        .pillar-visual {
+            background: linear-gradient(135deg, var(--gris-10), #fff);
+            border-radius: 24px; padding: 2.5rem;
+            border: 1px solid var(--gris-30);
+            position: relative; overflow: hidden;
+        }
+        .pillar-visual::before {
+            content: ''; position: absolute; top: -50%; right: -50%;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle, rgba(85,172,238,0.1) 0%, transparent 70%);
+        }
+
+        .feature-list {
+            list-style: none; display: flex; flex-direction: column; gap: 1rem;
+        }
+        .feature-item {
+            display: flex; align-items: flex-start; gap: 1rem;
+            padding: 1rem; background: rgba(255,255,255,0.8);
+            border-radius: 10px; border: 1px solid var(--gris-30);
+        }
+        .feature-check {
+            width: 24px; height: 24px; border-radius: 50%;
+            background: var(--verde); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .8rem; flex-shrink: 0;
+        }
+        .feature-text strong { display: block; color: var(--texto); margin-bottom: .2rem; }
+        .feature-text span { font-size: .85rem; color: var(--gris-60); }
+
+        /* Mini Dashboard Preview (for Education pillar) */
+        .mini-dashboard {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 16px; padding: 1.5rem;
+            color: #fff; font-size: .85rem;
+        }
+        .mini-metric {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .mini-metric:last-child { border-bottom: none; }
+        .mini-bar {
+            width: 100px; height: 6px; background: rgba(255,255,255,0.1);
+            border-radius: 3px; overflow: hidden;
+        }
+        .mini-bar-fill {
+            height: 100%; border-radius: 3px;
+            background: linear-gradient(90deg, var(--cyan), var(--verde));
+        }
+
+        /* ── MAP SECTION ── */
+        .map-section {
+            padding: 6rem 2rem; background: var(--azul-oscuro);
+            color: #fff; position: relative; overflow: hidden;
+        }
+        .map-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse at 30% 50%, rgba(85,172,238,0.15) 0%, transparent 60%);
+        }
+        .map-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
+            align-items: center; position: relative; z-index: 1;
+        }
+        .map-content h2 {
+            font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 1.5rem;
+        }
+        .map-content p {
+            font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        .dept-list {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
+        }
+        .dept-item {
+            display: flex; align-items: center; gap: .75rem;
+            padding: 1rem; background: rgba(255,255,255,0.05);
+            border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
+            transition: all .3s;
+        }
+        .dept-item:hover {
+            background: rgba(255,255,255,0.1); transform: translateX(5px);
+        }
+        .dept-dot {
+            width: 10px; height: 10px; border-radius: 50%;
+            background: var(--celeste); box-shadow: 0 0 0 3px rgba(85,172,238,0.3);
+        }
+        .dept-name { font-weight: 600; }
+        .dept-pop { font-size: .8rem; color: rgba(255,255,255,0.5); margin-left: auto; }
+
         .map-container {
-            background: #fff; border-radius: 20px; padding: 1.75rem 2rem 2rem;
-            box-shadow: 0 20px 60px rgba(14,28,47,0.18);
-            border: 1px solid var(--gris-30); width: 100%; max-width: 380px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px; padding: 2rem;
+            border: 1px solid rgba(255,255,255,0.1);
         }
-        .map-title { font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700;
-            color: var(--gris-60); letter-spacing: .1em; text-transform: uppercase;
-            margin-bottom: 1rem; text-align: center; }
-        .dept-chips { display: flex; flex-wrap: wrap; gap: .4rem; justify-content: center; margin-top: 1rem; }
-        .chip {
-            background: rgba(85,172,238,.1); border: 1px solid rgba(85,172,238,.25);
-            color: var(--azul); font-size: .72rem; font-weight: 600;
-            padding: .25rem .65rem; border-radius: 50px;
+
+        /* ── STATS ── */
+        .stats-section {
+            padding: 5rem 2rem; background: linear-gradient(135deg, var(--celeste), var(--azul));
+            color: #fff;
         }
-        .hero-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-top: 1.25rem; }
-        .hstat { text-align: center; padding: .75rem .5rem; background: var(--gris-10); border-radius: 10px; }
-        .hstat-n { font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--azul); }
-        .hstat-l { font-size: .68rem; color: var(--gris-60); margin-top: .1rem; }
-
-        /* ── PRESS ── */
-        .press { background: #fff; padding: 3.5rem 2rem; border-top: 1px solid var(--gris-30); border-bottom: 1px solid var(--gris-30); }
-        .press-inner { max-width: 1100px; margin: 0 auto; }
-        .press-label { text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gris-60); margin-bottom: 2rem; }
-        .press-logos { display: flex; align-items: center; justify-content: center; gap: 4rem; flex-wrap: wrap; }
-        .press-item a { display: flex; flex-direction: column; align-items: center; gap: .65rem; text-decoration: none; }
-        .press-logo-box { filter: grayscale(30%); opacity: .8; transition: filter .3s, transform .3s, opacity .3s; }
-        .press-item a:hover .press-logo-box { filter: none; opacity: 1; transform: scale(1.04); }
-        .press-caption { font-size: .7rem; color: var(--gris-60); text-align: center; max-width: 170px; line-height: 1.4; }
-
-        /* ── SECCIONES ── */
-        .section { padding: 6rem 2rem; }
-        .container { max-width: 1280px; margin: 0 auto; }
-        .section-tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--celeste); margin-bottom: .75rem; }
-        .section-title { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 800; color: var(--texto); margin-bottom: 1rem; }
-        .section-lead { font-size: 1rem; color: var(--gris-60); max-width: 620px; font-weight: 300; }
-
-        /* ── DEPARTAMENTOS ── */
-        .depts-bg { background: var(--gris-10); }
-        .depts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; margin-top: 3rem; }
-        .dept-card {
-            background: #fff; border-radius: 14px; padding: 1.75rem;
-            border: 1px solid var(--gris-30); transition: all .3s; position: relative; overflow: hidden;
+        .stats-grid {
+            max-width: 1200px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+            text-align: center;
         }
-        .dept-card::after {
-            content:''; position: absolute; bottom:0; left:0; right:0; height: 3px;
-            background: linear-gradient(90deg, var(--celeste), var(--azul));
-            transform: scaleX(0); transition: transform .3s; transform-origin: left;
+        .stat-item h3 {
+            font-size: 3rem; font-weight: 800; margin-bottom: .5rem;
         }
-        .dept-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(14,28,47,0.12); border-color: var(--celeste); }
-        .dept-card:hover::after { transform: scaleX(1); }
-        .dept-icon { font-size: 2rem; margin-bottom: 1rem; }
-        .dept-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--texto); margin-bottom: .4rem; }
-        .dept-pop { font-size: .78rem; color: var(--gris-60); margin-bottom: .75rem; }
-        .dept-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
-        .dept-tag { font-size: .67rem; font-weight: 600; padding: .2rem .55rem; border-radius: 4px; background: rgba(85,172,238,.1); color: var(--azul); }
-
-        /* ── RIVA PARENT ── */
-        .riva-section { background: var(--azul-oscuro); color: #fff; padding: 5rem 2rem; }
-        .riva-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-        .riva-label { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--celeste); margin-bottom: 1rem; }
-        .riva-title { font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 800; margin-bottom: 1.25rem; }
-        .riva-text { font-size: .95rem; color: rgba(255,255,255,.65); line-height: 1.75; margin-bottom: 1.5rem; font-weight: 300; }
-        .riva-facts { display: flex; flex-direction: column; gap: .85rem; }
-        .riva-fact { display: flex; align-items: flex-start; gap: .75rem; }
-        .riva-fact-icon { width: 30px; height: 30px; background: rgba(85,172,238,.2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: .9rem; }
-        .riva-fact-text { font-size: .88rem; color: rgba(255,255,255,.7); line-height: 1.5; }
-        .riva-fact-text strong { color: #fff; }
-
-        .regional-map { background: rgba(255,255,255,.05); border-radius: 14px; padding: 1.75rem; border: 1px solid rgba(255,255,255,.1); }
-        .regional-map h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1rem; margin-bottom: 1.25rem; color: var(--celeste); }
-        .region-item { display: flex; align-items: center; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.07); }
-        .region-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .region-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-        .dot-active { background: var(--verde); box-shadow: 0 0 0 3px rgba(29,185,123,.25); }
-        .dot-planned { background: rgba(122,137,158,.5); }
-        .region-name { font-weight: 600; font-size: .9rem; flex: 1; }
-        .region-badge { font-size: .67rem; font-weight: 700; padding: .2rem .6rem; border-radius: 4px; letter-spacing: .05em; text-transform: uppercase; }
-        .badge-active { background: rgba(29,185,123,.2); color: var(--verde); }
-        .badge-planned { background: rgba(122,137,158,.15); color: rgba(255,255,255,.45); }
-        .region-note { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 1.25rem; line-height: 1.55; }
-
-        /* ── SERVICIOS ── */
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px,1fr)); gap: 2rem; margin-top: 3.5rem; }
-        .srv-card {
-            border: 1px solid var(--gris-30); border-radius: 16px; padding: 2rem;
-            background: #fff; transition: all .3s;
+        .stat-item p {
+            font-size: .95rem; opacity: .9; font-weight: 500;
         }
-        .srv-card:hover { transform: translateY(-5px); box-shadow: 0 8px 40px rgba(14,28,47,.12); border-color: rgba(85,172,238,.4); }
-        .srv-head { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
-        .srv-icon { width: 50px; height: 50px; border-radius: 12px; background: linear-gradient(135deg, var(--celeste), var(--azul)); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
-        .srv-badge { font-size: .67rem; font-weight: 700; padding: .25rem .65rem; border-radius: 50px; letter-spacing: .05em; text-transform: uppercase; }
-        .badge-new { background: rgba(232,164,23,.15); color: var(--dorado); border: 1px solid rgba(232,164,23,.3); }
-        .badge-core { background: rgba(85,172,238,.12); color: var(--azul); border: 1px solid rgba(85,172,238,.25); }
-        .badge-exclusive { background: rgba(29,185,123,.12); color: var(--verde); border: 1px solid rgba(29,185,123,.3); }
-        .srv-title { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--texto); margin-bottom: .6rem; }
-        .srv-desc { font-size: .9rem; color: var(--gris-60); margin-bottom: 1.25rem; font-weight: 300; line-height: 1.65; }
-        .srv-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
-        .srv-list li { font-size: .83rem; color: var(--gris-60); display: flex; align-items: center; gap: .5rem; }
-        .srv-list li::before { content:''; width: 5px; height: 5px; border-radius: 50%; background: var(--celeste); flex-shrink: 0; }
 
-        /* ── SECTORES ── */
-        .sectors-bg { background: var(--gris-10); }
-        .sectors-grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(195px,1fr)); gap: 1.25rem; margin-top: 3rem; }
-        .sector-tile {
-            background: #fff; border-radius: 14px; padding: 1.5rem;
-            border: 1px solid var(--gris-30); text-align: center; transition: all .3s;
+        /* ── COMPARISON ── */
+        .comparison-section { padding: 6rem 2rem; background: var(--gris-10); }
+        .comparison-table {
+            background: #fff; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+            border: 1px solid var(--gris-30);
         }
-        .sector-tile:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(14,28,47,.1); border-color: var(--celeste); }
-        .sector-icon2 { font-size: 2.1rem; margin-bottom: .65rem; }
-        .sector-new-tag { display: inline-block; font-size: .62rem; font-weight: 700; padding: .15rem .45rem; border-radius: 3px; background: var(--dorado); color: #fff; margin-bottom: .4rem; letter-spacing: .04em; text-transform: uppercase; }
-        .sector-name2 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: .95rem; color: var(--texto); margin-bottom: .4rem; }
-        .sector-desc2 { font-size: .78rem; color: var(--gris-60); line-height: 1.5; }
-
-        /* ── COMPARATIVA ── */
-        .cmp-table { background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 40px rgba(14,28,47,.12); margin-top: 3rem; border: 1px solid var(--gris-30); }
-        .cmp-head { background: linear-gradient(90deg, var(--azul-oscuro), var(--azul)); color: #fff; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; padding: 1.25rem 2rem; font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-        .cmp-row { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1rem; padding: 1.2rem 2rem; border-bottom: 1px solid var(--gris-30); align-items: center; transition: background .2s; }
-        .cmp-row:last-child { border-bottom: none; }
-        .cmp-row:hover { background: rgba(85,172,238,.04); }
-        .cmp-metric { font-size: .9rem; font-weight: 500; color: var(--texto); }
-        .cmp-sub { font-size: .74rem; color: var(--gris-60); margin-top: .15rem; }
-        .cmp-bad { color: var(--rojo); font-size: .88rem; font-weight: 500; }
-        .cmp-good { color: var(--verde); font-size: .88rem; font-weight: 600; display: flex; flex-direction: column; gap: .3rem; }
-        .cmp-pill { font-size: .67rem; font-weight: 700; padding: .18rem .5rem; border-radius: 4px; background: rgba(29,185,123,.12); color: var(--verde); border: 1px solid rgba(29,185,123,.3); letter-spacing: .04em; align-self: flex-start; }
+        .comp-header {
+            display: grid; grid-template-columns: 2fr 1fr 1fr;
+            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul));
+            color: #fff; padding: 1.5rem 2rem;
+            font-weight: 700; font-size: .9rem; letter-spacing: .05em;
+        }
+        .comp-row {
+            display: grid; grid-template-columns: 2fr 1fr 1fr;
+            padding: 1.25rem 2rem; border-bottom: 1px solid var(--gris-30);
+            align-items: center; transition: background .2s;
+        }
+        .comp-row:hover { background: rgba(85,172,238,0.03); }
+        .comp-row:last-child { border-bottom: none; }
+        
+        .comp-metric { font-weight: 600; color: var(--texto); }
+        .comp-sub { font-size: .8rem; color: var(--gris-60); margin-top: .2rem; }
+        .comp-bad { color: var(--rojo); font-weight: 600; }
+        .comp-good { 
+            color: var(--verde); font-weight: 700;
+            display: flex; align-items: center; gap: .5rem;
+        }
+        .comp-badge {
+            font-size: .65rem; padding: .2rem .5rem;
+            background: rgba(29,185,123,0.15); border-radius: 4px;
+        }
 
         /* ── CTA ── */
-        .cta-section { background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%); padding: 6rem 2rem; text-align: center; color: #fff; position: relative; overflow: hidden; }
-        .cta-section::before { content:''; position: absolute; inset:0; background: radial-gradient(ellipse 700px 500px at 50% 50%, rgba(85,172,238,.15) 0%, transparent 70%); }
-        .cta-content { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
-        .cta-section h2 { font-size: clamp(2rem,3.5vw,3rem); font-weight: 800; margin-bottom: 1rem; }
-        .cta-section p { font-size: 1.05rem; opacity: .8; margin-bottom: 2.5rem; font-weight: 300; }
-        .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-white { background: #fff; color: var(--azul); padding: .9rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: .95rem; transition: transform .2s, box-shadow .2s; }
-        .btn-white:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(0,0,0,.2); }
-        .btn-outline-w { background: transparent; color: #fff; padding: .9rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: .95rem; border: 2px solid rgba(255,255,255,.5); transition: all .2s; }
-        .btn-outline-w:hover { border-color: #fff; background: rgba(255,255,255,.1); transform: translateY(-2px); }
+        .cta-section {
+            padding: 8rem 2rem; text-align: center;
+            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
+            color: #fff; position: relative; overflow: hidden;
+        }
+        .cta-section::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(circle at 50% 50%, rgba(85,172,238,0.2) 0%, transparent 70%);
+        }
+        .cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+        .cta-section h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1.5rem; }
+        .cta-section p { font-size: 1.1rem; opacity: .85; margin-bottom: 2.5rem; line-height: 1.7; }
+        
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn-white {
+            background: #fff; color: var(--azul);
+            padding: 1rem 2.5rem; border-radius: 10px;
+            text-decoration: none; font-weight: 700; font-size: 1rem;
+            transition: all .3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
+        .btn-outline {
+            background: transparent; color: #fff;
+            padding: 1rem 2.5rem; border-radius: 10px;
+            text-decoration: none; font-weight: 600; font-size: 1rem;
+            border: 2px solid rgba(255,255,255,0.4);
+            transition: all .3s;
+        }
+        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-3px); }
 
         /* ── FOOTER ── */
-        .footer { background: var(--texto); color: #fff; padding: 4rem 2rem 2rem; }
-        .footer-inner { max-width: 1280px; margin: 0 auto; }
-        .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-        .footer-brand-name { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; margin-bottom: .3rem; }
-        .footer-brand-sub { font-size: .78rem; color: var(--gris-60); margin-bottom: .9rem; }
-        .footer-brand-desc { font-size: .85rem; color: rgba(255,255,255,.45); line-height: 1.65; }
-        .footer-riva-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(85,172,238,.15); border: 1px solid rgba(85,172,238,.25); padding: .45rem 1rem; border-radius: 6px; margin-top: 1.25rem; font-size: .78rem; color: var(--celeste); font-weight: 600; }
-        .footer-section h4 { font-family: 'Syne', sans-serif; font-size: .78rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--celeste); margin-bottom: 1rem; }
-        .footer-links { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
-        .footer-links a, .footer-links li { font-size: .84rem; color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+        .footer {
+            background: var(--texto); color: #fff; padding: 5rem 2rem 2rem;
+        }
+        .footer-grid {
+            max-width: 1400px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .footer-brand h3 {
+            font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        .footer-brand p {
+            color: rgba(255,255,255,0.5); line-height: 1.7; font-size: .95rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-badge {
+            display: inline-flex; align-items: center; gap: .5rem;
+            padding: .5rem 1rem; background: rgba(85,172,238,0.15);
+            border-radius: 6px; font-size: .8rem; color: var(--celeste);
+            font-weight: 600;
+        }
+        
+        .footer-col h4 {
+            font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: var(--celeste);
+            margin-bottom: 1.5rem;
+        }
+        .footer-links {
+            list-style: none; display: flex; flex-direction: column; gap: .75rem;
+        }
+        .footer-links a {
+            color: rgba(255,255,255,0.5); text-decoration: none; font-size: .9rem;
+            transition: color .2s;
+        }
         .footer-links a:hover { color: var(--celeste); }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 1.75rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-bottom p { font-size: .78rem; color: rgba(255,255,255,.3); }
-        .footer-badges { display: flex; gap: .6rem; flex-wrap: wrap; }
-        .f-badge { font-size: .67rem; font-weight: 700; padding: .2rem .6rem; border-radius: 4px; background: rgba(255,255,255,.07); color: rgba(255,255,255,.45); letter-spacing: .05em; text-transform: uppercase; }
+
+        .footer-bottom {
+            max-width: 1400px; margin: 0 auto;
+            padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 1rem;
+        }
+        .footer-bottom p {
+            font-size: .85rem; color: rgba(255,255,255,0.3);
+        }
+        .footer-badges {
+            display: flex; gap: .5rem;
+        }
+        .fbadge {
+            font-size: .7rem; padding: .25rem .6rem;
+            background: rgba(255,255,255,0.05); border-radius: 4px;
+            color: rgba(255,255,255,0.4);
+        }
 
         /* ── ANIMATIONS ── */
-        .fade-up { opacity: 0; transform: translateY(28px); transition: opacity .65s ease, transform .65s ease; }
+        .fade-up {
+            opacity: 0; transform: translateY(30px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
         .fade-up.visible { opacity: 1; transform: translateY(0); }
 
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; }
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-lead { margin-left: auto; margin-right: auto; }
+            .hero-pillars-preview { justify-content: center; }
             .hero-visual { display: none; }
-            .riva-inner { grid-template-columns: 1fr; }
-            .footer-top { grid-template-columns: 1fr 1fr; }
+            .pillar-grid { grid-template-columns: 1fr; }
+            .map-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
+
         @media (max-width: 768px) {
             .nav-links { display: none; }
-            .hero { padding: 100px 1.5rem 60px; }
-            .section { padding: 4rem 1.5rem; }
-            .footer-top { grid-template-columns: 1fr; }
-            .cmp-head, .cmp-row { grid-template-columns: 1fr; gap: .5rem; padding: 1rem 1.25rem; }
+            .pillars-tabs { flex-direction: column; }
+            .pillar-tab { width: 100%; justify-content: center; }
+            .subservices-grid { grid-template-columns: 1fr; }
+            .dept-list { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .comp-header, .comp-row { grid-template-columns: 1fr; gap: .5rem; }
+            .footer-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -307,590 +612,646 @@
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="#inicio">Inicio</a></li>
-            <li><a href="#departamentos">Departamentos</a></li>
-            <li><a href="#plataforma">Plataforma</a></li>
-            <li><a href="#sectores">Sectores</a></li>
-            <li><a href="#comparacion">Comparativa</a></li>
-            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#pilares">Los 3 Pilares</a></li>
+            <li><a href="#territorio">Territorio</a></li>
+            <li><a href="#educacion">Educación</a></li>
+            <li><a href="#empresas">Empresas</a></li>
+            <li><a href="#cobertura">Cobertura</a></li>
         </ul>
-        <a href="#demo" class="nav-cta">Solicitar Demo →</a>
+        <a href="#contacto" class="nav-cta">Solicitar Demo →</a>
     </div>
 </nav>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
+    <div class="hero-bg-pattern"></div>
     <div class="hero-grid">
         <div>
-            <div class="hero-tag"><span></span> Riva Labs · Departamento Regional Este</div>
-            <h1>IA Computacional para el <em>Este de Uruguay</em></h1>
+            <div class="hero-badge"><span></span> Riva Labs · Departamento Regional Este</div>
+            <h1>IA Computacional para el <span>Este de Uruguay</span></h1>
             <p class="hero-lead">
-                Datos del Este lleva inteligencia artificial de clase mundial a Maldonado, Rocha, Lavalleja, Treinta y Tres y Cerro Largo — con equipos locales, datos del territorio y resultados reales para cada sector.
+                Tres pilares de inteligencia artificial diseñados para transformar el territorio, 
+                la educación y las empresas de Maldonado, Rocha, Lavalleja, Treinta y Tres y Cerro Largo.
             </p>
+            
+            <div class="hero-pillars-preview">
+                <div class="pillar-mini">
+                    <span class="pillar-mini-icon">🌿</span>
+                    <span>Territorio</span>
+                </div>
+                <div class="pillar-mini">
+                    <span class="pillar-mini-icon">🎓</span>
+                    <span>Educación</span>
+                </div>
+                <div class="pillar-mini">
+                    <span class="pillar-mini-icon">⚡</span>
+                    <span>Empresas</span>
+                </div>
+            </div>
+
             <div class="hero-btns">
-                <a href="#demo" class="btn-solid">🚀 Solicitar Demo</a>
-                <a href="#plataforma" class="btn-ghost">Ver la Plataforma</a>
+                <a href="#pilares" class="btn-solid">Explorar Soluciones →</a>
+                <a href="#contacto" class="btn-ghost">Contactar Equipo</a>
             </div>
         </div>
+
         <div class="hero-visual">
-            <div class="map-container">
-                <div class="map-title">🗺️ Cobertura Regional — Este de Uruguay</div>
-                <svg viewBox="0 0 320 330" width="100%" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#55ACEE;stop-opacity:0.22"/>
-                            <stop offset="100%" style="stop-color:#1B3F8B;stop-opacity:0.32"/>
-                        </linearGradient>
-                        <linearGradient id="g2" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:#55ACEE;stop-opacity:0.50"/>
-                            <stop offset="100%" style="stop-color:#1B3F8B;stop-opacity:0.60"/>
-                        </linearGradient>
-                        <filter id="glow">
-                            <feGaussianBlur stdDeviation="2.5" result="c"/>
-                            <feMerge><feMergeNode in="c"/><feMergeNode in="SourceGraphic"/></feMerge>
-                        </filter>
-                    </defs>
-                    <rect width="320" height="330" fill="#F2F4F7" rx="10"/>
-                    <!-- Cerro Largo -->
-                    <path d="M55,28 L225,28 L245,68 L215,88 L165,76 L115,92 L65,78 Z" fill="url(#g1)" stroke="#1B3F8B" stroke-width="1.5" stroke-linejoin="round"/>
-                    <text x="148" y="58" text-anchor="middle" font-family="Syne,sans-serif" font-size="9.5" fill="#0D2259" font-weight="700">CERRO LARGO</text>
-                    <!-- Treinta y Tres -->
-                    <path d="M115,92 L215,88 L235,130 L205,165 L155,170 L108,143 L100,115 Z" fill="url(#g1)" stroke="#1B3F8B" stroke-width="1.5" stroke-linejoin="round"/>
-                    <text x="168" y="128" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="#0D2259" font-weight="700">TREINTA Y TRES</text>
-                    <!-- Lavalleja -->
-                    <path d="M65,78 L115,92 L100,115 L108,143 L72,158 L38,128 L42,92 Z" fill="url(#g1)" stroke="#1B3F8B" stroke-width="1.5" stroke-linejoin="round"/>
-                    <text x="75" y="118" text-anchor="middle" font-family="Syne,sans-serif" font-size="9" fill="#0D2259" font-weight="700">LAVALLEJA</text>
-                    <!-- Maldonado (highlighted) -->
-                    <path d="M72,158 L108,143 L155,170 L162,212 L132,242 L88,236 L62,205 L58,172 Z" fill="url(#g2)" stroke="#1B3F8B" stroke-width="2" stroke-linejoin="round"/>
-                    <text x="108" y="196" text-anchor="middle" font-family="Syne,sans-serif" font-size="10" fill="#0D2259" font-weight="800">MALDONADO</text>
-                    <!-- Rocha -->
-                    <path d="M155,170 L205,165 L255,178 L275,215 L265,262 L222,278 L178,272 L142,252 L132,242 L162,212 Z" fill="url(#g1)" stroke="#1B3F8B" stroke-width="1.5" stroke-linejoin="round"/>
-                    <text x="205" y="222" text-anchor="middle" font-family="Syne,sans-serif" font-size="11" fill="#0D2259" font-weight="700">ROCHA</text>
-                    <!-- Punta del Este marker -->
-                    <circle cx="96" cy="248" r="7" fill="#55ACEE" filter="url(#glow)" opacity=".9"/>
-                    <circle cx="96" cy="248" r="12" fill="none" stroke="#55ACEE" stroke-width="1.5" opacity=".4"/>
-                    <text x="96" y="270" text-anchor="middle" font-family="DM Sans,sans-serif" font-size="7.5" fill="#1B3F8B" font-weight="600">Punta del Este</text>
-                    <!-- Atlantic label -->
-                    <text x="292" y="210" font-family="DM Sans,sans-serif" font-size="7.5" fill="#7A899E" text-anchor="middle" transform="rotate(90,292,210)">ATLÁNTICO</text>
-                    <!-- BR border -->
-                    <line x1="225" y1="28" x2="275" y2="178" stroke="#7A899E" stroke-width="1" stroke-dasharray="5,3" opacity=".5"/>
-                    <text x="262" y="48" font-family="DM Sans,sans-serif" font-size="8" fill="#7A899E">🇧🇷 Brasil</text>
-                </svg>
-                <div class="dept-chips">
-                    <span class="chip">Maldonado</span><span class="chip">Rocha</span>
-                    <span class="chip">Lavalleja</span><span class="chip">Treinta y Tres</span>
-                    <span class="chip">Cerro Largo</span>
+            <div class="pillars-showcase">
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">🌿</div>
+                    <h3>Territorio</h3>
+                    <p>IA aplicada a recursos naturales, inmuebles y medio ambiente del Este.</p>
+                    <div class="pillar-card-tags">
+                        <span class="pillar-tag">Real Estate</span>
+                        <span class="pillar-tag">Agro</span>
+                        <span class="pillar-tag">Marítimo</span>
+                        <span class="pillar-tag">Ambiental</span>
+                    </div>
                 </div>
-                <div class="hero-stats">
-                    <div class="hstat"><div class="hstat-n">55x</div><div class="hstat-l">más rápido</div></div>
-                    <div class="hstat"><div class="hstat-n">150+</div><div class="hstat-l">empresas</div></div>
-                    <div class="hstat"><div class="hstat-n">99.8%</div><div class="hstat-l">uptime</div></div>
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">🎓</div>
+                    <h3>Educación</h3>
+                    <p>Inteligencia pedagógica avanzada con análisis de dinámicas grupales y participación estudiantil.</p>
+                    <div class="pillar-card-tags">
+                        <span class="pillar-tag">Análisis Sociométrico</span>
+                        <span class="pillar-tag">Participación</span>
+                        <span class="pillar-tag">Ceibal</span>
+                    </div>
+                </div>
+                <div class="pillar-card">
+                    <div class="pillar-card-icon">⚡</div>
+                    <h3>Empresas</h3>
+                    <p>Soluciones financieras, auditoría y computación distribuida de alto rendimiento.</p>
+                    <div class="pillar-card-tags">
+                        <span class="pillar-tag">Fintech</span>
+                        <span class="pillar-tag">Auditoría</span>
+                        <span class="pillar-tag">Cloud</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- PRESS -->
-<section class="press">
-    <div class="press-inner">
-        <p class="press-label">Riva Labs en los medios internacionales</p>
-        <div class="press-logos">
-
-            <div class="press-item">
-                <a href="https://www.forbesuruguay.com/negocios/uno-uno-quienes-son-empresarios-viajaron-junto-yamandu-orsi-su-mision-china-n85871" target="_blank" rel="noopener">
-                    <div class="press-logo-box">
-                        <svg height="36" viewBox="0 0 180 42" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="180" height="42" rx="5" fill="#141414"/>
-                            <text x="13" y="30" font-family="Georgia,'Times New Roman',serif" font-size="24" font-weight="900" fill="#FFFFFF" letter-spacing=".5">FORBES</text>
-                            <text x="147" y="30" font-family="Arial,sans-serif" font-size="10" fill="#888" font-weight="600">UY</text>
-                        </svg>
-                    </div>
-                    <div class="press-caption">Delegación presidencial a China con el presidente Orsi — Febrero 2026</div>
-                </a>
-            </div>
-
-            <div class="press-item">
-                <a href="https://www.elpais.com.uy/el-empresario/riva-labs-liderazgo-en-innovacion-tecnologica-con-proyeccion-internacional" target="_blank" rel="noopener">
-                    <div class="press-logo-box">
-                        <svg height="36" viewBox="0 0 200 42" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="200" height="42" rx="5" fill="#C41230"/>
-                            <text x="12" y="29" font-family="Georgia,'Times New Roman',serif" font-size="20" font-weight="900" fill="#FFFFFF" letter-spacing=".3">El País</text>
-                            <line x1="88" y1="10" x2="88" y2="32" stroke="rgba(255,255,255,.4)" stroke-width="1"/>
-                            <text x="96" y="21" font-family="Arial,sans-serif" font-size="7" fill="rgba(255,255,255,.7)" letter-spacing=".5">URUGUAY</text>
-                            <text x="96" y="31" font-family="Arial,sans-serif" font-size="8" fill="rgba(255,255,255,.9)" font-weight="600">El Empresario</text>
-                        </svg>
-                    </div>
-                    <div class="press-caption">Liderazgo en innovación tecnológica con proyección internacional</div>
-                </a>
-            </div>
-
-            <div class="press-item">
-                <a href="https://www.uruguayxxi.gub.uy/es/noticias/articulo/uruguay-impulsa-su-insercion-internacional-con-una-mision-oficial-a-china/" target="_blank" rel="noopener">
-                    <div class="press-logo-box">
-                        <svg height="36" viewBox="0 0 210 42" xmlns="http://www.w3.org/2000/svg">
-                            <rect width="210" height="42" rx="5" fill="#003D8F"/>
-                            <text x="12" y="28" font-family="Arial,sans-serif" font-size="14.5" font-weight="900" fill="#FFFFFF" letter-spacing=".5">URUGUAY</text>
-                            <text x="107" y="28" font-family="Arial,sans-serif" font-size="14.5" font-weight="900" fill="#55ACEE" letter-spacing=".5"> XXI</text>
-                            <text x="12" y="38" font-family="Arial,sans-serif" font-size="6" fill="rgba(255,255,255,.5)" letter-spacing=".3">PROMOCIÓN DE EXPORTACIONES E INVERSIONES</text>
-                        </svg>
-                    </div>
-                    <div class="press-caption">Misión oficial Uruguay a China — Ecosistema tecnológico</div>
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- DEPARTAMENTOS -->
-<section class="section depts-bg" id="departamentos">
+<!-- 3 PILARS SECTION -->
+<section class="pillars-section" id="pilares">
     <div class="container">
-        <span class="section-tag">Presencia Regional</span>
-        <h2 class="section-title">Cinco departamentos. Una plataforma.</h2>
-        <p class="section-lead">Cobertura completa del Este uruguayo con equipos locales, datos del territorio y conocimiento profundo de cada mercado.</p>
-        <div class="depts-grid">
-            <div class="dept-card fade-up">
-                <div class="dept-icon">🏖️</div>
-                <div class="dept-name">Maldonado</div>
-                <div class="dept-pop">~180.000 hab · Hub económico del Este</div>
-                <div class="dept-tags"><span class="dept-tag">Real Estate</span><span class="dept-tag">Turismo Premium</span><span class="dept-tag">Fintech</span><span class="dept-tag">Logística</span></div>
-            </div>
-            <div class="dept-card fade-up">
-                <div class="dept-icon">🌿</div>
-                <div class="dept-name">Rocha</div>
-                <div class="dept-pop">~70.000 hab · Costa Atlántica</div>
-                <div class="dept-tags"><span class="dept-tag">Ecoturismo</span><span class="dept-tag">Agropecuario</span><span class="dept-tag">Pesca</span><span class="dept-tag">Medio Ambiente</span></div>
-            </div>
-            <div class="dept-card fade-up">
-                <div class="dept-icon">⛏️</div>
-                <div class="dept-name">Lavalleja</div>
-                <div class="dept-pop">~60.000 hab · Industria y Minería</div>
-                <div class="dept-tags"><span class="dept-tag">Industrial</span><span class="dept-tag">Agro</span><span class="dept-tag">Energía Renovable</span></div>
-            </div>
-            <div class="dept-card fade-up">
-                <div class="dept-icon">🌾</div>
-                <div class="dept-name">Treinta y Tres</div>
-                <div class="dept-pop">~48.000 hab · Arrocero y Ganadero</div>
-                <div class="dept-tags"><span class="dept-tag">Precision Farming</span><span class="dept-tag">Arroz</span><span class="dept-tag">Ganadería</span></div>
-            </div>
-            <div class="dept-card fade-up">
-                <div class="dept-icon">🤝</div>
-                <div class="dept-name">Cerro Largo</div>
-                <div class="dept-pop">~84.000 hab · Frontera con Brasil</div>
-                <div class="dept-tags"><span class="dept-tag">Comercio binacional</span><span class="dept-tag">Ganadería</span><span class="dept-tag">Logística</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- RIVA LABS PARENT -->
-<section class="riva-section">
-    <div class="riva-inner">
-        <div>
-            <div class="riva-label">La empresa detrás de la plataforma</div>
-            <h2 class="riva-title">Riva Labs: IA aplicada a software e industria</h2>
-            <p class="riva-text">
-                Riva Labs es la empresa matriz de Datos del Este. Registrada como <strong>Riva Labs S.A.S.</strong> (Juan Benito Blanco 780, Montevideo, inscripta en RUPE) y Riva Labs LLC (Colorado, USA), opera con presencia binacional para servir tanto al mercado latinoamericano como al internacional. Datos del Este es su primer departamento regional especializado — con más en desarrollo.
+        <div class="section-header fade-up">
+            <span class="section-tag">Nuestra Propuesta de Valor</span>
+            <h2 class="section-title">Tres Pilares, Un Objetivo</h2>
+            <p class="section-lead">
+                Estructuramos nuestra oferta en tres pilares estratégicos que abarcan 
+                todas las necesidades de transformación digital del Este uruguayo.
             </p>
-            <div class="riva-facts">
-                <div class="riva-fact">
-                    <div class="riva-fact-icon">📍</div>
-                    <div class="riva-fact-text"><strong>Sede:</strong> Juan Benito Blanco 780, Montevideo, Uruguay · Inscripta en RUPE</div>
+        </div>
+
+        <div class="pillars-tabs fade-up">
+            <div class="pillar-tab active" onclick="showPillar(0)">
+                <span class="pillar-tab-icon">🌿</span>
+                <span>Territorio & Recursos</span>
+            </div>
+            <div class="pillar-tab" onclick="showPillar(1)">
+                <span class="pillar-tab-icon">🎓</span>
+                <span>Educación & Inteligencia</span>
+            </div>
+            <div class="pillar-tab" onclick="showPillar(2)">
+                <span class="pillar-tab-icon">⚡</span>
+                <span>Desarrollo & Finanzas</span>
+            </div>
+        </div>
+
+        <!-- Pillar 1: Territorio -->
+        <div class="pillar-content active" id="pillar-0">
+            <div class="pillar-grid">
+                <div class="pillar-info">
+                    <h3><span>🌿</span> Territorio & Recursos Naturales</h3>
+                    <p>
+                        Inteligencia artificial aplicada a la gestión del territorio del Este. 
+                        Desde la valuación inmobiliaria en Punta del Este hasta el monitoreo 
+                        ambiental en Rocha y la optimización ganadera en el interior.
+                    </p>
+                    <div class="subservices-grid">
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #3B82F6, #1E40AF);">🏘️</div>
+                            <h4>Real Estate Inteligente</h4>
+                            <p>Valuación AVM, análisis de demanda turística e inversión inmobiliaria en la costa atlántica.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #10B981, #059669);">🐄</div>
+                            <h4>Agro & Ganadería</h4>
+                            <p>Precision farming, monitoreo de rodeos con CV y predicción de rendimiento para el agro esteño.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #06B6D4, #0891B2);">🐟</div>
+                            <h4>Marítimo & Pesca</h4>
+                            <p>Optimización de rutas pesqueras, monitoreo de recursos marinos y acuicultura sostenible.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #84CC16, #65A30D);">🌿</div>
+                            <h4>Ambiental</h4>
+                            <p>IA para conservación de humedales, Laguna Garzón, Cabo Polonio y áreas protegidas.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="riva-fact">
-                    <div class="riva-fact-icon">🌎</div>
-                    <div class="riva-fact-text"><strong>Entidad internacional:</strong> Riva Labs LLC, Colorado, USA — para clientes y contratos internacionales</div>
-                </div>
-                <div class="riva-fact">
-                    <div class="riva-fact-icon">🔬</div>
-                    <div class="riva-fact-text"><strong>Liderazgo:</strong> Pablo Marcelo Del Valle Riva, fundador — IA aplicada a software e industria</div>
-                </div>
-                <div class="riva-fact">
-                    <div class="riva-fact-icon">🇨🇳</div>
-                    <div class="riva-fact-text"><strong>Reconocimiento Forbes:</strong> Parte del ecosistema tecnológico en la delegación oficial a China con el presidente Orsi — Forbes Uruguay, febrero 2026</div>
+                <div class="pillar-visual">
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataReal — Valuación Inmobiliaria</strong>
+                                <span>AVM con 95% de precisión para el mercado esteño</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataAgro — Ganadería Inteligente</strong>
+                                <span>Conteo automatizado de ganado con visión artificial</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataEco — Monitoreo Ambiental</strong>
+                                <span>Detección de cambios en ecosistemas vía satelital</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataFlow CFD — Dinámica de Fluidos</strong>
+                                <span>Primera plataforma CFD+IA de LATAM para riego e hidráulica</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-        <div>
-            <div class="regional-map">
-                <h4>🗺️ Red Regional de Riva Labs — Uruguay</h4>
-                <div class="region-item">
-                    <div class="region-dot dot-active"></div>
-                    <div class="region-name">Datos del Este</div>
-                    <span class="region-badge badge-active">Activo</span>
+
+        <!-- Pillar 2: Educación (Inspirado en Voces del Futuro) -->
+        <div class="pillar-content" id="pillar-1">
+            <div class="pillar-grid">
+                <div class="pillar-info">
+                    <h3><span>🎓</span> Educación & Inteligencia Pedagógica</h3>
+                    <p>
+                        Transformación educativa mediante IA adaptativa y análisis de dinámicas 
+                        grupales. Plataformas que miden inteligencia colectiva, clima social 
+                        y patrones de participación estudiantil en tiempo real.
+                    </p>
+                    <div class="subservices-grid">
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">🧠</div>
+                            <h4>Análisis Sociométrico</h4>
+                            <p>Visualización de redes sociales educativas, identificación de líderes, puentes y estudiantes aislados.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #EC4899, #BE185D);">📊</div>
+                            <h4>Inteligencia Colectiva</h4>
+                            <p>Métricas de factor c, autoeficacia grupal y análisis de deliberación democrática estudiantil.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">🎯</div>
+                            <h4>Participación Ciudadana</h4>
+                            <p>Plataformas de propuestas estudiantiles, deliberación guiada y ciclo completo de democracia participativa.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #6366F1, #4F46E5);">🌐</div>
+                            <h4>Aprendizaje Adaptativo</h4>
+                            <p>Personalización del aprendizaje, prevención de abandono y modo offline para zonas rurales.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="region-item">
-                    <div class="region-dot dot-planned"></div>
-                    <div class="region-name">Datos del Norte</div>
-                    <span class="region-badge badge-planned">En desarrollo</span>
+                <div class="pillar-visual">
+                    <!-- Mini Dashboard Preview -->
+                    <div class="mini-dashboard">
+                        <div style="font-weight: 700; margin-bottom: 1rem; color: var(--cyan);">📊 Dashboard en Tiempo Real</div>
+                        <div class="mini-metric">
+                            <span>Inteligencia Colectiva (Factor c)</span>
+                            <div style="display: flex; align-items: center; gap: .5rem;">
+                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 78%;"></div></div>
+                                <span style="color: var(--verde); font-weight: 700;">78</span>
+                            </div>
+                        </div>
+                        <div class="mini-metric">
+                            <span>Clima Social Grupal</span>
+                            <div style="display: flex; align-items: center; gap: .5rem;">
+                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 82%;"></div></div>
+                                <span style="color: var(--verde); font-weight: 700;">82</span>
+                            </div>
+                        </div>
+                        <div class="mini-metric">
+                            <span>Equidad de Participación</span>
+                            <div style="display: flex; align-items: center; gap: .5rem;">
+                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 71%;"></div></div>
+                                <span style="color: var(--dorado); font-weight: 700;">71</span>
+                            </div>
+                        </div>
+                        <div class="mini-metric">
+                            <span>Índice de Polarización</span>
+                            <div style="display: flex; align-items: center; gap: .5rem;">
+                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 23%; background: var(--verde);"></div></div>
+                                <span style="color: var(--verde); font-weight: 700;">23%</span>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: .75rem; color: rgba(255,255,255,0.6);">
+                            Basado en marcos teóricos: Freire, Dewey, Moreno, Woolley
+                        </div>
+                    </div>
+                    
+                    <ul class="feature-list" style="margin-top: 1.5rem;">
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataEdu — Plataforma Pedagógica Avanzada</strong>
+                                <span>Análisis psicométrico y sociométrico en tiempo real</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>Detección de Dinámicas de Poder</strong>
+                                <span>Identificación de influenciadores y estudiantes en riesgo de exclusión</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>Deliberación Democrática</strong>
+                                <span>Ciclo completo: propuesta → deliberación → votación → implementación</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="region-item">
-                    <div class="region-dot dot-planned"></div>
-                    <div class="region-name">Datos del Litoral</div>
-                    <span class="region-badge badge-planned">Planificado</span>
+            </div>
+        </div>
+
+        <!-- Pillar 3: Empresas -->
+        <div class="pillar-content" id="pillar-2">
+            <div class="pillar-grid">
+                <div class="pillar-info">
+                    <h3><span>⚡</span> Desarrollo a Medida & Finanzas</h3>
+                    <p>
+                        Soluciones empresariales de alto rendimiento. Desde auditoría 
+                        automatizada hasta computación distribuida para problemas 
+                        complejos de optimización y análisis financiero.
+                    </p>
+                    <div class="subservices-grid">
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #14B8A6, #0F766E);">💳</div>
+                            <h4>Fintech & Banca</h4>
+                            <p>Risk management, detección de fraude y compliance financiero regional.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #F97316, #C2410C);">🔍</div>
+                            <h4>Auditoría Inteligente</h4>
+                            <p>Revisión automatizada de documentos y detección de anomalías contables.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #6366F1, #4338CA);">⚛️</div>
+                            <h4>Computación Distribuida</h4>
+                            <p>Quantum-inspired algorithms y optimización combinatoria avanzada.</p>
+                        </div>
+                        <div class="subservice-card">
+                            <div class="subservice-icon" style="background: linear-gradient(135deg, #DC2626, #991B1B);">🤝</div>
+                            <h4>Comercio Binacional</h4>
+                            <p>IA para comercio Uruguay-Brasil en la frontera de Cerro Largo.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="region-item">
-                    <div class="region-dot dot-planned"></div>
-                    <div class="region-name">Datos del Centro</div>
-                    <span class="region-badge badge-planned">Planificado</span>
+                <div class="pillar-visual">
+                    <ul class="feature-list">
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataQuantum — Optimización</strong>
+                                <span>Algoritmos QAOA para logística y portafolios</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>DataCore — Infraestructura</strong>
+                                <span>99.8% uptime SLA con latencia sub-10ms</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>Auditoría Automatizada</strong>
+                                <span>Procesamiento de 10,000+ documentos/hora</span>
+                            </div>
+                        </li>
+                        <li class="feature-item">
+                            <div class="feature-check">✓</div>
+                            <div class="feature-text">
+                                <strong>Desarrollo a Medida</strong>
+                                <span>Soluciones custom para zonas francas e industria</span>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-                <div class="region-item">
-                    <div class="region-dot dot-planned"></div>
-                    <div class="region-name">Datos del Sur (Área Metro)</div>
-                    <span class="region-badge badge-planned">Planificado</span>
-                </div>
-                <p class="region-note">La visión de Riva Labs es cubrir la totalidad del territorio uruguayo con plataformas regionales especializadas, conectadas a una infraestructura nacional unificada.</p>
             </div>
         </div>
     </div>
 </section>
 
-
-<!-- SECTORES -->
-<section class="section sectors-bg" id="sectores">
-    <div class="container">
-        <span class="section-tag">Sectores Estratégicos</span>
-        <h2 class="section-title">Diseñado para cada sector del Este</h2>
-        <p class="section-lead">Soluciones verticales con conocimiento profundo de las oportunidades y desafíos específicos de cada industria en la región.</p>
-        <div class="sectors-grid2">
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🏘️</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Real Estate</div>
-                <div class="sector-desc2">Valuación, análisis de demanda e inteligencia de inversión en Punta del Este y la costa atlántica</div>
+<!-- MAP SECTION -->
+<section class="map-section" id="cobertura">
+    <div class="map-grid">
+        <div class="map-content">
+            <h2>Cobertura Regional Completa</h2>
+            <p>
+                Datos del Este opera en los cinco departamentos que conforman la 
+                región este de Uruguay, con equipos locales y datos específicos 
+                de cada territorio.
+            </p>
+            <div class="dept-list">
+                <div class="dept-item">
+                    <div class="dept-dot"></div>
+                    <span class="dept-name">Maldonado</span>
+                    <span class="dept-pop">180k hab</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-dot"></div>
+                    <span class="dept-name">Rocha</span>
+                    <span class="dept-pop">70k hab</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-dot"></div>
+                    <span class="dept-name">Lavalleja</span>
+                    <span class="dept-pop">60k hab</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-dot"></div>
+                    <span class="dept-name">Treinta y Tres</span>
+                    <span class="dept-pop">48k hab</span>
+                </div>
+                <div class="dept-item">
+                    <div class="dept-dot"></div>
+                    <span class="dept-name">Cerro Largo</span>
+                    <span class="dept-pop">84k hab</span>
+                </div>
             </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🏖️</div>
-                <div class="sector-name2">Turismo Premium</div>
-                <div class="sector-desc2">Predicción de demanda, revenue management y experiencia del visitante</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🐄</div>
-                <div class="sector-name2">Agropecuario</div>
-                <div class="sector-desc2">Ganadería inteligente, precision farming y gestión de rodeos en el interior</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🌿</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Ecoturismo</div>
-                <div class="sector-desc2">IA para conservación, monitoreo ambiental y turismo responsable en Rocha</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">💳</div>
-                <div class="sector-name2">Fintech & Banca</div>
-                <div class="sector-desc2">Risk management, detección de fraude y compliance financiero regional</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🏥</div>
-                <div class="sector-name2">Salud</div>
-                <div class="sector-desc2">Diagnóstico asistido y telemedicina para zonas rurales del interior del Este</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🚛</div>
-                <div class="sector-name2">Logística</div>
-                <div class="sector-desc2">Rutas optimizadas, supply chain y comercio transfronterizo Uruguay–Brasil</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🎓</div>
-                <div class="sector-name2">Educación</div>
-                <div class="sector-desc2">Aprendizaje adaptativo y reducción del abandono escolar en el Este</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🐟</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Pesca & Acuicultura</div>
-                <div class="sector-desc2">Planificación de pesca sostenible y monitoreo de recursos marinos en el Atlántico</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">⚡</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Energía Renovable</div>
-                <div class="sector-desc2">Optimización de grids eólicos y solares, predicción de generación en tiempo real</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🏭</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Desarrollo Industrial</div>
-                <div class="sector-desc2">Inteligencia de inversión para zonas francas y parques industriales del Este</div>
-            </div>
-            <div class="sector-tile fade-up">
-                <div class="sector-icon2">🤝</div>
-                <div class="sector-new-tag">Nuevo</div>
-                <div class="sector-name2">Comercio Binacional</div>
-                <div class="sector-desc2">IA para comercio Uruguay–Brasil en la frontera de Cerro Largo y la región</div>
-            </div>
+        </div>
+        <div class="map-container">
+            <svg viewBox="0 0 400 350" width="100%" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#55ACEE;stop-opacity:0.3"/>
+                        <stop offset="100%" style="stop-color:#1B3F8B;stop-opacity:0.5"/>
+                    </linearGradient>
+                </defs>
+                <rect width="400" height="350" fill="transparent" rx="10"/>
+                <!-- Cerro Largo -->
+                <path d="M70,35 L280,35 L305,85 L270,110 L210,95 L150,115 L85,98 Z" 
+                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
+                <text x="185" y="75" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">CERRO LARGO</text>
+                
+                <!-- Treinta y Tres -->
+                <path d="M150,115 L270,110 L295,165 L260,210 L200,215 L140,180 L130,145 Z" 
+                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
+                <text x="215" y="160" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">TREINTA Y TRES</text>
+                
+                <!-- Lavalleja -->
+                <path d="M85,98 L150,115 L130,145 L140,180 L95,200 L55,160 L60,115 Z" 
+                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
+                <text x="100" y="145" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">LAVALLEJA</text>
+                
+                <!-- Maldonado - Highlighted -->
+                <path d="M95,200 L140,180 L200,215 L208,270 L170,310 L115,302 L85,260 L80,215 Z" 
+                      fill="#55ACEE" stroke="#fff" stroke-width="3" opacity="0.9"/>
+                <text x="145" y="250" text-anchor="middle" fill="#0D2259" font-size="12" font-weight="800">MALDONADO</text>
+                
+                <!-- Rocha -->
+                <path d="M200,215 L260,210 L320,230 L345,280 L330,340 L275,360 L220,352 L175,325 L170,310 L208,270 Z" 
+                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
+                <text x="260" y="290" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">ROCHA</text>
+                
+                <!-- Punta del Este Marker -->
+                <circle cx="125" cy="315" r="8" fill="#1DB97B" stroke="#fff" stroke-width="2"/>
+                <circle cx="125" cy="315" r="14" fill="none" stroke="#1DB97B" stroke-width="1.5" opacity="0.5"/>
+                <text x="125" y="340" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">Punta del Este</text>
+            </svg>
         </div>
     </div>
 </section>
 
-<!-- PLATAFORMA -->
-<section class="section" id="plataforma">
-    <div class="container">
-        <span class="section-tag">Plataforma</span>
-        <h2 class="section-title">Capacidades Técnicas Avanzadas</h2>
-        <p class="section-lead">Ecosistema integral de IA computacional — desde visión artificial hasta optimización avanzada, con conocimiento profundo de los datos del Este uruguayo.</p>
-        <div class="services-grid">
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🏘️</div><span class="srv-badge badge-new">Nuevo</span></div>
-                <h3 class="srv-title">DataReal — Real Estate IA</h3>
-                <p class="srv-desc">IA para el mercado inmobiliario del Este. Valuación automática, análisis de demanda, predicción de precios y segmentación de inversores internacionales en Punta del Este y toda la costa.</p>
-                <ul class="srv-list">
-                    <li>Valuación automática de propiedades (AVM)</li>
-                    <li>Predicción de precio por zona y temporada</li>
-                    <li>Análisis de demanda de inversores extranjeros</li>
-                    <li>Integración con registros catastrales uruguayos</li>
-                    <li>Reportes de mercado automatizados</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">👁️</div><span class="srv-badge badge-core">Core</span></div>
-                <h3 class="srv-title">DataVisión — Computer Vision</h3>
-                <p class="srv-desc">Computer vision de producción con gestión completa del ciclo de vida de datasets: ingestión, curación, annotación, entrenamiento y evaluación de modelos con benchmarks reales.</p>
-                <ul class="srv-list">
-                    <li>Dataset management y curación visual</li>
-                    <li>Detección en tiempo real (&lt;10ms latencia)</li>
-                    <li>Generación de datos sintéticos para entrenamiento</li>
-                    <li>Model evaluation y comparación de versiones</li>
-                    <li>Edge computing optimizado</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🌊</div><span class="srv-badge badge-exclusive">Exclusivo</span></div>
-                <h3 class="srv-title">DataFlow CFD</h3>
-                <p class="srv-desc">Dinámica de fluidos computacional combinada con ML. Primera plataforma en América Latina en integrar CFD nativo con IA — aplicable a riego, cuencas hídricas e ingeniería civil regional.</p>
-                <ul class="srv-list">
-                    <li>Simulación de fluidos en tiempo real</li>
-                    <li>50–100x más rápido que OpenFOAM</li>
-                    <li>Análisis de cuencas e infraestructura hídrica</li>
-                    <li>Optimización aerodinámica e hidráulica</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🎓</div><span class="srv-badge badge-new">Nuevo</span></div>
-                <h3 class="srv-title">DataEdu — IA Educativa</h3>
-                <p class="srv-desc">Plataforma de IA para instituciones educativas del Este. Personalización del aprendizaje, detección de riesgo de abandono y herramientas para docentes rurales. Compatible con Plan Ceibal.</p>
-                <ul class="srv-list">
-                    <li>Aprendizaje adaptativo por estudiante</li>
-                    <li>Predicción y prevención de abandono escolar</li>
-                    <li>Automatización de cargas administrativas</li>
-                    <li>Modo offline para zonas rurales del interior</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🌱</div><span class="srv-badge badge-new">Nuevo</span></div>
-                <h3 class="srv-title">DataEco — Medio Ambiente</h3>
-                <p class="srv-desc">Monitoreo ambiental inteligente para los ecosistemas del Este: humedales de Rocha, Laguna Garzón, Cabo Polonio, costa atlántica. IA para conservación, ecoturismo y compliance ambiental municipal.</p>
-                <ul class="srv-list">
-                    <li>Monitoreo satelital de humedales y bosques</li>
-                    <li>Detección de cambios en ecosistemas</li>
-                    <li>Reportes de impacto ambiental automatizados</li>
-                    <li>IA para gestión de áreas protegidas</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🐄</div><span class="srv-badge badge-core">Core</span></div>
-                <h3 class="srv-title">DataAgro — Precision Farming</h3>
-                <p class="srv-desc">IA para ganadería inteligente, agricultura de precisión y pesca. Optimizado para los suelos, climas y cultivos del Este — arroz en Treinta y Tres, ganadería en Cerro Largo, pesca en Rocha.</p>
-                <ul class="srv-list">
-                    <li>Monitoreo de rodeos con visión artificial</li>
-                    <li>Predicción de rendimiento de cultivos</li>
-                    <li>Sensores IoT con análisis en tiempo real</li>
-                    <li>Planificación de pesca sostenible</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">🏭</div><span class="srv-badge badge-new">Nuevo</span></div>
-                <h3 class="srv-title">DataIndustria — Desarrollo Económico</h3>
-                <p class="srv-desc">IA para el desarrollo económico e industrial regional. Mapas de inversión, análisis de zonas francas y comercio binacional con Brasil — con foco en la frontera de Cerro Largo.</p>
-                <ul class="srv-list">
-                    <li>Mapas de oportunidad inversora regional</li>
-                    <li>Análisis de comercio binacional Uruguay–Brasil</li>
-                    <li>Inteligencia de mercado para zonas francas</li>
-                    <li>Indicadores de desarrollo económico local</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">⚛️</div><span class="srv-badge badge-core">Core</span></div>
-                <h3 class="srv-title">DataQuantum — Optimización</h3>
-                <p class="srv-desc">Optimización avanzada para logística, finanzas y supply chain. Desde rutas de distribución en el interior hasta portafolios de inversión inmobiliaria en la costa.</p>
-                <ul class="srv-list">
-                    <li>Optimización de rutas logísticas</li>
-                    <li>Portafolios de inversión Real Estate</li>
-                    <li>Algoritmos QAOA para problemas combinatorios</li>
-                    <li>Speedup exponencial frente a métodos clásicos</li>
-                </ul>
-            </div>
-            <div class="srv-card fade-up">
-                <div class="srv-head"><div class="srv-icon">⚡</div><span class="srv-badge badge-exclusive">Exclusivo</span></div>
-                <h3 class="srv-title">DataCore — Motor de Ejecución</h3>
-                <p class="srv-desc">Infraestructura híbrida que orquesta todos los módulos. GPU kernel fusion, memory-mapped structures y predictive caching para latencia sub-10ms en producción garantizada.</p>
-                <ul class="srv-list">
-                    <li>Procesamiento paralelo masivo</li>
-                    <li>GPU kernel fusion automático</li>
-                    <li>Predictive caching adaptativo</li>
-                    <li>99.8% uptime SLA garantizado</li>
-                </ul>
-            </div>
+<!-- STATS -->
+<section class="stats-section">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h3>55x</h3>
+            <p>Más rápido que la competencia</p>
+        </div>
+        <div class="stat-item">
+            <h3>2.3ms</h3>
+            <p>Latencia de inferencia</p>
+        </div>
+        <div class="stat-item">
+            <h3>99.8%</h3>
+            <p>Uptime garantizado</p>
+        </div>
+        <div class="stat-item">
+            <h3>150+</h3>
+            <p>Empresas confían en nosotros</p>
         </div>
     </div>
 </section>
 
-<!-- COMPARATIVA -->
-<section class="section" id="comparacion">
+<!-- COMPARISON -->
+<section class="comparison-section" id="comparacion">
     <div class="container">
-        <span class="section-tag">Comparativa Técnica</span>
-        <h2 class="section-title">¿Por qué Datos del Este?</h2>
-        <p class="section-lead">La diferencia frente a soluciones genéricas internacionales no es solo técnica — es de contexto, datos y equipo.</p>
-        <div class="cmp-table">
-            <div class="cmp-head">
+        <div class="section-header fade-up">
+            <span class="section-tag">Ventaja Competitiva</span>
+            <h2 class="section-title">¿Por qué elegir Datos del Este?</h2>
+            <p class="section-lead">
+                La diferencia no es solo técnica — es de contexto local, 
+                cumplimiento normativo y equipos que entienden el territorio.
+            </p>
+        </div>
+
+        <div class="comparison-table fade-up">
+            <div class="comp-header">
                 <div>Métrica</div>
                 <div>Competencia Internacional</div>
                 <div>Datos del Este</div>
             </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Latencia de inferencia</div><div class="cmp-sub">En producción real</div></div>
-                <div class="cmp-bad">❌ 127ms</div>
-                <div class="cmp-good">✅ 2.3ms <span class="cmp-pill">55x mejor</span></div>
+            <div class="comp-row">
+                <div>
+                    <div class="comp-metric">Latencia de inferencia</div>
+                    <div class="comp-sub">Tiempo de respuesta real</div>
+                </div>
+                <div class="comp-bad">127ms</div>
+                <div class="comp-good">2.3ms <span class="comp-badge">55x mejor</span></div>
             </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Throughput</div><div class="cmp-sub">Imágenes / segundo</div></div>
-                <div class="cmp-bad">❌ 800 img/s</div>
-                <div class="cmp-good">✅ 10.000+ img/s <span class="cmp-pill">12.5x mejor</span></div>
+            <div class="comp-row">
+                <div>
+                    <div class="comp-metric">Contexto local</div>
+                    <div class="comp-sub">Datos del Este de Uruguay</div>
+                </div>
+                <div class="comp-bad">Sin datos locales</div>
+                <div class="comp-good">Datos regionales nativos <span class="comp-badge">Exclusivo</span></div>
             </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Usuarios concurrentes</div><div class="cmp-sub">Sin degradación</div></div>
-                <div class="cmp-bad">❌ 50</div>
-                <div class="cmp-good">✅ 10.000+ <span class="cmp-pill">200x mejor</span></div>
+            <div class="comp-row">
+                <div>
+                    <div class="comp-metric">Cumplimiento legal</div>
+                    <div class="comp-sub">LPDP y regulaciones locales</div>
+                </div>
+                <div class="comp-bad">Sin soporte LPDP</div>
+                <div class="comp-good">100% compliant <span class="comp-badge">RUPE</span></div>
             </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Verticales soportadas</div><div class="cmp-sub">Sectores de industria</div></div>
-                <div class="cmp-bad">❌ 1 (solo CV)</div>
-                <div class="cmp-good">✅ 9+ verticales <span class="cmp-pill">Multidisciplinar</span></div>
+            <div class="comp-row">
+                <div>
+                    <div class="comp-metric">Soporte técnico</div>
+                    <div class="comp-sub">Idioma y zona horaria</div>
+                </div>
+                <div class="comp-bad">Inglés solo / UTC diferente</div>
+                <div class="comp-good">Español nativo / GMT-3 <span class="comp-badge">Local</span></div>
             </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Simulación integrada</div><div class="cmp-sub">CFD y física computacional</div></div>
-                <div class="cmp-bad">❌ No disponible</div>
-                <div class="cmp-good">✅ CFD nativo <span class="cmp-pill">Exclusivo LATAM</span></div>
-            </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Contexto y datos locales</div><div class="cmp-sub">Este de Uruguay</div></div>
-                <div class="cmp-bad">❌ Ninguno</div>
-                <div class="cmp-good">✅ Datos regionales nativos <span class="cmp-pill">Exclusivo</span></div>
-            </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Cumplimiento legal</div><div class="cmp-sub">Regulación uruguaya</div></div>
-                <div class="cmp-bad">❌ Sin LPDP local</div>
-                <div class="cmp-good">✅ LPDP + RUPE <span class="cmp-pill">100% local</span></div>
-            </div>
-            <div class="cmp-row">
-                <div><div class="cmp-metric">Soporte técnico</div><div class="cmp-sub">Idioma, zona horaria, cultura</div></div>
-                <div class="cmp-bad">❌ Sin soporte local</div>
-                <div class="cmp-good">✅ Equipo Montevideo 24/7 <span class="cmp-pill">Español nativo</span></div>
+            <div class="comp-row">
+                <div>
+                    <div class="comp-metric">CFD Integrado</div>
+                    <div class="comp-sub">Dinámica de fluidos computacional</div>
+                </div>
+                <div class="comp-bad">No disponible</div>
+                <div class="comp-good">DataFlow CFD <span class="comp-badge">Único en LATAM</span></div>
             </div>
         </div>
     </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="demo">
+<section class="cta-section" id="contacto">
     <div class="cta-content">
-        <h2>¿Listo para llevar IA al Este?</h2>
-        <p>Únete a las empresas que ya están usando Datos del Este para obtener ventajas reales. Demo gratuita, sin compromisos, con nuestro equipo en Montevideo.</p>
-        <div class="cta-btns">
-            <a href="mailto:soporte@datosdeleste.uy?subject=Solicito Demo — Datos del Este" class="btn-white">🚀 Solicitar Demo Gratuita</a>
-            <a href="tel:+59896308883" class="btn-outline-w">📞 +598 96 308 883</a>
+        <h2>¿Listo para transformar tu organización?</h2>
+        <p>
+            Únete a las empresas, instituciones educativas y organizaciones 
+            del Este que ya están usando IA de clase mundial con contexto local.
+        </p>
+        <div class="cta-buttons">
+            <a href="mailto:soporte@datosdeleste.uy?subject=Solicito Demo" class="btn-white">🚀 Solicitar Demo Gratuita</a>
+            <a href="tel:+59896308883" class="btn-outline">📞 +598 96 308 883</a>
         </div>
     </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer" id="contacto">
-    <div class="footer-inner">
-        <div class="footer-top">
-            <div>
-                <div class="footer-brand-name">Datos del Este</div>
-                <div class="footer-brand-sub">IA Computacional · Este de Uruguay</div>
-                <p class="footer-brand-desc">Departamento regional de Riva Labs especializado en inteligencia artificial para Maldonado, Rocha, Lavalleja, Treinta y Tres y Cerro Largo. Parte de la red nacional de plataformas regionales de Riva Labs.</p>
-                <div class="footer-riva-badge">🔬 by Riva Labs S.A.S. — Juan Benito Blanco 780, Montevideo</div>
-            </div>
-            <div class="footer-section">
-                <h4>Plataforma</h4>
-                <ul class="footer-links">
-                    <li><a href="#">DataReal — Real Estate</a></li>
-                    <li><a href="#">DataVisión — CV</a></li>
-                    <li><a href="#">DataFlow CFD</a></li>
-                    <li><a href="#">DataEdu</a></li>
-                    <li><a href="#">DataEco</a></li>
-                    <li><a href="#">DataAgro</a></li>
-                    <li><a href="#">DataIndustria</a></li>
-                    <li><a href="#">DataCore</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Sectores</h4>
-                <ul class="footer-links">
-                    <li><a href="#">Real Estate</a></li>
-                    <li><a href="#">Turismo Premium</a></li>
-                    <li><a href="#">Agropecuario</a></li>
-                    <li><a href="#">Ecoturismo</a></li>
-                    <li><a href="#">Pesca &amp; Acuicultura</a></li>
-                    <li><a href="#">Energía Renovable</a></li>
-                    <li><a href="#">Comercio Binacional</a></li>
-                    <li><a href="#">Fintech</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <ul class="footer-links">
-                    <li>📧 soporte@datosdeleste.uy</li>
-                    <li>📞 +598 96 308 883</li>
-                    <li>📍 Juan Benito Blanco 780<br>&nbsp;&nbsp;&nbsp;&nbsp;11300, Montevideo, Uruguay</li>
-                    <li><a href="https://datosdeleste.uy">🌐 datosdeleste.uy</a></li>
-                    <li><a href="https://datosdeleste.com.uy">🌐 datosdeleste.com.uy</a></li>
-                </ul>
-            </div>
+<footer class="footer">
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <h3>Datos del Este</h3>
+            <p>
+                Departamento regional de Riva Labs especializado en inteligencia 
+                artificial para el Este de Uruguay. Parte de la delegación 
+                empresarial a China con el presidente Yamandú Orsi — Febrero 2026.
+            </p>
+            <div class="footer-badge">🔬 by Riva Labs S.A.S.</div>
         </div>
-        <div class="footer-bottom">
-            <p>© 2026 Datos del Este — Riva Labs S.A.S. · Juan Benito Blanco 780, 11300, Montevideo, Uruguay · Inscripta en RUPE · Todos los derechos reservados</p>
-            <div class="footer-badges">
-                <span class="f-badge">LPDP</span>
-                <span class="f-badge">RUPE</span>
-                <span class="f-badge">99.8% Uptime</span>
-                <span class="f-badge">ISO Ready</span>
-            </div>
+        <div class="footer-col">
+            <h4>Pilares</h4>
+            <ul class="footer-links">
+                <li><a href="#territorio">Territorio & Recursos</a></li>
+                <li><a href="#educacion">Educación & Inteligencia</a></li>
+                <li><a href="#empresas">Desarrollo & Finanzas</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Departamentos</h4>
+            <ul class="footer-links">
+                <li><a href="#">Maldonado</a></li>
+                <li><a href="#">Rocha</a></li>
+                <li><a href="#">Lavalleja</a></li>
+                <li><a href="#">Treinta y Tres</a></li>
+                <li><a href="#">Cerro Largo</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>Contacto</h4>
+            <ul class="footer-links">
+                <li>📧 soporte@datosdeleste.uy</li>
+                <li>📞 +598 96 308 883</li>
+                <li>📍 Juan Benito Blanco 780<br>11300 Montevideo</li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Datos del Este — Riva Labs S.A.S. · Inscripta en RUPE · Todos los derechos reservados</p>
+        <div class="footer-badges">
+            <span class="fbadge">LPDP</span>
+            <span class="fbadge">RUPE</span>
+            <span class="fbadge">99.8% Uptime</span>
+            <span class="fbadge">ISO Ready</span>
         </div>
     </div>
 </footer>
 
 <script>
+    // Navbar scroll effect
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 40); });
+    let lastScroll = 0;
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        
+        if (currentScroll > lastScroll && currentScroll > 200) {
+            navbar.classList.add('hidden');
+        } else {
+            navbar.classList.remove('hidden');
+        }
+        
+        lastScroll = currentScroll;
+    });
 
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-        a.addEventListener('click', e => {
-            const t = document.querySelector(a.getAttribute('href'));
-            if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
         });
     });
 
-    const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    // Pillar tabs
+    function showPillar(index) {
+        // Update tabs
+        document.querySelectorAll('.pillar-tab').forEach((tab, i) => {
+            tab.classList.toggle('active', i === index);
+        });
+        
+        // Update content
+        document.querySelectorAll('.pillar-content').forEach((content, i) => {
+            content.classList.toggle('active', i === index);
+        });
+    }
 
+    // Intersection Observer for animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Console easter egg
     console.log(`
 🇺🇾 Datos del Este — by Riva Labs S.A.S.
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Juan Benito Blanco 780, 11300, Montevideo
-Inscripta en RUPE  · Riva Labs LLC (Colorado, USA)
-
-🤝 Parte del ecosistema tecnológico en la delegación
-   del presidente Yamandú Orsi a China
-   — Forbes Uruguay, Febrero 2026
-
-📧 soporte@datosdeleste.uy  📞 +598 96 308 883
+Tres Pilares: Territorio | Educación | Empresas
+Cobertura: Maldonado, Rocha, Lavalleja, Treinta y Tres, Cerro Largo
+Delegación presidencial a China — Forbes Uruguay, Feb 2026
     `);
 </script>
+
 </body>
 </html>
