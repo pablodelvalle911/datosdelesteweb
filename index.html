@@ -1,1257 +1,1216 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Datos del Este — IA Computacional para el Este de Uruguay | Riva Labs</title>
-    <meta name="description" content="Tres pilares de IA computacional: Territorio (Inmobiliario, Agro, Marítimo, Ambiental), Educación & Inteligencia (Participación estudiantil, Análisis pedagógico) y Desarrollo a Medida / Financiero.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-    <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta name="description" content="RIVA LABS — Infraestructura de inteligencia artificial, robótica autónoma y plataformas computacionales para investigación científica, finanzas cuantitativas y transformación educativa."/>
+  <meta name="theme-color" content="#0f172a"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="RIVA LABS — Infraestructura para el Futuro"/>
+  <meta property="og:description" content="Ocho sistemas de IA integrados: Flight AI, RIVA Mind, BioSim, MatLab, Voces del Futuro, RIVALabsCoin, LittleAngel y RIVA Predict."/>
+  <meta property="og:url" content="https://rlabs.ch"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="RIVA LABS — Infraestructura para el Futuro"/>
+  <title>RIVA LABS — Infraestructura para el Futuro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --c-cyan:#06b6d4;--c-cyan-d:#0891b2;
+      --c-indigo:#6366f1;--c-indigo-d:#4f46e5;
+      --c-purple:#a855f7;--c-purple-d:#9333ea;
+      --c-green:#10b981;--c-green-d:#059669;
+      --c-orange:#f97316;--c-orange-d:#ea580c;
+      --c-yellow:#eab308;--c-yellow-d:#ca8a04;
+      --c-amber:#f59e0b;--c-amber-d:#d97706;
+      --c-fuchsia:#d946ef;--c-fuchsia-d:#c026d3;
+      --c-teal:#14b8a6;--c-teal-d:#0d9488;
+      --c-900:#0f172a;--c-700:#334155;--c-500:#64748b;
+      --c-300:#cbd5e1;--c-200:#e2e8f0;--c-100:#f1f5f9;--c-50:#f8fafc;
+      --ff-sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      --ff-display:'Space Grotesk','Inter',sans-serif;
+      --ff-ui:'Sora','Inter',sans-serif;
+      --ff-body:'DM Sans','Inter',sans-serif;
+      --r-sm:6px;--r-md:10px;--r-lg:16px;--r-xl:20px;--r-2xl:28px;--r-full:9999px;
+      --ease-out:cubic-bezier(.4,0,.2,1);
+      --ease-spring:cubic-bezier(.34,1.56,.64,1);
+      --ease-slide:cubic-bezier(.77,0,.175,1);
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--ff-sans);background:#fff;color:var(--c-900);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+    .icon{width:24px;height:24px;flex-shrink:0}
+    .icon-lg{width:32px;height:32px;flex-shrink:0}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+    @keyframes spin{to{transform:rotate(360deg)}}
 
-        :root {
-            --celeste: #55ACEE;
-            --azul: #1B3F8B;
-            --azul-oscuro: #0D2259;
-            --dorado: #E8A417;
-            --blanco: #FAFBFC;
-            --gris-10: #F2F4F7;
-            --gris-30: #D1D9E4;
-            --gris-60: #7A899E;
-            --texto: #0E1C2F;
-            --verde: #1DB97B;
-            --rojo: #E84545;
-            --naranja: #F97316;
-            --purpura: #8B5CF6;
-            --cyan: #06B6D4;
-        }
+    /* NAV */
+    .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--c-200);transition:background .3s var(--ease-out),box-shadow .3s var(--ease-out)}
+    .nav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+    .nav-container{max-width:1280px;margin:0 auto;padding:1.125rem 2rem;display:flex;justify-content:space-between;align-items:center}
+    .logo{font-family:var(--ff-display);font-size:1.375rem;font-weight:700;letter-spacing:-.3px;color:var(--c-900);text-decoration:none}
+    .nav-links{display:flex;gap:2rem;align-items:center}
+    .nav-link{font-size:.9375rem;font-weight:500;color:var(--c-500);text-decoration:none;position:relative;transition:color .2s}
+    .nav-link::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:2px;background:var(--c-900);transition:width .25s var(--ease-out)}
+    .nav-link:hover{color:var(--c-900)}
+    .nav-link:hover::after{width:100%}
+    .nav-cta{padding:.5rem 1.125rem;background:var(--c-900);color:#fff;border-radius:var(--r-md);text-decoration:none;font-size:.9375rem;font-weight:600;transition:transform .2s,box-shadow .2s}
+    .nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(15,23,42,.22)}
+    .lang-switcher{display:flex;gap:2px;align-items:center;background:var(--c-100);border:1px solid var(--c-200);border-radius:var(--r-full);padding:3px}
+    .lang-btn{padding:3px 10px;border-radius:var(--r-full);font-family:var(--ff-ui);font-size:10.5px;font-weight:700;letter-spacing:.6px;cursor:pointer;color:var(--c-500);border:none;background:transparent;transition:all .2s}
+    .lang-btn:hover{color:var(--c-900)}
+    .lang-btn.active{background:var(--c-900);color:#fff;box-shadow:0 1px 6px rgba(15,23,42,.25)}
+    .nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.5rem;background:none;border:none}
+    .nav-hamburger span{display:block;width:22px;height:2px;background:var(--c-900);border-radius:2px;transition:all .3s var(--ease-out)}
+    .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .nav-hamburger.open span:nth-child(2){opacity:0}
+    .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .nav-mobile{display:none;position:fixed;top:65px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(20px);border-bottom:1px solid var(--c-200);flex-direction:column;z-index:999;padding:1rem 2rem 1.5rem;box-shadow:0 20px 60px -12px rgba(0,0,0,.15);animation:fadeInUp .2s var(--ease-out)}
+    .nav-mobile.open{display:flex}
+    .nav-mobile .nav-link{padding:.75rem 0;border-bottom:1px solid var(--c-100);font-size:1.0625rem}
+    .nav-mobile .nav-cta{margin-top:1rem;text-align:center;border-radius:var(--r-md);padding:.75rem 1rem}
+    .nav-mobile .lang-switcher{margin-top:1rem;align-self:flex-start}
 
-        html { scroll-behavior: smooth; }
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:9rem 2rem 5rem;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:1200px;height:900px;background:radial-gradient(ellipse at 50% 0%,rgba(99,102,241,.055) 0%,transparent 65%);pointer-events:none}
+    .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,#fff);pointer-events:none}
+    .hero-content{max-width:960px;text-align:center;position:relative;z-index:1}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:rgba(99,102,241,.06);border:1px solid rgba(99,102,241,.12);border-radius:var(--r-full);font-size:.875rem;font-weight:500;color:var(--c-500);margin-bottom:2rem;animation:fadeInUp .55s var(--ease-out) both}
+    .hero-badge-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;animation:pulse 2s ease-in-out infinite}
+    .hero-headline{font-family:var(--ff-display);font-size:clamp(3rem,7.5vw,5.5rem);font-weight:800;line-height:1.08;letter-spacing:-.03em;color:var(--c-900);margin-bottom:1.5rem;animation:fadeInUp .65s var(--ease-out) .1s both}
+    .gradient-text{background:linear-gradient(135deg,var(--c-900) 0%,var(--c-indigo) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero-subtitle{font-size:clamp(1.0625rem,2vw,1.3125rem);color:var(--c-500);max-width:680px;margin:0 auto 2.5rem;line-height:1.7;animation:fadeInUp .65s var(--ease-out) .2s both}
+    .hero-buttons{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;animation:fadeInUp .65s var(--ease-out) .3s both}
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--texto);
-            background: var(--blanco);
-            overflow-x: hidden;
-            line-height: 1.65;
-        }
+    /* BUTTONS */
+    .btn{padding:.75rem 1.5rem;font-size:1rem;font-weight:600;border-radius:var(--r-md);text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:transform .2s,box-shadow .2s,border-color .2s;cursor:pointer;border:2px solid transparent}
+    .btn-primary{background:var(--c-900);color:#fff;border-color:var(--c-900)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(15,23,42,.22)}
+    .btn-secondary{background:#fff;color:var(--c-900);border-color:var(--c-200)}
+    .btn-secondary:hover{border-color:var(--c-900);transform:translateY(-2px)}
+    .btn-white{background:#fff;color:var(--c-900);border-color:#fff}
+    .btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(255,255,255,.2)}
+    .btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+    .btn-outline:hover{border-color:#fff;transform:translateY(-2px)}
 
-        h1, h2, h3, h4 { font-family: 'Syne', sans-serif; line-height: 1.15; }
+    /* SECTION */
+    .section-header{max-width:640px;margin:0 auto 5rem;text-align:center}
+    .section-label{font-size:.75rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--c-indigo);margin-bottom:.75rem}
+    .section-title{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.025em;color:var(--c-900);margin-bottom:1rem}
+    .section-subtitle{font-size:1.125rem;color:var(--c-500);line-height:1.7}
 
-        /* ── NAV ── */
-        .nav-wrap {
-            position: fixed; top: 0; width: 100%; z-index: 9000;
-            background: rgba(250,251,252,0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gris-30);
-            transition: box-shadow .3s, transform .3s;
-        }
-        .nav-wrap.scrolled { box-shadow: 0 4px 24px rgba(14,28,47,0.1); }
-        .nav-wrap.hidden { transform: translateY(-100%); }
-        
-        .nav {
-            max-width: 1400px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-        }
-        .logo-block { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
-        .logo-mark {
-            width: 42px; height: 42px; border-radius: 10px;
-            background: linear-gradient(135deg, var(--celeste), var(--azul));
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'Syne', sans-serif; font-weight: 800; color: #fff; font-size: 14px;
-            box-shadow: 0 4px 12px rgba(27,63,139,0.25);
-        }
-        .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
-        .logo-main { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--azul); }
-        .logo-sub { font-size: .7rem; font-weight: 500; color: var(--gris-60); letter-spacing: .08em; text-transform: uppercase; }
+    /* PRODUCTS */
+    .products{padding:8rem 2rem;max-width:1280px;margin:0 auto}
+    .products-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.75rem}
+    .product-card{position:relative;padding:2.5rem;border-radius:var(--r-xl);background:#fff;border:1.5px solid var(--c-200);transition:transform .3s var(--ease-out),border-color .3s var(--ease-out),box-shadow .3s var(--ease-out);overflow:hidden}
+    .product-card::before{content:'';position:absolute;inset:0;background:var(--card-gradient);opacity:0;transition:opacity .3s;pointer-events:none}
+    .product-card:hover::before{opacity:.035}
+    .product-card:hover{transform:translateY(-6px);border-color:var(--card-color);box-shadow:0 20px 50px -15px var(--card-shadow)}
+    .product-card-content{position:relative;z-index:1}
+    .product-icon{width:52px;height:52px;border-radius:var(--r-lg);display:flex;align-items:center;justify-content:center;background:var(--card-gradient);color:#fff;margin-bottom:1.5rem}
+    .product-name{font-family:var(--ff-display);font-size:1.5rem;font-weight:700;letter-spacing:-.02em;color:var(--c-900);margin-bottom:.25rem}
+    .product-tagline{font-size:.9375rem;font-weight:600;color:var(--card-color);opacity:.9;margin-bottom:.75rem}
+    .product-description{font-size:.9375rem;color:var(--c-500);line-height:1.7;margin-bottom:1.5rem}
+    .product-link{display:inline-flex;align-items:center;gap:.5rem;font-size:.9375rem;font-weight:600;color:var(--card-color);text-decoration:none;transition:gap .2s}
+    .product-link:hover{gap:.75rem}
+    .product-card[data-color=cyan]{--card-color:#06b6d4;--card-gradient:linear-gradient(135deg,#06b6d4,#0891b2);--card-shadow:rgba(6,182,212,.3)}
+    .product-card[data-color=purple]{--card-color:#a855f7;--card-gradient:linear-gradient(135deg,#a855f7,#9333ea);--card-shadow:rgba(168,85,247,.3)}
+    .product-card[data-color=green]{--card-color:#10b981;--card-gradient:linear-gradient(135deg,#10b981,#059669);--card-shadow:rgba(16,185,129,.3)}
+    .product-card[data-color=orange]{--card-color:#f97316;--card-gradient:linear-gradient(135deg,#f97316,#ea580c);--card-shadow:rgba(249,115,22,.3)}
+    .product-card[data-color=yellow]{--card-color:#ca8a04;--card-gradient:linear-gradient(135deg,#eab308,#ca8a04);--card-shadow:rgba(234,179,8,.3)}
+    .product-card[data-color=amber]{--card-color:#d97706;--card-gradient:linear-gradient(135deg,#f59e0b,#d97706);--card-shadow:rgba(245,158,11,.3)}
+    .product-card[data-color=fuchsia]{--card-color:#d946ef;--card-gradient:linear-gradient(135deg,#d946ef,#c026d3);--card-shadow:rgba(217,70,239,.3)}
+    .product-card[data-color=teal]{--card-color:#14b8a6;--card-gradient:linear-gradient(135deg,#14b8a6,#0d9488);--card-shadow:rgba(20,184,166,.3)}
+    .preview-badge{display:inline-flex;align-items:center;gap:6px;margin-top:.75rem;padding:5px 11px;border-radius:var(--r-full);border:1px solid;font-size:11px;font-weight:600;letter-spacing:.3px;cursor:pointer;transition:opacity .2s,transform .2s;border-color:var(--badge-border);background:var(--badge-bg);color:var(--badge-color)}
+    .preview-badge:hover{opacity:.82;transform:translateY(-1px)}
+    .preview-badge-dot{width:5px;height:5px;border-radius:50%;background:currentColor;animation:blink 1.6s ease-in-out infinite}
+    .product-card[data-color=cyan]    .preview-badge{--badge-color:#06b6d4;--badge-border:rgba(6,182,212,.3);--badge-bg:rgba(6,182,212,.07)}
+    .product-card[data-color=purple]  .preview-badge{--badge-color:#a855f7;--badge-border:rgba(168,85,247,.3);--badge-bg:rgba(168,85,247,.07)}
+    .product-card[data-color=green]   .preview-badge{--badge-color:#10b981;--badge-border:rgba(16,185,129,.3);--badge-bg:rgba(16,185,129,.07)}
+    .product-card[data-color=orange]  .preview-badge{--badge-color:#f97316;--badge-border:rgba(249,115,22,.3);--badge-bg:rgba(249,115,22,.07)}
+    .product-card[data-color=yellow]  .preview-badge{--badge-color:#ca8a04;--badge-border:rgba(202,138,4,.3);--badge-bg:rgba(234,179,8,.07)}
+    .product-card[data-color=amber]   .preview-badge{--badge-color:#d97706;--badge-border:rgba(245,158,11,.3);--badge-bg:rgba(245,158,11,.07)}
+    .product-card[data-color=fuchsia] .preview-badge{--badge-color:#d946ef;--badge-border:rgba(217,70,239,.3);--badge-bg:rgba(217,70,239,.07)}
+    .product-card[data-color=teal]    .preview-badge{--badge-color:#14b8a6;--badge-border:rgba(20,184,166,.3);--badge-bg:rgba(20,184,166,.07)}
 
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-        .nav-links a { 
-            text-decoration: none; color: var(--gris-60); font-size: .88rem; font-weight: 500; 
-            transition: color .2s; position: relative; 
-        }
-        .nav-links a::after {
-            content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px;
-            background: var(--celeste); transition: width .3s;
-        }
-        .nav-links a:hover { color: var(--azul); }
-        .nav-links a:hover::after { width: 100%; }
+    /* FEATURES */
+    .features{padding:8rem 2rem;background:linear-gradient(180deg,#fff 0%,var(--c-50) 100%)}
+    .features-container{max-width:1280px;margin:0 auto}
+    .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:3rem}
+    .feature-item{text-align:center}
+    .feature-icon{width:60px;height:60px;border-radius:var(--r-lg);background:linear-gradient(135deg,var(--c-indigo),var(--c-purple));color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem}
+    .feature-title{font-family:var(--ff-display);font-size:1.125rem;font-weight:700;color:var(--c-900);margin-bottom:.75rem}
+    .feature-description{font-size:.9375rem;color:var(--c-500);line-height:1.7}
 
-        .nav-cta {
-            background: linear-gradient(135deg, var(--azul), var(--azul-oscuro)); 
-            color: #fff;
-            padding: .6rem 1.4rem; border-radius: 8px;
-            text-decoration: none; font-weight: 600; font-size: .88rem;
-            transition: all .3s; box-shadow: 0 4px 12px rgba(27,63,139,0.25);
-        }
-        .nav-cta:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 20px rgba(27,63,139,0.35);
-        }
+    /* STATS */
+    .stats{padding:6rem 2rem}
+    .stats-grid{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+    .stat-number{font-family:var(--ff-display);font-size:clamp(2.5rem,4vw,3.5rem);font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,var(--c-900) 0%,var(--c-indigo) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.5rem}
+    .stat-label{font-size:.9375rem;color:var(--c-500);font-weight:500}
 
-        /* ── HERO ── */
-        .hero {
-            min-height: 100vh;
-            padding: 140px 2rem 100px;
-            background: linear-gradient(160deg, #EBF4FF 0%, #F6FAFE 40%, #fff 100%);
-            position: relative; overflow: hidden;
-            display: flex; align-items: center;
-        }
-        
-        .hero-bg-pattern {
-            position: absolute; inset: 0;
-            background-image: 
-                radial-gradient(circle at 20% 50%, rgba(85,172,238,0.08) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(27,63,139,0.05) 0%, transparent 50%);
-            pointer-events: none;
-        }
+    /* CTA */
+    .cta{padding:8rem 2rem;background:var(--c-900);color:#fff;text-align:center;position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% -20%,rgba(99,102,241,.25) 0%,transparent 60%);pointer-events:none}
+    .cta-content{max-width:720px;margin:0 auto;position:relative;z-index:1}
+    .cta-title{font-family:var(--ff-display);font-size:clamp(2rem,4.5vw,3rem);font-weight:800;letter-spacing:-.025em;margin-bottom:1rem}
+    .cta-subtitle{font-size:1.125rem;color:rgba(255,255,255,.65);margin-bottom:2.5rem;line-height:1.7}
+    .cta-buttons{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap}
 
-        .hero-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1.1fr 1fr; gap: 5rem; align-items: center;
-        }
+    /* FOOTER */
+    .footer{padding:5rem 2rem 2.5rem;background:var(--c-50)}
+    .footer-container{max-width:1280px;margin:0 auto}
+    .footer-grid{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:4rem;margin-bottom:3.5rem}
+    .footer-logo{font-family:var(--ff-display);font-size:1.375rem;font-weight:700;color:var(--c-900);margin-bottom:1rem}
+    .footer-description{font-size:.9375rem;color:var(--c-500);line-height:1.7}
+    .footer-section h4{font-size:.875rem;font-weight:700;color:var(--c-900);margin-bottom:1rem;letter-spacing:.3px}
+    .footer-links{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+    .footer-links a{font-size:.9375rem;color:var(--c-500);text-decoration:none;transition:color .2s}
+    .footer-links a:hover{color:var(--c-900)}
+    .footer-bottom{padding-top:1.5rem;border-top:1px solid var(--c-200);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.875rem;color:var(--c-500)}
+    .footer-social{display:flex;gap:1.5rem}
+    .footer-social a{color:var(--c-500);text-decoration:none;transition:color .2s}
+    .footer-social a:hover{color:var(--c-900)}
 
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: .6rem;
-            background: rgba(85,172,238,.12); border: 1px solid rgba(85,172,238,.25);
-            color: var(--azul); font-size: .8rem; font-weight: 700;
-            padding: .4rem 1rem; border-radius: 50px; margin-bottom: 1.5rem;
-            letter-spacing: .04em; text-transform: uppercase;
-        }
-        .hero-badge span { 
-            width: 8px; height: 8px; background: var(--verde); border-radius: 50%; 
-            animation: pulse 2s infinite; box-shadow: 0 0 0 3px rgba(29,185,123,0.3);
-        }
-        @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(0.8)} }
+    /* SCROLL ANIM */
+    .anim-ready{opacity:0;transform:translateY(28px);transition:opacity .6s var(--ease-out),transform .6s var(--ease-out)}
+    .anim-ready.visible{opacity:1;transform:none}
+    .anim-delay-1{transition-delay:.1s}
+    .anim-delay-2{transition-delay:.2s}
+    .anim-delay-3{transition-delay:.3s}
 
-        .hero h1 { 
-            font-size: clamp(2.8rem, 5vw, 4.2rem); 
-            font-weight: 800; 
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
-        .hero h1 span { color: var(--celeste); position: relative; }
-        .hero h1 span::after {
-            content: ''; position: absolute; bottom: 5px; left: 0; right: 0; height: 8px;
-            background: rgba(85,172,238,0.2); z-index: -1;
-        }
-        
-        .hero-lead { 
-            font-size: 1.15rem; 
-            color: var(--gris-60); 
-            max-width: 540px; 
-            margin-bottom: 2.5rem; 
-            font-weight: 400;
-            line-height: 1.7;
-        }
+    /* MODAL SYSTEM */
+    .rv-overlay{position:fixed;inset:0;z-index:9000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .35s var(--ease-out)}
+    .rv-overlay.open{opacity:1;pointer-events:all}
+    .rv-backdrop{position:absolute;inset:0;background:rgba(2,6,23,.62);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);cursor:pointer}
+    .rv-modal{position:relative;z-index:1;display:flex;align-items:center;gap:24px;transform:scale(.9) translateY(24px);transition:transform .4s var(--ease-spring)}
+    .rv-overlay.open .rv-modal{transform:scale(1) translateY(0)}
+    .rv-arrow{width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.85);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;backdrop-filter:blur(10px);transition:background .2s,transform .2s;user-select:none}
+    .rv-arrow:hover{background:rgba(255,255,255,.15);transform:scale(1.08)}
+    .rv-arrow[aria-disabled=true]{opacity:.2;pointer-events:none}
+    .rv-phone-shell{position:relative}
+    .rv-counter{position:absolute;top:-50px;left:0;font-family:var(--ff-body);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase}
+    .rv-close{position:absolute;top:-50px;right:0;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.8);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(8px);transition:background .2s,transform .2s}
+    .rv-close:hover{background:rgba(255,255,255,.18);transform:scale(1.1) rotate(90deg)}
+    .rv-phone{width:332px;height:592px;background:#0d0d0d;border-radius:44px;box-shadow:0 0 0 9px #1c1c1e,0 0 0 11px #2a2a2c,0 50px 100px rgba(0,0,0,.65),0 0 60px rgba(6,182,212,.08);overflow:hidden;position:relative;flex-shrink:0}
+    .rv-phone::before{content:'';position:absolute;top:14px;left:50%;transform:translateX(-50%);width:88px;height:26px;background:#0d0d0d;border-radius:0 0 16px 16px;z-index:20}
+    .rv-track-wrap{width:100%;height:100%;overflow:hidden;border-radius:34px}
+    .rv-track{display:flex;height:100%;transition:transform .42s var(--ease-slide);will-change:transform}
+    .rv-slide{height:100%;flex-shrink:0;position:relative;overflow:hidden;font-family:var(--ff-ui)}
+    .rv-dots{position:absolute;bottom:-44px;left:50%;transform:translateX(-50%);display:flex;gap:6px;align-items:center}
+    .rv-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.2);cursor:pointer;transition:all .3s var(--ease-out)}
+    .rv-dot.active{background:var(--c-cyan);width:20px;border-radius:3px;box-shadow:0 0 8px rgba(6,182,212,.5)}
+    .rv-inner{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between}
+    .rv-logo-mark{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--c-cyan),var(--c-indigo));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:#fff;letter-spacing:-.5px}
 
-        .hero-pillars-preview {
-            display: flex; gap: 1rem; margin-bottom: 2.5rem; flex-wrap: wrap;
-        }
-        .pillar-mini {
-            display: flex; align-items: center; gap: .5rem;
-            padding: .6rem 1rem; background: #fff;
-            border-radius: 50px; border: 1px solid var(--gris-30);
-            font-size: .85rem; font-weight: 600; color: var(--texto);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-        }
-        .pillar-mini-icon { font-size: 1.1rem; }
-
-        .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-        .btn-solid {
-            background: var(--azul); color: #fff;
-            padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
-            font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: .5rem;
-            transition: all .3s; box-shadow: 0 4px 12px rgba(27,63,139,0.25);
-        }
-        .btn-solid:hover { 
-            background: var(--azul-oscuro); 
-            transform: translateY(-2px); 
-            box-shadow: 0 8px 24px rgba(27,63,139,0.35);
-        }
-        .btn-ghost {
-            background: transparent; color: var(--azul);
-            padding: .9rem 2rem; border-radius: 8px; text-decoration: none;
-            font-weight: 600; font-size: 1rem; border: 2px solid var(--azul);
-            display: inline-flex; align-items: center; gap: .5rem;
-            transition: all .3s;
-        }
-        .btn-ghost:hover { background: var(--azul); color: #fff; transform: translateY(-2px); }
-
-        /* Hero Visual - 3D Card Stack */
-        .hero-visual {
-            position: relative;
-            perspective: 1000px;
-        }
-        .pillars-showcase {
-            position: relative; width: 100%; height: 500px;
-        }
-        .pillar-card {
-            position: absolute; width: 340px; height: 420px;
-            background: #fff; border-radius: 24px;
-            padding: 2rem; border: 1px solid var(--gris-30);
-            box-shadow: 0 20px 60px rgba(14,28,47,0.15);
-            transition: all .5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-        }
-        .pillar-card:nth-child(1) { 
-            top: 0; left: 0; 
-            transform: rotateY(-5deg) rotateX(5deg) translateZ(0);
-            z-index: 3;
-        }
-        .pillar-card:nth-child(2) { 
-            top: 30px; left: 40px; 
-            transform: rotateY(-3deg) rotateX(3deg) translateZ(-50px);
-            z-index: 2; opacity: 0.9;
-        }
-        .pillar-card:nth-child(3) { 
-            top: 60px; left: 80px; 
-            transform: rotateY(-1deg) rotateX(1deg) translateZ(-100px);
-            z-index: 1; opacity: 0.8;
-        }
-        
-        .pillar-card:hover {
-            transform: rotateY(0deg) rotateX(0deg) translateZ(50px) scale(1.05);
-            z-index: 10; opacity: 1;
-        }
-
-        .pillar-card-icon {
-            width: 60px; height: 60px; border-radius: 16px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.8rem; margin-bottom: 1.5rem;
-        }
-        .pillar-card:nth-child(1) .pillar-card-icon { background: linear-gradient(135deg, #10B981, #059669); }
-        .pillar-card:nth-child(2) .pillar-card-icon { background: linear-gradient(135deg, #8B5CF6, #6D28D9); }
-        .pillar-card:nth-child(3) .pillar-card-icon { background: linear-gradient(135deg, #3B82F6, #1D4ED8); }
-
-        .pillar-card h3 {
-            font-size: 1.4rem; font-weight: 700; margin-bottom: .5rem;
-        }
-        .pillar-card p {
-            font-size: .9rem; color: var(--gris-60); line-height: 1.6;
-        }
-        .pillar-card-tags {
-            margin-top: 1.5rem; display: flex; flex-wrap: wrap; gap: .4rem;
-        }
-        .pillar-tag {
-            font-size: .7rem; font-weight: 600; padding: .25rem .6rem;
-            border-radius: 4px; background: var(--gris-10); color: var(--gris-60);
-        }
-
-        /* ── 3 PILARS SECTION ── */
-        .pillars-section { padding: 8rem 2rem; background: #fff; }
-        .container { max-width: 1400px; margin: 0 auto; }
-
-        .section-header {
-            text-align: center; max-width: 700px; margin: 0 auto 4rem;
-        }
-        .section-tag { 
-            display: inline-block; 
-            font-size: .75rem; font-weight: 700; 
-            letter-spacing: .15em; text-transform: uppercase; 
-            color: var(--celeste); margin-bottom: 1rem;
-            padding: .4rem 1rem; background: rgba(85,172,238,0.1);
-            border-radius: 50px;
-        }
-        .section-title { 
-            font-size: clamp(2rem, 4vw, 3rem); 
-            font-weight: 800; 
-            margin-bottom: 1rem;
-            color: var(--texto);
-        }
-        .section-lead { 
-            font-size: 1.1rem; 
-            color: var(--gris-60); 
-            font-weight: 400;
-            line-height: 1.7;
-        }
-
-        /* Pillar Tabs */
-        .pillars-tabs {
-            display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem;
-            flex-wrap: wrap;
-        }
-        .pillar-tab {
-            padding: 1rem 2rem; border-radius: 12px;
-            border: 2px solid var(--gris-30); background: #fff;
-            cursor: pointer; transition: all .3s;
-            display: flex; align-items: center; gap: .75rem;
-            font-family: 'Syne', sans-serif; font-weight: 600; font-size: 1rem;
-        }
-        .pillar-tab:hover { border-color: var(--celeste); transform: translateY(-2px); }
-        .pillar-tab.active {
-            border-color: var(--azul); background: var(--azul); color: #fff;
-            box-shadow: 0 8px 24px rgba(27,63,139,0.25);
-        }
-        .pillar-tab-icon { font-size: 1.4rem; }
-
-        .pillar-content {
-            display: none;
-            animation: fadeIn .5s ease;
-        }
-        .pillar-content.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-        .pillar-grid {
-            display: grid; grid-template-columns: 1fr 1.5fr; gap: 4rem;
-            align-items: start;
-        }
-        
-        .pillar-info h3 {
-            font-size: 2rem; font-weight: 800; margin-bottom: 1rem;
-            display: flex; align-items: center; gap: .75rem;
-        }
-        .pillar-info p {
-            font-size: 1.05rem; color: var(--gris-60); line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-
-        .subservices-grid {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
-        }
-        .subservice-card {
-            padding: 1.5rem; background: var(--gris-10);
-            border-radius: 12px; border: 1px solid transparent;
-            transition: all .3s;
-        }
-        .subservice-card:hover {
-            background: #fff; border-color: var(--gris-30);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            transform: translateY(-4px);
-        }
-        .subservice-icon {
-            width: 44px; height: 44px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; margin-bottom: 1rem;
-        }
-        .subservice-card h4 {
-            font-size: 1rem; font-weight: 700; margin-bottom: .5rem;
-        }
-        .subservice-card p {
-            font-size: .85rem; color: var(--gris-60); margin: 0;
-            line-height: 1.6;
-        }
-
-        /* Pillar Visual - Dashboard Preview */
-        .pillar-visual {
-            background: linear-gradient(135deg, var(--gris-10), #fff);
-            border-radius: 24px; padding: 2.5rem;
-            border: 1px solid var(--gris-30);
-            position: relative; overflow: hidden;
-        }
-        .pillar-visual::before {
-            content: ''; position: absolute; top: -50%; right: -50%;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle, rgba(85,172,238,0.1) 0%, transparent 70%);
-        }
-
-        .feature-list {
-            list-style: none; display: flex; flex-direction: column; gap: 1rem;
-        }
-        .feature-item {
-            display: flex; align-items: flex-start; gap: 1rem;
-            padding: 1rem; background: rgba(255,255,255,0.8);
-            border-radius: 10px; border: 1px solid var(--gris-30);
-        }
-        .feature-check {
-            width: 24px; height: 24px; border-radius: 50%;
-            background: var(--verde); color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: .8rem; flex-shrink: 0;
-        }
-        .feature-text strong { display: block; color: var(--texto); margin-bottom: .2rem; }
-        .feature-text span { font-size: .85rem; color: var(--gris-60); }
-
-        /* Mini Dashboard Preview (for Education pillar) */
-        .mini-dashboard {
-            background: linear-gradient(135deg, #0f172a, #1e293b);
-            border-radius: 16px; padding: 1.5rem;
-            color: #fff; font-size: .85rem;
-        }
-        .mini-metric {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: .75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);
-        }
-        .mini-metric:last-child { border-bottom: none; }
-        .mini-bar {
-            width: 100px; height: 6px; background: rgba(255,255,255,0.1);
-            border-radius: 3px; overflow: hidden;
-        }
-        .mini-bar-fill {
-            height: 100%; border-radius: 3px;
-            background: linear-gradient(90deg, var(--cyan), var(--verde));
-        }
-
-        /* ── MAP SECTION ── */
-        .map-section {
-            padding: 6rem 2rem; background: var(--azul-oscuro);
-            color: #fff; position: relative; overflow: hidden;
-        }
-        .map-section::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(ellipse at 30% 50%, rgba(85,172,238,0.15) 0%, transparent 60%);
-        }
-        .map-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem;
-            align-items: center; position: relative; z-index: 1;
-        }
-        .map-content h2 {
-            font-size: clamp(2rem, 3vw, 2.8rem); font-weight: 800; margin-bottom: 1.5rem;
-        }
-        .map-content p {
-            font-size: 1.1rem; color: rgba(255,255,255,0.7); line-height: 1.8;
-            margin-bottom: 2rem;
-        }
-        .dept-list {
-            display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;
-        }
-        .dept-item {
-            display: flex; align-items: center; gap: .75rem;
-            padding: 1rem; background: rgba(255,255,255,0.05);
-            border-radius: 10px; border: 1px solid rgba(255,255,255,0.1);
-            transition: all .3s;
-        }
-        .dept-item:hover {
-            background: rgba(255,255,255,0.1); transform: translateX(5px);
-        }
-        .dept-dot {
-            width: 10px; height: 10px; border-radius: 50%;
-            background: var(--celeste); box-shadow: 0 0 0 3px rgba(85,172,238,0.3);
-        }
-        .dept-name { font-weight: 600; }
-        .dept-pop { font-size: .8rem; color: rgba(255,255,255,0.5); margin-left: auto; }
-
-        .map-container {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px; padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        /* ── STATS ── */
-        .stats-section {
-            padding: 5rem 2rem; background: linear-gradient(135deg, var(--celeste), var(--azul));
-            color: #fff;
-        }
-        .stats-grid {
-            max-width: 1200px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
-            text-align: center;
-        }
-        .stat-item h3 {
-            font-size: 3rem; font-weight: 800; margin-bottom: .5rem;
-        }
-        .stat-item p {
-            font-size: .95rem; opacity: .9; font-weight: 500;
-        }
-
-        /* ── COMPARISON ── */
-        .comparison-section { padding: 6rem 2rem; background: var(--gris-10); }
-        .comparison-table {
-            background: #fff; border-radius: 20px; overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-            border: 1px solid var(--gris-30);
-        }
-        .comp-header {
-            display: grid; grid-template-columns: 2fr 1fr 1fr;
-            background: linear-gradient(135deg, var(--azul-oscuro), var(--azul));
-            color: #fff; padding: 1.5rem 2rem;
-            font-weight: 700; font-size: .9rem; letter-spacing: .05em;
-        }
-        .comp-row {
-            display: grid; grid-template-columns: 2fr 1fr 1fr;
-            padding: 1.25rem 2rem; border-bottom: 1px solid var(--gris-30);
-            align-items: center; transition: background .2s;
-        }
-        .comp-row:hover { background: rgba(85,172,238,0.03); }
-        .comp-row:last-child { border-bottom: none; }
-        
-        .comp-metric { font-weight: 600; color: var(--texto); }
-        .comp-sub { font-size: .8rem; color: var(--gris-60); margin-top: .2rem; }
-        .comp-bad { color: var(--rojo); font-weight: 600; }
-        .comp-good { 
-            color: var(--verde); font-weight: 700;
-            display: flex; align-items: center; gap: .5rem;
-        }
-        .comp-badge {
-            font-size: .65rem; padding: .2rem .5rem;
-            background: rgba(29,185,123,0.15); border-radius: 4px;
-        }
-
-        /* ── CTA ── */
-        .cta-section {
-            padding: 8rem 2rem; text-align: center;
-            background: linear-gradient(135deg, var(--azul) 0%, var(--azul-oscuro) 100%);
-            color: #fff; position: relative; overflow: hidden;
-        }
-        .cta-section::before {
-            content: ''; position: absolute; inset: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(85,172,238,0.2) 0%, transparent 70%);
-        }
-        .cta-content { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
-        .cta-section h2 { font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1.5rem; }
-        .cta-section p { font-size: 1.1rem; opacity: .85; margin-bottom: 2.5rem; line-height: 1.7; }
-        
-        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-        .btn-white {
-            background: #fff; color: var(--azul);
-            padding: 1rem 2.5rem; border-radius: 10px;
-            text-decoration: none; font-weight: 700; font-size: 1rem;
-            transition: all .3s; box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        }
-        .btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); }
-        .btn-outline {
-            background: transparent; color: #fff;
-            padding: 1rem 2.5rem; border-radius: 10px;
-            text-decoration: none; font-weight: 600; font-size: 1rem;
-            border: 2px solid rgba(255,255,255,0.4);
-            transition: all .3s;
-        }
-        .btn-outline:hover { border-color: #fff; background: rgba(255,255,255,0.1); transform: translateY(-3px); }
-
-        /* ── FOOTER ── */
-        .footer {
-            background: var(--texto); color: #fff; padding: 5rem 2rem 2rem;
-        }
-        .footer-grid {
-            max-width: 1400px; margin: 0 auto;
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
-            margin-bottom: 4rem;
-        }
-        .footer-brand h3 {
-            font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        .footer-brand p {
-            color: rgba(255,255,255,0.5); line-height: 1.7; font-size: .95rem;
-            margin-bottom: 1.5rem;
-        }
-        .footer-badge {
-            display: inline-flex; align-items: center; gap: .5rem;
-            padding: .5rem 1rem; background: rgba(85,172,238,0.15);
-            border-radius: 6px; font-size: .8rem; color: var(--celeste);
-            font-weight: 600;
-        }
-        
-        .footer-col h4 {
-            font-size: .8rem; font-weight: 700; letter-spacing: .1em;
-            text-transform: uppercase; color: var(--celeste);
-            margin-bottom: 1.5rem;
-        }
-        .footer-links {
-            list-style: none; display: flex; flex-direction: column; gap: .75rem;
-        }
-        .footer-links a {
-            color: rgba(255,255,255,0.5); text-decoration: none; font-size: .9rem;
-            transition: color .2s;
-        }
-        .footer-links a:hover { color: var(--celeste); }
-
-        .footer-bottom {
-            max-width: 1400px; margin: 0 auto;
-            padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);
-            display: flex; justify-content: space-between; align-items: center;
-            flex-wrap: wrap; gap: 1rem;
-        }
-        .footer-bottom p {
-            font-size: .85rem; color: rgba(255,255,255,0.3);
-        }
-        .footer-badges {
-            display: flex; gap: .5rem;
-        }
-        .fbadge {
-            font-size: .7rem; padding: .25rem .6rem;
-            background: rgba(255,255,255,0.05); border-radius: 4px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        /* ── ANIMATIONS ── */
-        .fade-up {
-            opacity: 0; transform: translateY(30px);
-            transition: opacity .6s ease, transform .6s ease;
-        }
-        .fade-up.visible { opacity: 1; transform: translateY(0); }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 1024px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-lead { margin-left: auto; margin-right: auto; }
-            .hero-pillars-preview { justify-content: center; }
-            .hero-visual { display: none; }
-            .pillar-grid { grid-template-columns: 1fr; }
-            .map-grid { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 768px) {
-            .nav-links { display: none; }
-            .pillars-tabs { flex-direction: column; }
-            .pillar-tab { width: 100%; justify-content: center; }
-            .subservices-grid { grid-template-columns: 1fr; }
-            .dept-list { grid-template-columns: 1fr; }
-            .stats-grid { grid-template-columns: 1fr; }
-            .comp-header, .comp-row { grid-template-columns: 1fr; gap: .5rem; }
-            .footer-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      .nav-links{display:none}
+      .nav-hamburger{display:flex}
+      .hero{padding:7rem 1.5rem 4rem}
+      .products{padding:5rem 1.5rem}
+      .products-grid{grid-template-columns:1fr 1fr}
+      .features{padding:5rem 1.5rem}
+      .stats{padding:4rem 1.5rem}
+      .stats-grid{grid-template-columns:repeat(2,1fr);gap:2rem}
+      .cta{padding:5rem 1.5rem}
+      .footer{padding:4rem 1.5rem 2rem}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+    }
+    @media(max-width:600px){
+      .products-grid{grid-template-columns:1fr}
+      .footer-grid{grid-template-columns:1fr;gap:2rem}
+      .footer-bottom{flex-direction:column;text-align:center}
+      .rv-modal{gap:12px}
+      .rv-phone{width:290px;height:516px}
+      .rv-arrow{width:36px;height:36px;font-size:15px}
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav-wrap" id="navbar">
-    <div class="nav">
-        <a href="#inicio" class="logo-block">
-            <div class="logo-mark">DE</div>
-            <div class="logo-text">
-                <span class="logo-main">Datos del Este</span>
-                <span class="logo-sub">by Riva Labs</span>
-            </div>
+  <nav class="nav" id="mainNav" role="navigation" aria-label="Navegación principal">
+    <div class="nav-container">
+      <a href="#" class="logo" aria-label="RIVA LABS">RIVA LABS</a>
+      <div class="nav-links" role="menubar">
+        <a href="#products" class="nav-link" data-i18n="nav.products">Productos</a>
+        <a href="#features" class="nav-link" data-i18n="nav.features">Características</a>
+        <a href="#about"    class="nav-link" data-i18n="nav.about">Nosotros</a>
+        <a href="#contact"  class="nav-cta"  data-i18n="nav.contact">Contacto</a>
+        <div class="lang-switcher" role="group" aria-label="Idioma">
+          <button class="lang-btn active" onclick="setLang('es')" aria-pressed="true">ES</button>
+          <button class="lang-btn"        onclick="setLang('en')" aria-pressed="false">EN</button>
+          <button class="lang-btn"        onclick="setLang('ja')" aria-pressed="false">JA</button>
+        </div>
+      </div>
+      <button class="nav-hamburger" id="mobileToggle" aria-label="Menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <nav class="nav-mobile" id="mobileMenu" aria-label="Menú móvil">
+    <a href="#products" class="nav-link" data-i18n="nav.products" onclick="closeMobileMenu()">Productos</a>
+    <a href="#features" class="nav-link" data-i18n="nav.features" onclick="closeMobileMenu()">Características</a>
+    <a href="#about"    class="nav-link" data-i18n="nav.about"    onclick="closeMobileMenu()">Nosotros</a>
+    <a href="#contact"  class="nav-cta"  data-i18n="nav.contact"  onclick="closeMobileMenu()">Contacto</a>
+    <div class="lang-switcher"><button class="lang-btn active" onclick="setLang('es')">ES</button><button class="lang-btn" onclick="setLang('en')">EN</button><button class="lang-btn" onclick="setLang('ja')">JA</button></div>
+  </nav>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-badge" role="status">
+        <span class="hero-badge-dot"></span>
+        <span data-i18n="hero.badge">Uruguay · USA · Japón · Suiza · Sistema operativo</span>
+      </div>
+      <h1 class="hero-headline">
+        <span class="gradient-text" data-i18n="hero.h1a">Infraestructura</span><br>
+        <span data-i18n="hero.h1b">para el Futuro</span>
+      </h1>
+      <p class="hero-subtitle" data-i18n="hero.subtitle">RIVA LABS desarrolla sistemas de inteligencia artificial, robótica autónoma y plataformas computacionales para investigación científica, finanzas cuantitativas y transformación educativa.</p>
+      <div class="hero-buttons">
+        <a href="#products" class="btn btn-primary">
+          <span data-i18n="hero.cta1">Explorar Productos</span>
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
         </a>
-        <ul class="nav-links">
-            <li><a href="#pilares">Los 3 Pilares</a></li>
-            <li><a href="#territorio">Territorio</a></li>
-            <li><a href="#educacion">Educación</a></li>
-            <li><a href="#empresas">Empresas</a></li>
-            <li><a href="#cobertura">Cobertura</a></li>
-        </ul>
-        <a href="#contacto" class="nav-cta">Solicitar Demo →</a>
+        <a href="#docs" class="btn btn-secondary"><span data-i18n="hero.cta2">Documentación</span></a>
+      </div>
     </div>
-</nav>
+  </section>
 
-<!-- HERO -->
-<section class="hero" id="inicio">
-    <div class="hero-bg-pattern"></div>
-    <div class="hero-grid">
-        <div>
-            <div class="hero-badge"><span></span> Riva Labs · Departamento Regional Este</div>
-            <h1>IA Computacional para el <span>Este de Uruguay</span></h1>
-            <p class="hero-lead">
-                Tres pilares de inteligencia artificial diseñados para transformar el territorio, 
-                la educación y las empresas de Maldonado, Rocha, Lavalleja, Treinta y Tres y Cerro Largo.
-            </p>
-            
-            <div class="hero-pillars-preview">
-                <div class="pillar-mini">
-                    <span class="pillar-mini-icon">🌿</span>
-                    <span>Territorio</span>
-                </div>
-                <div class="pillar-mini">
-                    <span class="pillar-mini-icon">🎓</span>
-                    <span>Educación</span>
-                </div>
-                <div class="pillar-mini">
-                    <span class="pillar-mini-icon">⚡</span>
-                    <span>Empresas</span>
-                </div>
-            </div>
-
-            <div class="hero-btns">
-                <a href="#pilares" class="btn-solid">Explorar Soluciones →</a>
-                <a href="#contacto" class="btn-ghost">Contactar Equipo</a>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="pillars-showcase">
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">🌿</div>
-                    <h3>Territorio</h3>
-                    <p>IA aplicada a recursos naturales, inmuebles y medio ambiente del Este.</p>
-                    <div class="pillar-card-tags">
-                        <span class="pillar-tag">Real Estate</span>
-                        <span class="pillar-tag">Agro</span>
-                        <span class="pillar-tag">Marítimo</span>
-                        <span class="pillar-tag">Ambiental</span>
-                    </div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">🎓</div>
-                    <h3>Educación</h3>
-                    <p>Inteligencia pedagógica avanzada con análisis de dinámicas grupales y participación estudiantil.</p>
-                    <div class="pillar-card-tags">
-                        <span class="pillar-tag">Análisis Sociométrico</span>
-                        <span class="pillar-tag">Participación</span>
-                        <span class="pillar-tag">Ceibal</span>
-                    </div>
-                </div>
-                <div class="pillar-card">
-                    <div class="pillar-card-icon">⚡</div>
-                    <h3>Empresas</h3>
-                    <p>Soluciones financieras, auditoría y computación distribuida de alto rendimiento.</p>
-                    <div class="pillar-card-tags">
-                        <span class="pillar-tag">Fintech</span>
-                        <span class="pillar-tag">Auditoría</span>
-                        <span class="pillar-tag">Cloud</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <section class="products" id="products">
+    <div class="section-header">
+      <p class="section-label" data-i18n="products.label">Ecosistema</p>
+      <h2 class="section-title" data-i18n="products.title">Ecosistema de Productos</h2>
+      <p class="section-subtitle" data-i18n="products.subtitle">Ocho sistemas integrados que redefinen los límites de lo computacionalmente posible</p>
     </div>
-</section>
-
-<!-- 3 PILARS SECTION -->
-<section class="pillars-section" id="pilares">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-tag">Nuestra Propuesta de Valor</span>
-            <h2 class="section-title">Tres Pilares, Un Objetivo</h2>
-            <p class="section-lead">
-                Estructuramos nuestra oferta en tres pilares estratégicos que abarcan 
-                todas las necesidades de transformación digital del Este uruguayo.
-            </p>
+    <div class="products-grid">
+      <article class="product-card anim-ready " data-color="cyan">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.flights.name">Flight AI</h3>
+          <p  class="product-tagline"     data-i18n="p.flights.tag"></p>
+          <p  class="product-description" data-i18n="p.flights.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openRivaVuelos(event)" aria-label="Ver preview de Flight AI">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.flights">✨ Nuevo lanzamiento — Ver preview</span>
+          </button>
         </div>
-
-        <div class="pillars-tabs fade-up">
-            <div class="pillar-tab active" onclick="showPillar(0)">
-                <span class="pillar-tab-icon">🌿</span>
-                <span>Territorio & Recursos</span>
-            </div>
-            <div class="pillar-tab" onclick="showPillar(1)">
-                <span class="pillar-tab-icon">🎓</span>
-                <span>Educación & Inteligencia</span>
-            </div>
-            <div class="pillar-tab" onclick="showPillar(2)">
-                <span class="pillar-tab-icon">⚡</span>
-                <span>Desarrollo & Finanzas</span>
-            </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-1" data-color="purple">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.mind.name">RIVA Mind</h3>
+          <p  class="product-tagline"     data-i18n="p.mind.tag"></p>
+          <p  class="product-description" data-i18n="p.mind.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('mind')" aria-label="Ver preview de RIVA Mind">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.mind">🧠 Ver RIVA Mind</span>
+          </button>
         </div>
-
-        <!-- Pillar 1: Territorio -->
-        <div class="pillar-content active" id="pillar-0">
-            <div class="pillar-grid">
-                <div class="pillar-info">
-                    <h3><span>🌿</span> Territorio & Recursos Naturales</h3>
-                    <p>
-                        Inteligencia artificial aplicada a la gestión del territorio del Este. 
-                        Desde la valuación inmobiliaria en Punta del Este hasta el monitoreo 
-                        ambiental en Rocha y la optimización ganadera en el interior.
-                    </p>
-                    <div class="subservices-grid">
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #3B82F6, #1E40AF);">🏘️</div>
-                            <h4>Real Estate Inteligente</h4>
-                            <p>Valuación AVM, análisis de demanda turística e inversión inmobiliaria en la costa atlántica.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #10B981, #059669);">🐄</div>
-                            <h4>Agro & Ganadería</h4>
-                            <p>Precision farming, monitoreo de rodeos con CV y predicción de rendimiento para el agro esteño.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #06B6D4, #0891B2);">🐟</div>
-                            <h4>Marítimo & Pesca</h4>
-                            <p>Optimización de rutas pesqueras, monitoreo de recursos marinos y acuicultura sostenible.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #84CC16, #65A30D);">🌿</div>
-                            <h4>Ambiental</h4>
-                            <p>IA para conservación de humedales, Laguna Garzón, Cabo Polonio y áreas protegidas.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataReal — Valuación Inmobiliaria</strong>
-                                <span>AVM con 95% de precisión para el mercado esteño</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataAgro — Ganadería Inteligente</strong>
-                                <span>Conteo automatizado de ganado con visión artificial</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataEco — Monitoreo Ambiental</strong>
-                                <span>Detección de cambios en ecosistemas vía satelital</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataFlow CFD — Dinámica de Fluidos</strong>
-                                <span>Primera plataforma CFD+IA de LATAM para riego e hidráulica</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-2" data-color="green">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.biosim.name">BioSim</h3>
+          <p  class="product-tagline"     data-i18n="p.biosim.tag"></p>
+          <p  class="product-description" data-i18n="p.biosim.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('biosim')" aria-label="Ver preview de BioSim">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.biosim">🧬 Ver BioSim</span>
+          </button>
         </div>
-
-        <!-- Pillar 2: Educación (Inspirado en Voces del Futuro) -->
-        <div class="pillar-content" id="pillar-1">
-            <div class="pillar-grid">
-                <div class="pillar-info">
-                    <h3><span>🎓</span> Educación & Inteligencia Pedagógica</h3>
-                    <p>
-                        Transformación educativa mediante IA adaptativa y análisis de dinámicas 
-                        grupales. Plataformas que miden inteligencia colectiva, clima social 
-                        y patrones de participación estudiantil en tiempo real.
-                    </p>
-                    <div class="subservices-grid">
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #8B5CF6, #6D28D9);">🧠</div>
-                            <h4>Análisis Sociométrico</h4>
-                            <p>Visualización de redes sociales educativas, identificación de líderes, puentes y estudiantes aislados.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #EC4899, #BE185D);">📊</div>
-                            <h4>Inteligencia Colectiva</h4>
-                            <p>Métricas de factor c, autoeficacia grupal y análisis de deliberación democrática estudiantil.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #F59E0B, #D97706);">🎯</div>
-                            <h4>Participación Ciudadana</h4>
-                            <p>Plataformas de propuestas estudiantiles, deliberación guiada y ciclo completo de democracia participativa.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #6366F1, #4F46E5);">🌐</div>
-                            <h4>Aprendizaje Adaptativo</h4>
-                            <p>Personalización del aprendizaje, prevención de abandono y modo offline para zonas rurales.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <!-- Mini Dashboard Preview -->
-                    <div class="mini-dashboard">
-                        <div style="font-weight: 700; margin-bottom: 1rem; color: var(--cyan);">📊 Dashboard en Tiempo Real</div>
-                        <div class="mini-metric">
-                            <span>Inteligencia Colectiva (Factor c)</span>
-                            <div style="display: flex; align-items: center; gap: .5rem;">
-                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 78%;"></div></div>
-                                <span style="color: var(--verde); font-weight: 700;">78</span>
-                            </div>
-                        </div>
-                        <div class="mini-metric">
-                            <span>Clima Social Grupal</span>
-                            <div style="display: flex; align-items: center; gap: .5rem;">
-                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 82%;"></div></div>
-                                <span style="color: var(--verde); font-weight: 700;">82</span>
-                            </div>
-                        </div>
-                        <div class="mini-metric">
-                            <span>Equidad de Participación</span>
-                            <div style="display: flex; align-items: center; gap: .5rem;">
-                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 71%;"></div></div>
-                                <span style="color: var(--dorado); font-weight: 700;">71</span>
-                            </div>
-                        </div>
-                        <div class="mini-metric">
-                            <span>Índice de Polarización</span>
-                            <div style="display: flex; align-items: center; gap: .5rem;">
-                                <div class="mini-bar"><div class="mini-bar-fill" style="width: 23%; background: var(--verde);"></div></div>
-                                <span style="color: var(--verde); font-weight: 700;">23%</span>
-                            </div>
-                        </div>
-                        <div style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1); font-size: .75rem; color: rgba(255,255,255,0.6);">
-                            Basado en marcos teóricos: Freire, Dewey, Moreno, Woolley
-                        </div>
-                    </div>
-                    
-                    <ul class="feature-list" style="margin-top: 1.5rem;">
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataEdu — Plataforma Pedagógica Avanzada</strong>
-                                <span>Análisis psicométrico y sociométrico en tiempo real</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>Detección de Dinámicas de Poder</strong>
-                                <span>Identificación de influenciadores y estudiantes en riesgo de exclusión</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>Deliberación Democrática</strong>
-                                <span>Ciclo completo: propuesta → deliberación → votación → implementación</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-3" data-color="orange">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.matlab.name">MatLab</h3>
+          <p  class="product-tagline"     data-i18n="p.matlab.tag"></p>
+          <p  class="product-description" data-i18n="p.matlab.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('matlab')" aria-label="Ver preview de MatLab">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.matlab">⚙️ Ver MatLab</span>
+          </button>
         </div>
-
-        <!-- Pillar 3: Empresas -->
-        <div class="pillar-content" id="pillar-2">
-            <div class="pillar-grid">
-                <div class="pillar-info">
-                    <h3><span>⚡</span> Desarrollo a Medida & Finanzas</h3>
-                    <p>
-                        Soluciones empresariales de alto rendimiento. Desde auditoría 
-                        automatizada hasta computación distribuida para problemas 
-                        complejos de optimización y análisis financiero.
-                    </p>
-                    <div class="subservices-grid">
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #14B8A6, #0F766E);">💳</div>
-                            <h4>Fintech & Banca</h4>
-                            <p>Risk management, detección de fraude y compliance financiero regional.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #F97316, #C2410C);">🔍</div>
-                            <h4>Auditoría Inteligente</h4>
-                            <p>Revisión automatizada de documentos y detección de anomalías contables.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #6366F1, #4338CA);">⚛️</div>
-                            <h4>Computación Distribuida</h4>
-                            <p>Quantum-inspired algorithms y optimización combinatoria avanzada.</p>
-                        </div>
-                        <div class="subservice-card">
-                            <div class="subservice-icon" style="background: linear-gradient(135deg, #DC2626, #991B1B);">🤝</div>
-                            <h4>Comercio Binacional</h4>
-                            <p>IA para comercio Uruguay-Brasil en la frontera de Cerro Largo.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="pillar-visual">
-                    <ul class="feature-list">
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataQuantum — Optimización</strong>
-                                <span>Algoritmos QAOA para logística y portafolios</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>DataCore — Infraestructura</strong>
-                                <span>99.8% uptime SLA con latencia sub-10ms</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>Auditoría Automatizada</strong>
-                                <span>Procesamiento de 10,000+ documentos/hora</span>
-                            </div>
-                        </li>
-                        <li class="feature-item">
-                            <div class="feature-check">✓</div>
-                            <div class="feature-text">
-                                <strong>Desarrollo a Medida</strong>
-                                <span>Soluciones custom para zonas francas e industria</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      </article>
+      <article class="product-card anim-ready " data-color="yellow">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.voces.name">Voces del Futuro</h3>
+          <p  class="product-tagline"     data-i18n="p.voces.tag"></p>
+          <p  class="product-description" data-i18n="p.voces.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.download">Descargar</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('voces')" aria-label="Ver preview de Voces del Futuro">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.voces">📚 Ver Voces del Futuro</span>
+          </button>
         </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-1" data-color="amber">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.coin.name">RIVALabsCoin</h3>
+          <p  class="product-tagline"     data-i18n="p.coin.tag"></p>
+          <p  class="product-description" data-i18n="p.coin.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.download">Descargar</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('coin')" aria-label="Ver preview de RIVALabsCoin">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.coin">🪙 Ver RIVALabsCoin</span>
+          </button>
+        </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-2" data-color="fuchsia">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.angel.name">LittleAngel</h3>
+          <p  class="product-tagline"     data-i18n="p.angel.tag"></p>
+          <p  class="product-description" data-i18n="p.angel.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('angel')" aria-label="Ver preview de LittleAngel">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.angel">🤖 Ver LittleAngel</span>
+          </button>
+        </div>
+      </article>
+      <article class="product-card anim-ready anim-delay-3" data-color="teal">
+        <div class="product-card-content">
+          <div class="product-icon" aria-hidden="true">
+            <svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <h3 class="product-name"        data-i18n="p.predict.name">RIVA Predict</h3>
+          <p  class="product-tagline"     data-i18n="p.predict.tag"></p>
+          <p  class="product-description" data-i18n="p.predict.desc"></p>
+          <a href="#" class="product-link">
+            <span data-i18n="p.access">Acceder</span>
+            <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </a>
+          <button class="preview-badge" onclick="openProductModal('predict')" aria-label="Ver preview de RIVA Predict">
+            <span class="preview-badge-dot" aria-hidden="true"></span>
+            <span data-i18n="badge.predict">📈 Ver RIVA Predict</span>
+          </button>
+        </div>
+      </article>
     </div>
-</section>
+  </section>
 
-<!-- MAP SECTION -->
-<section class="map-section" id="cobertura">
-    <div class="map-grid">
-        <div class="map-content">
-            <h2>Cobertura Regional Completa</h2>
-            <p>
-                Datos del Este opera en los cinco departamentos que conforman la 
-                región este de Uruguay, con equipos locales y datos específicos 
-                de cada territorio.
-            </p>
-            <div class="dept-list">
-                <div class="dept-item">
-                    <div class="dept-dot"></div>
-                    <span class="dept-name">Maldonado</span>
-                    <span class="dept-pop">180k hab</span>
-                </div>
-                <div class="dept-item">
-                    <div class="dept-dot"></div>
-                    <span class="dept-name">Rocha</span>
-                    <span class="dept-pop">70k hab</span>
-                </div>
-                <div class="dept-item">
-                    <div class="dept-dot"></div>
-                    <span class="dept-name">Lavalleja</span>
-                    <span class="dept-pop">60k hab</span>
-                </div>
-                <div class="dept-item">
-                    <div class="dept-dot"></div>
-                    <span class="dept-name">Treinta y Tres</span>
-                    <span class="dept-pop">48k hab</span>
-                </div>
-                <div class="dept-item">
-                    <div class="dept-dot"></div>
-                    <span class="dept-name">Cerro Largo</span>
-                    <span class="dept-pop">84k hab</span>
-                </div>
-            </div>
+  <section class="features" id="features">
+    <div class="features-container">
+      <div class="section-header">
+        <p class="section-label" data-i18n="features.label">Tecnología</p>
+        <h2 class="section-title" data-i18n="features.title">Tecnología de Vanguardia</h2>
+        <p class="section-subtitle" data-i18n="features.subtitle">Construido con las herramientas más avanzadas para entregar rendimiento excepcional</p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-item anim-ready">
+          <div class="feature-icon" aria-hidden="true"><svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
+          <h3 class="feature-title" data-i18n="feat.perf.title">Rendimiento Extremo</h3>
+          <p  class="feature-description" data-i18n="feat.perf.desc">Infraestructura optimizada para procesar millones de operaciones por segundo sin comprometer la precisión.</p>
         </div>
-        <div class="map-container">
-            <svg viewBox="0 0 400 350" width="100%" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="mapGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#55ACEE;stop-opacity:0.3"/>
-                        <stop offset="100%" style="stop-color:#1B3F8B;stop-opacity:0.5"/>
-                    </linearGradient>
-                </defs>
-                <rect width="400" height="350" fill="transparent" rx="10"/>
-                <!-- Cerro Largo -->
-                <path d="M70,35 L280,35 L305,85 L270,110 L210,95 L150,115 L85,98 Z" 
-                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
-                <text x="185" y="75" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">CERRO LARGO</text>
-                
-                <!-- Treinta y Tres -->
-                <path d="M150,115 L270,110 L295,165 L260,210 L200,215 L140,180 L130,145 Z" 
-                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
-                <text x="215" y="160" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">TREINTA Y TRES</text>
-                
-                <!-- Lavalleja -->
-                <path d="M85,98 L150,115 L130,145 L140,180 L95,200 L55,160 L60,115 Z" 
-                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
-                <text x="100" y="145" text-anchor="middle" fill="#fff" font-size="10" font-weight="700">LAVALLEJA</text>
-                
-                <!-- Maldonado - Highlighted -->
-                <path d="M95,200 L140,180 L200,215 L208,270 L170,310 L115,302 L85,260 L80,215 Z" 
-                      fill="#55ACEE" stroke="#fff" stroke-width="3" opacity="0.9"/>
-                <text x="145" y="250" text-anchor="middle" fill="#0D2259" font-size="12" font-weight="800">MALDONADO</text>
-                
-                <!-- Rocha -->
-                <path d="M200,215 L260,210 L320,230 L345,280 L330,340 L275,360 L220,352 L175,325 L170,310 L208,270 Z" 
-                      fill="url(#mapGrad)" stroke="#55ACEE" stroke-width="2" opacity="0.8"/>
-                <text x="260" y="290" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">ROCHA</text>
-                
-                <!-- Punta del Este Marker -->
-                <circle cx="125" cy="315" r="8" fill="#1DB97B" stroke="#fff" stroke-width="2"/>
-                <circle cx="125" cy="315" r="14" fill="none" stroke="#1DB97B" stroke-width="1.5" opacity="0.5"/>
-                <text x="125" y="340" text-anchor="middle" fill="#fff" font-size="9" font-weight="600">Punta del Este</text>
-            </svg>
+        <div class="feature-item anim-ready anim-delay-1">
+          <div class="feature-icon" aria-hidden="true"><svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
+          <h3 class="feature-title" data-i18n="feat.sec.title">Seguridad Garantizada</h3>
+          <p  class="feature-description" data-i18n="feat.sec.desc">Encriptación de nivel empresarial y protocolos de seguridad certificados para proteger tus datos.</p>
         </div>
+        <div class="feature-item anim-ready anim-delay-2">
+          <div class="feature-icon" aria-hidden="true"><svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg></div>
+          <h3 class="feature-title" data-i18n="feat.api.title">APIs Completas</h3>
+          <p  class="feature-description" data-i18n="feat.api.desc">Integración perfecta con documentación exhaustiva y SDKs para todos los lenguajes principales.</p>
+        </div>
+        <div class="feature-item anim-ready anim-delay-3">
+          <div class="feature-icon" aria-hidden="true"><svg class="icon-lg" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg></div>
+          <h3 class="feature-title" data-i18n="feat.cloud.title">Cloud Native</h3>
+          <p  class="feature-description" data-i18n="feat.cloud.desc">Arquitectura distribuida y escalable diseñada para crecer con tus necesidades sin límites.</p>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- STATS -->
-<section class="stats-section">
+  <section class="stats">
     <div class="stats-grid">
-        <div class="stat-item">
-            <h3>55x</h3>
-            <p>Más rápido que la competencia</p>
-        </div>
-        <div class="stat-item">
-            <h3>2.3ms</h3>
-            <p>Latencia de inferencia</p>
-        </div>
-        <div class="stat-item">
-            <h3>99.8%</h3>
-            <p>Uptime garantizado</p>
-        </div>
-        <div class="stat-item">
-            <h3>150+</h3>
-            <p>Empresas confían en nosotros</p>
-        </div>
+      <div class="stat-item anim-ready"><div class="stat-number">8</div><div class="stat-label" data-i18n="stat.products">Productos Activos</div></div>
+      <div class="stat-item anim-ready anim-delay-1"><div class="stat-number">99.9%</div><div class="stat-label" data-i18n="stat.uptime">Uptime Garantizado</div></div>
+      <div class="stat-item anim-ready anim-delay-2"><div class="stat-number">24/7</div><div class="stat-label" data-i18n="stat.support">Soporte Técnico</div></div>
+      <div class="stat-item anim-ready anim-delay-3"><div class="stat-number">2026</div><div class="stat-label" data-i18n="stat.tech">Tecnología de Futuro</div></div>
     </div>
-</section>
+  </section>
 
-<!-- COMPARISON -->
-<section class="comparison-section" id="comparacion">
-    <div class="container">
-        <div class="section-header fade-up">
-            <span class="section-tag">Ventaja Competitiva</span>
-            <h2 class="section-title">¿Por qué elegir Datos del Este?</h2>
-            <p class="section-lead">
-                La diferencia no es solo técnica — es de contexto local, 
-                cumplimiento normativo y equipos que entienden el territorio.
-            </p>
-        </div>
-
-        <div class="comparison-table fade-up">
-            <div class="comp-header">
-                <div>Métrica</div>
-                <div>Competencia Internacional</div>
-                <div>Datos del Este</div>
-            </div>
-            <div class="comp-row">
-                <div>
-                    <div class="comp-metric">Latencia de inferencia</div>
-                    <div class="comp-sub">Tiempo de respuesta real</div>
-                </div>
-                <div class="comp-bad">127ms</div>
-                <div class="comp-good">2.3ms <span class="comp-badge">55x mejor</span></div>
-            </div>
-            <div class="comp-row">
-                <div>
-                    <div class="comp-metric">Contexto local</div>
-                    <div class="comp-sub">Datos del Este de Uruguay</div>
-                </div>
-                <div class="comp-bad">Sin datos locales</div>
-                <div class="comp-good">Datos regionales nativos <span class="comp-badge">Exclusivo</span></div>
-            </div>
-            <div class="comp-row">
-                <div>
-                    <div class="comp-metric">Cumplimiento legal</div>
-                    <div class="comp-sub">LPDP y regulaciones locales</div>
-                </div>
-                <div class="comp-bad">Sin soporte LPDP</div>
-                <div class="comp-good">100% compliant <span class="comp-badge">RUPE</span></div>
-            </div>
-            <div class="comp-row">
-                <div>
-                    <div class="comp-metric">Soporte técnico</div>
-                    <div class="comp-sub">Idioma y zona horaria</div>
-                </div>
-                <div class="comp-bad">Inglés solo / UTC diferente</div>
-                <div class="comp-good">Español nativo / GMT-3 <span class="comp-badge">Local</span></div>
-            </div>
-            <div class="comp-row">
-                <div>
-                    <div class="comp-metric">CFD Integrado</div>
-                    <div class="comp-sub">Dinámica de fluidos computacional</div>
-                </div>
-                <div class="comp-bad">No disponible</div>
-                <div class="comp-good">DataFlow CFD <span class="comp-badge">Único en LATAM</span></div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contacto">
+  <section class="cta" id="contact">
     <div class="cta-content">
-        <h2>¿Listo para transformar tu organización?</h2>
-        <p>
-            Únete a las empresas, instituciones educativas y organizaciones 
-            del Este que ya están usando IA de clase mundial con contexto local.
-        </p>
-        <div class="cta-buttons">
-            <a href="mailto:soporte@datosdeleste.uy?subject=Solicito Demo" class="btn-white">🚀 Solicitar Demo Gratuita</a>
-            <a href="tel:+59896308883" class="btn-outline">📞 +598 96 308 883</a>
-        </div>
+      <h2 class="cta-title" data-i18n="cta.title">Listo para Comenzar</h2>
+      <p class="cta-subtitle" data-i18n="cta.subtitle">Únete a las organizaciones que confían en RIVA LABS para transformar sus operaciones</p>
+      <div class="cta-buttons">
+        <a href="#contact" class="btn btn-white">
+          <span data-i18n="cta.btn1">Comenzar Ahora</span>
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </a>
+        <a href="#demo" class="btn btn-outline"><span data-i18n="cta.btn2">Ver Demo</span></a>
+      </div>
     </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-    <div class="footer-grid">
-        <div class="footer-brand">
-            <h3>Datos del Este</h3>
-            <p>
-                Departamento regional de Riva Labs especializado en inteligencia 
-                artificial para el Este de Uruguay. Parte de la delegación 
-                empresarial a China con el presidente Yamandú Orsi — Febrero 2026.
-            </p>
-            <div class="footer-badge">🔬 by Riva Labs S.A.S.</div>
+  <footer class="footer" id="about">
+    <div class="footer-container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">RIVA LABS</div>
+          <p class="footer-description" data-i18n="footer.desc">Investigación y desarrollo de sistemas computacionales avanzados para el próximo orden tecnológico.</p>
         </div>
-        <div class="footer-col">
-            <h4>Pilares</h4>
-            <ul class="footer-links">
-                <li><a href="#territorio">Territorio & Recursos</a></li>
-                <li><a href="#educacion">Educación & Inteligencia</a></li>
-                <li><a href="#empresas">Desarrollo & Finanzas</a></li>
-            </ul>
+        <div class="footer-section">
+          <h4 data-i18n="footer.col1">Productos</h4>
+          <ul class="footer-links"><li><a href="#">Flight AI</a></li><li><a href="#">RIVA Mind</a></li><li><a href="#">BioSim</a></li><li><a href="#">MatLab</a></li></ul>
         </div>
-        <div class="footer-col">
-            <h4>Departamentos</h4>
-            <ul class="footer-links">
-                <li><a href="#">Maldonado</a></li>
-                <li><a href="#">Rocha</a></li>
-                <li><a href="#">Lavalleja</a></li>
-                <li><a href="#">Treinta y Tres</a></li>
-                <li><a href="#">Cerro Largo</a></li>
-            </ul>
+        <div class="footer-section">
+          <h4 data-i18n="footer.col2">Plataformas</h4>
+          <ul class="footer-links"><li><a href="#">Voces del Futuro</a></li><li><a href="#">RIVALabsCoin</a></li><li><a href="#">LittleAngel</a></li><li><a href="#">RIVA Predict</a></li></ul>
         </div>
-        <div class="footer-col">
-            <h4>Contacto</h4>
-            <ul class="footer-links">
-                <li>📧 soporte@datosdeleste.uy</li>
-                <li>📞 +598 96 308 883</li>
-                <li>📍 Juan Benito Blanco 780<br>11300 Montevideo</li>
-            </ul>
+        <div class="footer-section">
+          <h4 data-i18n="footer.col3">Recursos</h4>
+          <ul class="footer-links">
+            <li><a href="#" data-i18n="footer.docs">Documentación</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#" data-i18n="footer.support">Soporte</a></li>
+          </ul>
         </div>
+      </div>
+      <div class="footer-bottom">
+        <div>© 2026 RIVA LABS S.A.S. · Uruguay · USA · Japón · Suiza</div>
+        <nav class="footer-social" aria-label="Redes sociales">
+        </nav>
+      </div>
     </div>
-    <div class="footer-bottom">
-        <p>© 2026 Datos del Este — Riva Labs S.A.S. · Inscripta en RUPE · Todos los derechos reservados</p>
-        <div class="footer-badges">
-            <span class="fbadge">LPDP</span>
-            <span class="fbadge">RUPE</span>
-            <span class="fbadge">99.8% Uptime</span>
-            <span class="fbadge">ISO Ready</span>
+  </footer>
+
+  <!-- RIVA VUELOS MODAL (Flight AI, 4 slides static) -->
+  <div class="rv-overlay" id="rivaVuelosOverlay" role="dialog" aria-modal="true" aria-label="RIVA Vuelos">
+    <div class="rv-backdrop"></div>
+    <div class="rv-modal">
+      <button class="rv-arrow" id="rvPrev" aria-label="Anterior" aria-disabled="true" onclick="rvNav(-1)">&#8592;</button>
+      <div class="rv-phone-shell">
+        <span class="rv-counter" id="rvCounter" aria-live="polite">SLIDE 1 / 4</span>
+        <button class="rv-close" onclick="closeRivaVuelos()" aria-label="Cerrar">&#10005;</button>
+        <div class="rv-phone">
+          <div class="rv-track-wrap">
+            <div class="rv-track" id="rvTrack">
+
+              <!-- S1 HOOK -->
+              <div class="rv-slide" style="background:#030712">
+                <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(6,182,212,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.07) 1px,transparent 1px);background-size:40px 40px"></div>
+                <div style="position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:420px;height:420px;background:radial-gradient(circle,rgba(6,182,212,.18) 0%,transparent 65%);pointer-events:none"></div>
+                <div style="position:absolute;bottom:-40px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,rgba(99,102,241,.15) 0%,transparent 65%);pointer-events:none"></div>
+                <div class="rv-inner" style="padding:56px 26px 34px">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="display:flex;align-items:center;gap:9px">
+                      <div class="rv-logo-mark">RV</div>
+                      <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1px">RIVA LABS</span>
+                    </div>
+                    <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,.25);border-radius:9999px;padding:5px 12px;font-size:10px;font-weight:700;color:#06b6d4;letter-spacing:1.5px;text-transform:uppercase">
+                      <span style="width:6px;height:6px;background:#06b6d4;border-radius:50%;animation:blink 1.5s infinite"></span>Ya llegó
+                    </div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:11px">
+                    <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase">Nueva plataforma</div>
+                    <div style="font-size:48px;font-weight:800;line-height:1;color:#fff;letter-spacing:-1.5px">Vuela<br>más<br><span style="color:#06b6d4">inteligente.</span></div>
+                    <div style="font-size:12.5px;color:rgba(255,255,255,.48);line-height:1.6">Presentamos RIVA Vuelos — inteligencia artificial para comprar vuelos al mejor precio, siempre.</div>
+                  </div>
+                  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+                    <div><div style="font-size:10px;color:rgba(255,255,255,.18);letter-spacing:1px">@rlabs.ch</div><div style="font-size:9px;color:rgba(255,255,255,.1);margin-top:2px">rlabs.ch</div></div>
+                    <div style="font-size:40px;opacity:.1;transform:rotate(30deg);line-height:1">✈</div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- S2 VIAJEROS -->
+              <div class="rv-slide" style="background:#fff">
+                <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#06b6d4,#6366f1,#a855f7)"></div>
+                <div class="rv-inner" style="padding:52px 26px 30px">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="font-size:12px;font-weight:700;color:#0f172a">RIVA <span style="color:#06b6d4">Vuelos</span></div>
+                    <div style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:9999px;padding:3px 10px;font-size:10px;font-weight:600;color:#16a34a">Para viajeros</div>
+                  </div>
+                  <div>
+                    <div style="font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#06b6d4;margin-bottom:7px">¿Cómo funciona?</div>
+                    <div style="font-size:33px;font-weight:800;line-height:1.1;color:#0f172a;letter-spacing:-1px;margin-bottom:12px">Comprá el<br>vuelo <em style="font-style:normal;color:#6366f1">exacto</em><br>cuando baja.</div>
+                    <div style="font-size:12.5px;color:#64748b;line-height:1.6;margin-bottom:16px">Nuestra IA analiza miles de precios en tiempo real y te avisa cuándo comprar para pagar lo mínimo.</div>
+                    <div style="display:flex;flex-direction:column;gap:7px">
+                      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px 13px;display:flex;align-items:center;gap:11px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(6,182,212,.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">📊</div><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#0f172a;margin-bottom:1px">Predicción de precios</strong><span style="font-size:10.5px;color:#94a3b8">IA que anticipa cuándo bajan</span></div></div>
+                      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px 13px;display:flex;align-items:center;gap:11px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(99,102,241,.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">🔔</div><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#0f172a;margin-bottom:1px">Alertas en tiempo real</strong><span style="font-size:10.5px;color:#94a3b8">Te avisamos en el momento justo</span></div></div>
+                      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px 13px;display:flex;align-items:center;gap:11px"><div style="width:32px;height:32px;border-radius:8px;background:rgba(16,185,129,.1);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">🌿</div><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#0f172a;margin-bottom:1px">Huella de carbono</strong><span style="font-size:10.5px;color:#94a3b8">Elegí opciones más sostenibles</span></div></div>
+                    </div>
+                  </div>
+                  <div style="text-align:center;font-size:10.5px;color:#cbd5e1;letter-spacing:1px">✈ rtravel.ch</div>
+                </div>
+              </div>
+
+              <!-- S3 B2B -->
+              <div class="rv-slide" style="background:#020617">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(99,102,241,.22) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(6,182,212,.15) 0%,transparent 50%)"></div>
+                <div class="rv-inner" style="padding:52px 26px 34px;position:relative;z-index:1">
+                  <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="font-size:12px;font-weight:700;color:#fff">RIVA <span style="color:#06b6d4">Vuelos</span></div>
+                    <div style="background:rgba(99,102,241,.2);border:1px solid rgba(99,102,241,.35);border-radius:9999px;padding:3px 10px;font-size:10px;font-weight:700;color:#a5b4fc;letter-spacing:1px">B2B</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:11px">
+                    <div style="font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#6366f1">Para agencias de viaje</div>
+                    <div style="font-size:34px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-1px">La herramienta<br>que tu agencia<br>necesitaba.</div>
+                    <div style="font-size:12.5px;color:rgba(255,255,255,.43);line-height:1.6">Potenciá tu agencia con tecnología de alto nivel. Tus clientes cobran mejor servicio, vos cobrás más.</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:7px">
+                    <div style="display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px"><span style="font-size:10px;font-weight:700;color:#6366f1;width:20px;flex-shrink:0">01</span><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#fff;margin-bottom:1px">Dashboard profesional</strong><span style="font-size:10.5px;color:rgba(255,255,255,.33)">Gestioná todos tus clientes</span></div><span style="font-size:12px;color:#6366f1;opacity:.7">✓</span></div>
+                    <div style="display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px"><span style="font-size:10px;font-weight:700;color:#6366f1;width:20px;flex-shrink:0">02</span><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#fff;margin-bottom:1px">API &amp; White Label</strong><span style="font-size:10.5px;color:rgba(255,255,255,.33)">Integración directa con tu sistema</span></div><span style="font-size:12px;color:#6366f1;opacity:.7">✓</span></div>
+                    <div style="display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px"><span style="font-size:10px;font-weight:700;color:#6366f1;width:20px;flex-shrink:0">03</span><div><strong style="display:block;font-size:11.5px;font-weight:700;color:#fff;margin-bottom:1px">15+ aerolíneas en tiempo real</strong><span style="font-size:10.5px;color:rgba(255,255,255,.33)">Comparación automática</span></div><span style="font-size:12px;color:#6366f1;opacity:.7">✓</span></div>
+                  </div>
+                  <div style="display:flex;justify-content:center"><div style="background:linear-gradient(135deg,#6366f1,#06b6d4);border-radius:9999px;padding:10px 22px;font-size:12px;font-weight:700;color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.4)">✉ Contactanos para una demo</div></div>
+                </div>
+              </div>
+
+              <!-- S4 CTA -->
+              <div class="rv-slide" style="background:#0c0f1a">
+                <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 28%,rgba(6,182,212,.13) 0%,transparent 55%),radial-gradient(ellipse at 50% 88%,rgba(99,102,241,.1) 0%,transparent 55%)"></div>
+                <div style="position:absolute;left:50%;bottom:148px;transform:translateX(-50%);display:flex;flex-direction:column;gap:11px;align-items:center">
+                  <div style="width:4px;height:4px;border-radius:50%;background:#06b6d4;box-shadow:0 0 7px #06b6d4"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.12)"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:#06b6d4;box-shadow:0 0 7px #06b6d4"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.12)"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:#06b6d4;box-shadow:0 0 7px #06b6d4"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.12)"></div>
+                  <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.12)"></div>
+                </div>
+                <div class="rv-inner" style="padding:52px 26px 38px;align-items:center;text-align:center;position:relative;z-index:1">
+                  <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+                    <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6)">RIVA <span style="color:#06b6d4">Vuelos</span></div>
+                    <div style="font-size:9.5px;color:rgba(255,255,255,.18);letter-spacing:1.5px;text-transform:uppercase">↑ Visitanos</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+                    <div style="position:relative;width:66px;height:66px;display:flex;align-items:center;justify-content:center">
+                      <div style="position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(6,182,212,.28);animation:spin 8s linear infinite"></div>
+                      <div style="font-size:32px;filter:drop-shadow(0 0 16px rgba(6,182,212,.6))">✈️</div>
+                    </div>
+                    <div style="font-size:40px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-1.5px">Listo<br>para<br><span style="background:linear-gradient(135deg,#06b6d4,#6366f1);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">despegar.</span></div>
+                    <div style="font-size:12.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:230px">Particulares, agencias y empresas — todos con acceso a la inteligencia del mercado de vuelos.</div>
+                  </div>
+                  <div style="display:flex;flex-direction:column;gap:9px;align-items:center;width:100%">
+                    <div style="width:100%;background:linear-gradient(135deg,#06b6d4,#6366f1);border-radius:12px;padding:13px;font-size:13px;font-weight:700;color:#fff;box-shadow:0 8px 24px rgba(6,182,212,.35);display:flex;align-items:center;justify-content:center;gap:7px">🚀&nbsp;Empezá gratis hoy</div>
+                    <div style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:11px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;gap:7px">💼&nbsp;Soy agencia — quiero una demo</div>
+                    <div style="font-size:10.5px;color:rgba(255,255,255,.16);letter-spacing:1px">@rlabs.ch · rlabs.ch</div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
         </div>
+        <div class="rv-dots" id="rvDots" role="tablist">
+          <div class="rv-dot active" onclick="rvGoTo(0)" role="tab" aria-selected="true"></div>
+          <div class="rv-dot" onclick="rvGoTo(1)" role="tab" aria-selected="false"></div>
+          <div class="rv-dot" onclick="rvGoTo(2)" role="tab" aria-selected="false"></div>
+          <div class="rv-dot" onclick="rvGoTo(3)" role="tab" aria-selected="false"></div>
+        </div>
+      </div>
+      <button class="rv-arrow" id="rvNext" aria-label="Siguiente" aria-disabled="false" onclick="rvNav(1)">&#8594;</button>
     </div>
-</footer>
+  </div>
 
-<script>
-    // Navbar scroll effect
-    const navbar = document.getElementById('navbar');
-    let lastScroll = 0;
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
-        
-        if (currentScroll > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
-        }
-        
-        if (currentScroll > lastScroll && currentScroll > 200) {
-            navbar.classList.add('hidden');
-        } else {
-            navbar.classList.remove('hidden');
-        }
-        
-        lastScroll = currentScroll;
-    });
+  <!-- GENERIC PRODUCT MODAL (6 slides, JS-rendered) -->
+  <div class="rv-overlay" id="productModal" role="dialog" aria-modal="true" aria-label="Preview">
+    <div class="rv-backdrop"></div>
+    <div class="rv-modal">
+      <button class="rv-arrow" id="pmPrev" aria-label="Anterior" aria-disabled="true" onclick="pmNav(-1)">&#8592;</button>
+      <div class="rv-phone-shell">
+        <span class="rv-counter" id="pmCounter" aria-live="polite">SLIDE 1 / 6</span>
+        <button class="rv-close" onclick="pmClose()" aria-label="Cerrar">&#10005;</button>
+        <div class="rv-phone">
+          <div class="rv-track-wrap">
+            <div class="rv-track" id="pmTrack"></div>
+          </div>
+        </div>
+        <div class="rv-dots" id="pmDots" role="tablist"></div>
+      </div>
+      <button class="rv-arrow" id="pmNext" aria-label="Siguiente" aria-disabled="false" onclick="pmNav(1)">&#8594;</button>
+    </div>
+  </div>
 
-    // Smooth scroll
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
+  <script>
+  'use strict';
+  const $=id=>document.getElementById(id);
+  const $$=sel=>document.querySelectorAll(sel);
 
-    // Pillar tabs
-    function showPillar(index) {
-        // Update tabs
-        document.querySelectorAll('.pillar-tab').forEach((tab, i) => {
-            tab.classList.toggle('active', i === index);
-        });
-        
-        // Update content
-        document.querySelectorAll('.pillar-content').forEach((content, i) => {
-            content.classList.toggle('active', i === index);
-        });
+  // ── Mobile nav ──
+  const toggle=$('mobileToggle'),mobileMenu=$('mobileMenu');
+  toggle.addEventListener('click',()=>{const o=mobileMenu.classList.toggle('open');toggle.classList.toggle('open',o);toggle.setAttribute('aria-expanded',o);});
+  function closeMobileMenu(){mobileMenu.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+  document.addEventListener('click',e=>{if(!e.target.closest('.nav')&&!e.target.closest('.nav-mobile'))closeMobileMenu();});
+
+  // ── Navbar scroll ──
+  window.addEventListener('scroll',()=>{$('mainNav').classList.toggle('scrolled',window.scrollY>20);},{passive:true});
+
+  // ── Scroll animations ──
+  const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}}),{threshold:.12});
+  $$('.anim-ready').forEach(el=>obs.observe(el));
+
+  // ════ i18n ════
+  const I18N={
+    es:{
+      'nav.products':'Productos','nav.features':'Características','nav.about':'Nosotros','nav.contact':'Contacto',
+      'hero.badge':'Uruguay · USA · Japón · Suiza · Sistema operativo','hero.h1a':'Infraestructura','hero.h1b':'para el Futuro',
+      'hero.subtitle':'RIVA LABS desarrolla sistemas de inteligencia artificial, robótica autónoma y plataformas computacionales para investigación científica, finanzas cuantitativas y transformación educativa.',
+      'hero.cta1':'Explorar Productos','hero.cta2':'Documentación',
+      'products.label':'Ecosistema','products.title':'Ecosistema de Productos',
+      'products.subtitle':'Ocho sistemas integrados que redefinen los límites de lo computacionalmente posible',
+      'p.flights.name':'Flight AI','p.flights.tag':'Siempre el mejor precio','p.flights.desc':'IA que optimiza cualquier ticket aéreo en tiempo real, garantizando ahorros significativos en cada búsqueda.',
+      'p.mind.name':'RIVA Mind','p.mind.tag':'Inteligencia especializada','p.mind.desc':'Modelo de lenguaje propio optimizado para dominios técnicos, científicos y financieros.',
+      'p.biosim.name':'BioSim','p.biosim.tag':'Simulación molecular','p.biosim.desc':'Plataforma de modelado químico-biológico para descubrimiento de compuestos y análisis de sistemas complejos.',
+      'p.matlab.name':'MatLab','p.matlab.tag':'Ingeniería de materiales','p.matlab.desc':'Diseño y predicción computacional de propiedades de materiales mediante machine learning.',
+      'p.voces.name':'Voces del Futuro','p.voces.tag':'Plataforma educativa','p.voces.desc':'Sistema educativo integral descargable con contenido adaptativo y herramientas pedagógicas avanzadas.',
+      'p.coin.name':'RIVALabsCoin','p.coin.tag':'Blockchain científico','p.coin.desc':'Criptomoneda para transacciones en ecosistemas de investigación con wallet y minería integrados.',
+      'p.angel.name':'LittleAngel','p.angel.tag':'Robótica autónoma','p.angel.desc':'Robots humanoides, cuadrúpedos y drones con programación personalizada y reconocimiento biométrico único.',
+      'p.predict.name':'RIVA Predict','p.predict.tag':'Trading de precisión','p.predict.desc':'Señales diarias de trading con precisión superior al 80%. Modelos propietarios para mercados globales.',
+      'p.access':'Acceder','p.download':'Descargar',
+      'badge.flights':'✨ Nuevo lanzamiento — Ver preview','badge.mind':'🧠 Ver RIVA Mind','badge.biosim':'🧬 Ver BioSim','badge.matlab':'⚙️ Ver MatLab','badge.voces':'📚 Ver Voces del Futuro','badge.coin':'🪙 Ver RIVALabsCoin','badge.angel':'🤖 Ver LittleAngel','badge.predict':'📈 Ver RIVA Predict',
+      'features.label':'Tecnología','features.title':'Tecnología de Vanguardia','features.subtitle':'Construido con las herramientas más avanzadas para entregar rendimiento excepcional',
+      'feat.perf.title':'Rendimiento Extremo','feat.perf.desc':'Infraestructura optimizada para procesar millones de operaciones por segundo sin comprometer la precisión.',
+      'feat.sec.title':'Seguridad Garantizada','feat.sec.desc':'Encriptación de nivel empresarial y protocolos de seguridad certificados para proteger tus datos.',
+      'feat.api.title':'APIs Completas','feat.api.desc':'Integración perfecta con documentación exhaustiva y SDKs para todos los lenguajes principales.',
+      'feat.cloud.title':'Cloud Native','feat.cloud.desc':'Arquitectura distribuida y escalable diseñada para crecer con tus necesidades sin límites.',
+      'stat.products':'Productos Activos','stat.uptime':'Uptime Garantizado','stat.support':'Soporte Técnico','stat.tech':'Tecnología de Futuro',
+      'cta.title':'Listo para Comenzar','cta.subtitle':'Únete a las organizaciones que confían en RIVA LABS para transformar sus operaciones','cta.btn1':'Comenzar Ahora','cta.btn2':'Ver Demo',
+      'footer.desc':'Investigación y desarrollo de sistemas computacionales avanzados para el próximo orden tecnológico.','footer.col1':'Productos','footer.col2':'Plataformas','footer.col3':'Recursos','footer.docs':'Documentación','footer.support':'Soporte',
+    },
+    en:{
+      'nav.products':'Products','nav.features':'Features','nav.about':'About','nav.contact':'Contact',
+      'hero.badge':'Uruguay · USA · Japan · Switzerland · System live','hero.h1a':'Infrastructure','hero.h1b':'for the Future',
+      'hero.subtitle':'RIVA LABS builds artificial intelligence systems, autonomous robotics, and computational platforms for scientific research, quantitative finance, and educational transformation.',
+      'hero.cta1':'Explore Products','hero.cta2':'Documentation',
+      'products.label':'Ecosystem','products.title':'Product Ecosystem','products.subtitle':'Eight integrated systems redefining the boundaries of what is computationally possible',
+      'p.flights.name':'Flight AI','p.flights.tag':'Always the best price','p.flights.desc':'AI that optimizes any flight ticket in real time, guaranteeing significant savings on every search.',
+      'p.mind.name':'RIVA Mind','p.mind.tag':'Specialized intelligence','p.mind.desc':'Proprietary language model optimized for technical, scientific, and financial domains.',
+      'p.biosim.name':'BioSim','p.biosim.tag':'Molecular simulation','p.biosim.desc':'Chemical-biological modeling platform for compound discovery and complex systems analysis.',
+      'p.matlab.name':'MatLab','p.matlab.tag':'Materials engineering','p.matlab.desc':'Computational design and prediction of material properties through machine learning.',
+      'p.voces.name':'Voices of the Future','p.voces.tag':'Educational platform','p.voces.desc':'Comprehensive downloadable educational system with adaptive content and advanced pedagogical tools.',
+      'p.coin.name':'RIVALabsCoin','p.coin.tag':'Scientific blockchain','p.coin.desc':'Cryptocurrency for transactions in research ecosystems with integrated wallet and mining.',
+      'p.angel.name':'LittleAngel','p.angel.tag':'Autonomous robotics','p.angel.desc':'Humanoid robots, quadrupeds, and drones with custom programming and unique biometric recognition.',
+      'p.predict.name':'RIVA Predict','p.predict.tag':'Precision trading','p.predict.desc':'Daily trading signals with over 80% accuracy. Proprietary models for global markets.',
+      'p.access':'Access','p.download':'Download',
+      'badge.flights':'✨ New launch — Preview','badge.mind':'🧠 See RIVA Mind','badge.biosim':'🧬 See BioSim','badge.matlab':'⚙️ See MatLab','badge.voces':'📚 See Voices of the Future','badge.coin':'🪙 See RIVALabsCoin','badge.angel':'🤖 See LittleAngel','badge.predict':'📈 See RIVA Predict',
+      'features.label':'Technology','features.title':'Cutting-Edge Technology','features.subtitle':'Built with the most advanced tools to deliver exceptional performance',
+      'feat.perf.title':'Extreme Performance','feat.perf.desc':'Infrastructure optimized to process millions of operations per second without compromising accuracy.',
+      'feat.sec.title':'Guaranteed Security','feat.sec.desc':'Enterprise-grade encryption and certified security protocols to protect your data.',
+      'feat.api.title':'Complete APIs','feat.api.desc':'Seamless integration with exhaustive documentation and SDKs for all major languages.',
+      'feat.cloud.title':'Cloud Native','feat.cloud.desc':'Distributed and scalable architecture designed to grow with your needs without limits.',
+      'stat.products':'Active Products','stat.uptime':'Guaranteed Uptime','stat.support':'Technical Support','stat.tech':'Future Technology',
+      'cta.title':'Ready to Start','cta.subtitle':'Join the organizations that trust RIVA LABS to transform their operations','cta.btn1':'Get Started','cta.btn2':'See Demo',
+      'footer.desc':'Research and development of advanced computational systems for the next technological order.','footer.col1':'Products','footer.col2':'Platforms','footer.col3':'Resources','footer.docs':'Documentation','footer.support':'Support',
+    },
+    ja:{
+      'nav.products':'製品','nav.features':'機能','nav.about':'会社概要','nav.contact':'お問い合わせ',
+      'hero.badge':'ウルグアイ · アメリカ · 日本 · スイス · 稼働中','hero.h1a':'インフラストラクチャ','hero.h1b':'未来のための',
+      'hero.subtitle':'RIVA LABSは、科学研究・量的金融・教育変革のための人工知能システム、自律ロボティクス、計算プラットフォームを開発しています。',
+      'hero.cta1':'製品を探る','hero.cta2':'ドキュメント',
+      'products.label':'エコシステム','products.title':'製品エコシステム','products.subtitle':'計算的に可能な限界を再定義する8つの統合システム',
+      'p.flights.name':'Flight AI','p.flights.tag':'常に最安値','p.flights.desc':'リアルタイムでフライト料金を最適化するAI。すべての検索で大幅な節約を保証します。',
+      'p.mind.name':'RIVA Mind','p.mind.tag':'専門的知性','p.mind.desc':'技術・科学・金融分野に最適化した独自の言語モデル。',
+      'p.biosim.name':'BioSim','p.biosim.tag':'分子シミュレーション','p.biosim.desc':'化合物探索と複雑系分析のための化学・生物学モデリングプラットフォーム。',
+      'p.matlab.name':'MatLab','p.matlab.tag':'材料工学','p.matlab.desc':'機械学習による材料特性の計算設計と予測。',
+      'p.voces.name':'未来の声','p.voces.tag':'教育プラットフォーム','p.voces.desc':'適応型コンテンツと先進的な教育ツールを備えた総合的なダウンロード可能教育システム。',
+      'p.coin.name':'RIVALabsCoin','p.coin.tag':'科学的ブロックチェーン','p.coin.desc':'ウォレットとマイニングを統合した研究エコシステム向け暗号通貨。',
+      'p.angel.name':'LittleAngel','p.angel.tag':'自律ロボティクス','p.angel.desc':'カスタムプログラミングと固有の生体認識を備えた人型ロボット、四足歩行ロボット、ドローン。',
+      'p.predict.name':'RIVA Predict','p.predict.tag':'精密トレーディング','p.predict.desc':'80%以上の精度を誇る日次トレードシグナル。グローバル市場向け独自モデル。',
+      'p.access':'アクセス','p.download':'ダウンロード',
+      'badge.flights':'✨ 新ローンチ — プレビュー','badge.mind':'🧠 RIVA Mindを見る','badge.biosim':'🧬 BioSimを見る','badge.matlab':'⚙️ MatLabを見る','badge.voces':'📚 未来の声を見る','badge.coin':'🪙 RIVALabsCoinを見る','badge.angel':'🤖 LittleAngelを見る','badge.predict':'📈 RIVA Predictを見る',
+      'features.label':'テクノロジー','features.title':'最先端テクノロジー','features.subtitle':'卓越したパフォーマンスを実現する最高度のツールで構築',
+      'feat.perf.title':'極限のパフォーマンス','feat.perf.desc':'精度を損なうことなく毎秒数百万回の処理を行うよう最適化されたインフラ。',
+      'feat.sec.title':'保証されたセキュリティ','feat.sec.desc':'データを保護するエンタープライズ級暗号化と認定セキュリティプロトコル。',
+      'feat.api.title':'完全なAPI','feat.api.desc':'主要言語すべてのSDKと包括的なドキュメントによるシームレスな統合。',
+      'feat.cloud.title':'クラウドネイティブ','feat.cloud.desc':'制限なく成長ニーズに対応する分散型でスケーラブルなアーキテクチャ。',
+      'stat.products':'アクティブ製品','stat.uptime':'保証稼働率','stat.support':'技術サポート','stat.tech':'未来のテクノロジー',
+      'cta.title':'始める準備はできていますか','cta.subtitle':'RIVA LABSを信頼して業務を変革する組織に参加しましょう','cta.btn1':'今すぐ始める','cta.btn2':'デモを見る',
+      'footer.desc':'次世代技術秩序のための高度な計算システムの研究開発。','footer.col1':'製品','footer.col2':'プラットフォーム','footer.col3':'リソース','footer.docs':'ドキュメント','footer.support':'サポート',
     }
+  };
+  let currentLang='es';
+  function setLang(lang){
+    currentLang=lang;
+    const d=I18N[lang]||I18N.es;
+    $$('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(d[k]!=null)el.innerHTML=d[k];});
+    $$('.lang-btn').forEach(btn=>{const p=btn.textContent.trim()===lang.toUpperCase();btn.classList.toggle('active',p);btn.setAttribute('aria-pressed',p);});
+    document.documentElement.lang={es:'es',en:'en',ja:'ja'}[lang]||'es';
+  }
+  </script>
 
-    // Intersection Observer for animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  <script>
+  'use strict';
+  // ════ Product data ════
+  const FF="'Sora','Inter',sans-serif",FB="'DM Sans','Inter',sans-serif";
 
-    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  const PM={
+    mind:{name:'RIVA Mind',short:'Mind',accent:'#a855f7',dark:'#9333ea',emoji:'🧠',badge:'Disponible',_id:'mind',
+      s1:{eyebrow:'Inteligencia especializada',h:['Pensá','más','rápido.'],ai:2,sub:'RIVA Mind es el modelo de lenguaje de RIVA LABS — entrenado para dominios técnicos, científicos y financieros.'},
+      s2:{chip:'Para profesionales',label:'¿Qué puede hacer?',h:'Tu experto<br><em style="font-style:normal;color:#a855f7">siempre</em><br>disponible.',desc:'Responde preguntas complejas de ingeniería, ciencia y finanzas con precisión que los LLMs genéricos no logran.',items:[{e:'🧬',t:'Dominio técnico profundo',d:'Ciencia, finanzas, ingeniería'},{e:'⚡',t:'Respuestas instantáneas',d:'Consultas complejas en segundos'},{e:'🔌',t:'API integrable',d:'Embebido en tu sistema propio'}]},
+      s3:{label:'Para empresas e investigadores',h:'IA que\nsabe de\ntu industria.',desc:'No es un chatbot genérico. Habla tu idioma técnico y se adapta a tu dominio.',items:[{t:'Fine-tuning por sector',d:'Personalizable para tu empresa'},{t:'Despliegue on-premise',d:'Control total de tus datos'},{t:'Integración con tu stack',d:'Conectado a tus sistemas existentes'}],cta:'✉ Pedí una demo técnica'},
+      s4:{h:['Pensá','sin','límites.'],ai:2,desc:'Investigadores, empresas y desarrolladores ya trabajan diferente con RIVA Mind.',b1:'🧠 Accedé ahora',b2:'🏢 Integrá en tu empresa'}},
+    biosim:{name:'BioSim',short:'BioSim',accent:'#10b981',dark:'#059669',emoji:'🧬',badge:'Beta',_id:'biosim',
+      s1:{eyebrow:'Simulación molecular',h:['Simulá','lo','imposible.'],ai:2,sub:'BioSim es la plataforma de modelado químico-biológico para descubrimiento de compuestos y análisis de sistemas complejos.'},
+      s2:{chip:'Para investigadores',label:'¿Cómo funciona?',h:'Moléculas<br><em style="font-style:normal;color:#10b981">reales</em>,<br>simuladas.',desc:'Modelá interacciones moleculares, predecí propiedades y acelerá el descubrimiento de compuestos con IA.',items:[{e:'🔬',t:'Modelado molecular 3D',d:'Visualización y análisis avanzado'},{e:'💊',t:'Drug discovery',d:'Predicción de bioactividad'},{e:'📈',t:'Análisis de sistemas',d:'Redes biológicas complejas'}]},
+      s3:{label:'Para pharma, biotech y academia',h:'Ciencia\nmás\nrápida.',desc:'Reducí años de laboratorio a semanas. Simulá antes de sintetizar.',items:[{t:'Simulación de proteínas',d:'Folding y docking molecular'},{t:'Base de datos integrada',d:'Millones de compuestos indexados'},{t:'API para pipelines CI/CD',d:'Integrable en flujos científicos'}],cta:'✉ Contactar equipo científico'},
+      s4:{h:['Ciencia','sin','fronteras.'],ai:2,desc:'Laboratorios y universidades ya usan BioSim para acelerar sus investigaciones.',b1:'🧬 Accedé a BioSim',b2:'🏛 Licencia institucional'}},
+    matlab:{name:'RIVA MatLab',short:'MatLab',accent:'#f97316',dark:'#ea580c',emoji:'⚙️',badge:'Nuevo',_id:'matlab',
+      s1:{eyebrow:'Ingeniería de materiales',h:['Diseñá el','material','del futuro.'],ai:2,sub:'RIVA MatLab usa machine learning para predecir propiedades de materiales antes de fabricarlos.'},
+      s2:{chip:'Para ingenieros',label:'¿Qué hace?',h:'Predecí<br>antes de<br><em style="font-style:normal;color:#f97316">fabricar</em>.',desc:'Reducí costos y tiempo de desarrollo prediciendo resistencia, conductividad y durabilidad con ML.',items:[{e:'🏗️',t:'Predicción de propiedades',d:'Resistencia, dureza, conductividad'},{e:'🔄',t:'Optimización de composición',d:'Encontrá la fórmula ideal'},{e:'📊',t:'Base de datos de materiales',d:'Millones de muestras indexadas'}]},
+      s3:{label:'Para manufactura e industria',h:'Menos\nerrores,\nmás valor.',desc:'Ingenieros y fabricantes toman decisiones basadas en datos, no en intuición.',items:[{t:'Prototipado virtual',d:'Testeo sin costo de laboratorio'},{t:'Integración CAD/CAM',d:'Conectado a tus herramientas'},{t:'Reportes automáticos',d:'Documentación técnica instantánea'}],cta:'✉ Hablar con un especialista'},
+      s4:{h:['Fabricá','mejor,','siempre.'],ai:2,desc:'Empresas de manufactura e investigación ya aceleran su proceso con RIVA MatLab.',b1:'⚙️ Probá gratis',b2:'🏭 Licencia empresarial'}},
+    voces:{name:'Voces del Futuro',short:'Voces',accent:'#eab308',dark:'#ca8a04',emoji:'📚',badge:'Descargable',_id:'voces',
+      s1:{eyebrow:'Plataforma educativa',h:['Educación','que','transforma.'],ai:2,sub:'Voces del Futuro es un sistema educativo completo con contenido adaptativo, descargable y listo para usar.'},
+      s2:{chip:'Para estudiantes',label:'¿Cómo aprenden?',h:'Aprendé<br>a tu<br><em style="font-style:normal;color:#eab308">ritmo</em>.',desc:'Contenido adaptativo que se ajusta al nivel de cada alumno. Sin conexión, sin barreras, sin límites.',items:[{e:'🎯',t:'Contenido adaptativo',d:'Ajustado al nivel de cada uno'},{e:'📲',t:'100% offline',d:'Funciona sin internet'},{e:'🏆',t:'Certificación integrada',d:'Diplomas verificables'}]},
+      s3:{label:'Para instituciones y docentes',h:'Aulas\nque\nescalan.',desc:'Escuelas, municipios y organizaciones acceden a educación de calidad sin depender de conectividad.',items:[{t:'Panel docente completo',d:'Seguimiento por alumno'},{t:'Currículum personalizable',d:'Adaptado a tu institución'},{t:'Descarga masiva',d:'Para escuelas enteras'}],cta:'📥 Descargá la plataforma'},
+      s4:{h:['El futuro','ya','llegó.'],ai:2,desc:'Cientos de estudiantes ya acceden a educación de calidad con Voces del Futuro.',b1:'📥 Descargar gratis',b2:'🏫 Licencia institucional'}},
+    coin:{name:'RIVALabsCoin',short:'Coin',accent:'#f59e0b',dark:'#d97706',emoji:'🪙',badge:'En desarrollo',_id:'coin',
+      s1:{eyebrow:'Blockchain científico',h:['La moneda','de la','ciencia.'],ai:2,sub:'RIVALabsCoin es la criptomoneda del ecosistema RIVA LABS para transacciones en entornos de investigación.'},
+      s2:{chip:'Para investigadores',label:'¿Para qué sirve?',h:'Transacciones<br><em style="font-style:normal;color:#f59e0b">científicas</em><br>seguras.',desc:'Pagá servicios de simulación, accedé a bases de datos y monetizá tu investigación con RIVALabsCoin.',items:[{e:'💳',t:'Wallet integrado',d:'Fácil de usar desde el día 1'},{e:'⛏️',t:'Minería integrada',d:'Generá coin con tu hardware'},{e:'🔐',t:'Transacciones seguras',d:'Blockchain verificable'}]},
+      s3:{label:'Para el ecosistema RIVA',h:'Un token\npara todo\nel stack.',desc:'Usá RIVALabsCoin en BioSim, MatLab, RIVA Predict y todos los servicios RIVA.',items:[{t:'Acceso a servicios premium',d:'Simulaciones, datos, predicciones'},{t:'Marketplace de investigación',d:'Comprá y vendé resultados'},{t:'Gobernanza descentralizada',d:'Votá el roadmap del ecosistema'}],cta:'🪙 Unirse al ecosistema'},
+      s4:{h:['Invertí en','el futuro','hoy.'],ai:2,desc:'El token que conecta investigadores, empresas y plataformas en el ecosistema RIVA LABS.',b1:'🪙 Obtener RIVALabsCoin',b2:'📈 Ver tokenomics'}},
+    angel:{name:'LittleAngel',short:'Angel',accent:'#d946ef',dark:'#c026d3',emoji:'🤖',badge:'Preventa',_id:'angel',
+      s1:{eyebrow:'Robótica autónoma',h:['Robots','que','entienden.'],ai:2,sub:'LittleAngel es la línea de robots autónomos de RIVA LABS — humanoides, cuadrúpedos y drones con IA propia.'},
+      s2:{chip:'Para empresas',label:'¿Qué pueden hacer?',h:'Autónomos,<br><em style="font-style:normal;color:#d946ef">inteligentes</em>,<br>tuyos.',desc:'Robots programables con reconocimiento biométrico, navegación autónoma y adaptación en tiempo real.',items:[{e:'🦾',t:'Humanoides y cuadrúpedos',d:'Para industria y seguridad'},{e:'🚁',t:'Drones autónomos',d:'Vigilancia, entrega, inspección'},{e:'👁️',t:'Reconocimiento biométrico',d:'Identificación en tiempo real'}]},
+      s3:{label:'Para industria, seguridad y logística',h:'Automatizá\nlo que\nimporta.',desc:'Empresas de logística, seguridad e industria reemplazan tareas peligrosas con LittleAngel.',items:[{t:'Programación personalizada',d:'Adaptado a tu flujo de trabajo'},{t:'Flota centralizada',d:'Controlá múltiples robots en red'},{t:'Mantenimiento predictivo',d:'Diagnóstico autónomo integrado'}],cta:'🤖 Reservar una unidad'},
+      s4:{h:['El robot','que','esperabas.'],ai:2,desc:'Preventa disponible. Unidades limitadas para early adopters con condiciones especiales.',b1:'🤖 Reservar ahora',b2:'🏭 Solución empresarial'}},
+    predict:{name:'RIVA Predict',short:'Predict',accent:'#14b8a6',dark:'#0d9488',emoji:'📈',badge:'Activo',_id:'predict',
+      s1:{eyebrow:'Trading de precisión',h:['Operá','con','precisión.'],ai:2,sub:'RIVA Predict entrega señales de trading diarias con más del 80% de precisión usando modelos propietarios HMM+GPR.'},
+      s2:{chip:'Para traders',label:'¿Cómo funciona?',h:'Señales<br><em style="font-style:normal;color:#14b8a6">diarias</em>,<br>precisas.',desc:'Modelos HMM + GPR + Deep Learning analizan mercados globales y te dicen cuándo y qué operar.',items:[{e:'📊',t:'Señales con 80%+ de precisión',d:'Backtested en datos reales'},{e:'🌍',t:'Mercados globales',d:'Acciones, forex, cripto, commodities'},{e:'⚡',t:'Alertas en tiempo real',d:'Notificaciones antes del movimiento'}]},
+      s3:{label:'Para traders y fondos de inversión',h:'El edge\nque\nnecesitás.',desc:'Desde traders individuales hasta fondos institucionales usan RIVA Predict para operar con ventaja.',items:[{t:'API para trading automatizado',d:'Conectado a tu broker'},{t:'Dashboard de portfolio',d:'P&L y posiciones en tiempo real'},{t:'Reportes de riesgo',d:'Drawdown, Sharpe ratio, VaR'}],cta:'📈 Ver señales de hoy'},
+      s4:{h:['Cada','operación,','informada.'],ai:2,desc:'Traders de todo el mundo usan RIVA Predict para operar con ventaja estadística real.',b1:'📈 Empezar ahora',b2:'💼 Plan institucional'}},
+  };
 
-    // Console easter egg
-    console.log(`
-🇺🇾 Datos del Este — by Riva Labs S.A.S.
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Tres Pilares: Territorio | Educación | Empresas
-Cobertura: Maldonado, Rocha, Lavalleja, Treinta y Tres, Cerro Largo
-Delegación presidencial a China — Forbes Uruguay, Feb 2026
-    `);
-</script>
+  const PM_LANG={
+    en:{
+      mind:{eyebrow:'Specialized intelligence',h:['Think','faster,','always.'],ai:1,sub:"RIVA Mind is our LLM — engineered for technical, scientific and financial domains.",s2:{chip:'For professionals',label:'What can it do?',h:'Your expert<br><em style="font-style:normal;color:#a855f7">always</em><br>available.',desc:"Answers complex engineering, science and finance questions with precision generic LLMs can't match.",items:[{e:'🧬',t:'Deep technical domain',d:'Science, finance, engineering'},{e:'⚡',t:'Instant answers',d:'Complex queries in seconds'},{e:'🔌',t:'Integrable API',d:'Embedded in your own system'}]},s3:{label:'For enterprises & researchers',h:'AI that\nknows your\nindustry.',desc:"Not a generic chatbot. It speaks your technical language and adapts to your domain.",items:[{t:'Sector fine-tuning',d:'Customizable for your company'},{t:'On-premise deployment',d:'Full control of your data'},{t:'Stack integration',d:'Connected to your existing systems'}],cta:'✉ Request a technical demo'},s4:{h:['Think','without','limits.'],ai:2,desc:'Researchers, companies and developers already work differently with RIVA Mind.',b1:'🧠 Access now',b2:'🏢 Integrate in your company'}},
+      biosim:{eyebrow:'Molecular simulation',h:['Simulate','the','impossible.'],ai:2,sub:'BioSim is the chemical-biological modeling platform for compound discovery and complex systems.',s2:{chip:'For researchers',label:'How does it work?',h:'Real<br><em style="font-style:normal;color:#10b981">molecules</em>,<br>simulated.',desc:'Model molecular interactions, predict properties and accelerate compound discovery with AI.',items:[{e:'🔬',t:'3D molecular modeling',d:'Advanced visualization & analysis'},{e:'💊',t:'Drug discovery',d:'Bioactivity prediction'},{e:'📈',t:'Systems analysis',d:'Complex biological networks'}]},s3:{label:'For pharma, biotech & academia',h:'Faster\nscience.',desc:'Compress years of lab work into weeks. Simulate before synthesizing.',items:[{t:'Protein simulation',d:'Folding & molecular docking'},{t:'Integrated database',d:'Millions of indexed compounds'},{t:'CI/CD pipeline API',d:'Integrable in scientific workflows'}],cta:'✉ Contact scientific team'},s4:{h:['Science','without','borders.'],ai:2,desc:'Labs and universities already use BioSim to accelerate their research.',b1:'🧬 Access BioSim',b2:'🏛 Institutional license'}},
+      matlab:{eyebrow:'Materials engineering',h:['Design the','material','of the future.'],ai:2,sub:'RIVA MatLab uses machine learning to predict material properties before manufacturing.',s2:{chip:'For engineers',label:'What does it do?',h:'Predict<br>before<br><em style="font-style:normal;color:#f97316">manufacturing</em>.',desc:'Reduce cost and development time by predicting resistance, conductivity and durability with ML.',items:[{e:'🏗️',t:'Property prediction',d:'Resistance, hardness, conductivity'},{e:'🔄',t:'Composition optimization',d:'Find the ideal formula'},{e:'📊',t:'Materials database',d:'Millions of indexed samples'}]},s3:{label:'For manufacturing & industry',h:'Fewer\nerrors,\nmore value.',desc:'Engineers and manufacturers make decisions based on data, not intuition.',items:[{t:'Virtual prototyping',d:'Testing without lab cost'},{t:'CAD/CAM integration',d:'Connected to your tools'},{t:'Automated reports',d:'Instant technical documentation'}],cta:'✉ Talk to a specialist'},s4:{h:['Build','better,','always.'],ai:2,desc:'Manufacturing and research companies already accelerate their process with RIVA MatLab.',b1:'⚙️ Try free',b2:'🏭 Enterprise license'}},
+      voces:{eyebrow:'Educational platform',h:['Education','that','transforms.'],ai:2,sub:'Voices of the Future is a complete educational system with adaptive, downloadable, ready-to-use content.',s2:{chip:'For students',label:'How do they learn?',h:'Learn<br>at your<br><em style="font-style:normal;color:#eab308">own pace</em>.',desc:"Adaptive content that adjusts to each student's level. No internet, no barriers, no limits.",items:[{e:'🎯',t:'Adaptive content',d:'Adjusted to each level'},{e:'📲',t:'100% offline',d:'Works without internet'},{e:'🏆',t:'Integrated certification',d:'Verifiable diplomas'}]},s3:{label:'For institutions & teachers',h:'Classrooms\nthat\nscale.',desc:'Schools, municipalities and organizations access quality education without internet dependency.',items:[{t:'Full teacher dashboard',d:'Per-student tracking'},{t:'Customizable curriculum',d:'Adapted to your institution'},{t:'Mass download',d:'For entire schools'}],cta:'📥 Download the platform'},s4:{h:['The future','has','arrived.'],ai:2,desc:'Hundreds of students already access quality education with Voices of the Future.',b1:'📥 Download free',b2:'🏫 Institutional license'}},
+      coin:{eyebrow:'Scientific blockchain',h:['The coin','of','science.'],ai:2,sub:'RIVALabsCoin is the RIVA LABS ecosystem cryptocurrency for research environment transactions.',s2:{chip:'For researchers',label:'What is it for?',h:'Secure<br><em style="font-style:normal;color:#f59e0b">scientific</em><br>transactions.',desc:'Pay for simulation services, access databases and monetize your research with RIVALabsCoin.',items:[{e:'💳',t:'Integrated wallet',d:'Easy to use from day 1'},{e:'⛏️',t:'Integrated mining',d:'Generate coin with your hardware'},{e:'🔐',t:'Secure transactions',d:'Verifiable blockchain'}]},s3:{label:'For the RIVA ecosystem',h:'One token\nfor the\nwhole stack.',desc:'Use RIVALabsCoin in BioSim, MatLab, RIVA Predict and all RIVA services.',items:[{t:'Premium service access',d:'Simulations, data, predictions'},{t:'Research marketplace',d:'Buy and sell results'},{t:'Decentralized governance',d:'Vote on the ecosystem roadmap'}],cta:'🪙 Join the ecosystem'},s4:{h:['Invest in','the future','today.'],ai:2,desc:'The token connecting researchers, companies and platforms in the RIVA LABS ecosystem.',b1:'🪙 Get RIVALabsCoin',b2:'📈 See tokenomics'}},
+      angel:{eyebrow:'Autonomous robotics',h:['Robots','that','understand.'],ai:2,sub:"LittleAngel is RIVA LABS' autonomous robot line — humanoids, quadrupeds and drones with native AI.",s2:{chip:'For enterprises',label:'What can they do?',h:'Autonomous,<br><em style="font-style:normal;color:#d946ef">intelligent</em>,<br>yours.',desc:'Programmable robots with biometric recognition, autonomous navigation and real-time adaptation.',items:[{e:'🦾',t:'Humanoids & quadrupeds',d:'For industry & security'},{e:'🚁',t:'Autonomous drones',d:'Surveillance, delivery, inspection'},{e:'👁️',t:'Biometric recognition',d:'Real-time identification'}]},s3:{label:'For industry, security & logistics',h:'Automate\nwhat\nmatters.',desc:'Logistics, security and industry companies replace dangerous tasks with LittleAngel.',items:[{t:'Custom programming',d:'Adapted to your workflow'},{t:'Centralized fleet',d:'Control multiple robots in network'},{t:'Predictive maintenance',d:'Integrated autonomous diagnostics'}],cta:'🤖 Reserve a unit'},s4:{h:['The robot',"you've been",'waiting for.'],ai:2,desc:'Pre-sale available. Limited units for early adopters with special conditions.',b1:'🤖 Reserve now',b2:'🏭 Enterprise solution'}},
+      predict:{eyebrow:'Precision trading',h:['Trade','with','precision.'],ai:2,sub:'RIVA Predict delivers daily trading signals with over 80% accuracy using proprietary HMM+GPR models.',s2:{chip:'For traders',label:'How does it work?',h:'Daily<br><em style="font-style:normal;color:#14b8a6">signals</em>,<br>precise.',desc:'HMM + GPR + Deep Learning models analyze global markets and tell you when and what to trade.',items:[{e:'📊',t:'80%+ accuracy signals',d:'Backtested on real data'},{e:'🌍',t:'Global markets',d:'Stocks, forex, crypto, commodities'},{e:'⚡',t:'Real-time alerts',d:'Notifications before the move'}]},s3:{label:'For traders & investment funds',h:'The edge\nyou\nneed.',desc:'From individual traders to institutional funds, RIVA Predict provides a statistical advantage.',items:[{t:'Automated trading API',d:'Connected to your broker'},{t:'Portfolio dashboard',d:'P&L and positions in real time'},{t:'Risk reports',d:'Drawdown, Sharpe ratio, VaR'}],cta:"📈 See today's signals"},s4:{h:['Every','trade,','informed.'],ai:2,desc:'Traders worldwide use RIVA Predict to operate with real statistical advantage.',b1:'📈 Start now',b2:'💼 Institutional plan'}},
+    },
+    ja:{
+      mind:{eyebrow:'専門的知性',h:['より早く','より深く','考える。'],ai:1,sub:'RIVA Mindは技術・科学・金融分野向けに最適化されたRIVA LABSの独自LLMです。',s2:{chip:'プロ向け',label:'何ができますか？',h:'専門家が<br><em style="font-style:normal;color:#a855f7">いつでも</em><br>待機中。',desc:'汎用LLMでは不可能な精度で、工学・科学・金融の複雑な質問に答えます。',items:[{e:'🧬',t:'深い技術ドメイン',d:'科学、金融、工学'},{e:'⚡',t:'即時回答',d:'複雑なクエリを秒で処理'},{e:'🔌',t:'統合可能API',d:'独自システムに組み込み可能'}]},s3:{label:'企業・研究者向け',h:'あなたの業界を\n知るAI。',desc:'汎用チャットボットではありません。あなたの技術言語を話し、ドメインに適応します。',items:[{t:'セクター別ファインチューニング',d:'企業向けカスタマイズ可能'},{t:'オンプレミス展開',d:'データの完全管理'},{t:'スタック統合',d:'既存システムに接続'}],cta:'✉ 技術デモを依頼する'},s4:{h:['限界なく','思考','せよ。'],ai:2,desc:'研究者、企業、開発者がすでにRIVA Mindで異なる働き方をしています。',b1:'🧠 今すぐアクセス',b2:'🏢 企業導入'}},
+      biosim:{eyebrow:'分子シミュレーション',h:['不可能を','シミュレート','せよ。'],ai:1,sub:'BioSimは化合物探索と複雑系分析のための化学・生物学モデリングプラットフォームです。',s2:{chip:'研究者向け',label:'どのように機能しますか？',h:'本物の<br><em style="font-style:normal;color:#10b981">分子</em>を<br>シミュレート。',desc:'分子相互作用をモデル化し、特性を予測し、AIで化合物探索を加速します。',items:[{e:'🔬',t:'3D分子モデリング',d:'高度な可視化と分析'},{e:'💊',t:'創薬',d:'生物活性予測'},{e:'📈',t:'システム分析',d:'複雑な生物学的ネットワーク'}]},s3:{label:'製薬・バイオテク・学術機関向け',h:'より速い\n科学。',desc:'何年もの研究室作業を数週間に凝縮。合成前にシミュレート。',items:[{t:'タンパク質シミュレーション',d:'フォールディングと分子ドッキング'},{t:'統合データベース',d:'数百万の化合物をインデックス化'},{t:'CI/CDパイプラインAPI',d:'科学的ワークフローに統合可能'}],cta:'✉ 科学チームに連絡'},s4:{h:['国境なき','科学。',''],ai:1,desc:'研究所や大学がすでにBioSimを使って研究を加速しています。',b1:'🧬 BioSimにアクセス',b2:'🏛 機関ライセンス'}},
+      matlab:{eyebrow:'材料工学',h:['未来の','素材を','設計する。'],ai:1,sub:'RIVA MatLabは機械学習を使って製造前に材料特性を予測します。',s2:{chip:'エンジニア向け',label:'何をしますか？',h:'製造前に<br><em style="font-style:normal;color:#f97316">予測</em>する。',desc:'MLで耐久性・導電性・強度を予測することでコストと開発時間を削減します。',items:[{e:'🏗️',t:'特性予測',d:'耐久性、硬度、導電性'},{e:'🔄',t:'組成最適化',d:'理想的な配合を見つける'},{e:'📊',t:'材料データベース',d:'数百万のサンプルをインデックス化'}]},s3:{label:'製造業・産業向け',h:'エラー減少、\n価値増大。',desc:'エンジニアと製造業者が直感ではなくデータに基づいた意思決定を行います。',items:[{t:'バーチャルプロトタイピング',d:'研究室コストなしでテスト'},{t:'CAD/CAM統合',d:'あなたのツールに接続'},{t:'自動レポート',d:'即時技術文書作成'}],cta:'✉ 専門家と話す'},s4:{h:['常により','良く','構築する。'],ai:1,desc:'製造・研究企業がすでにRIVA MatLabでプロセスを加速しています。',b1:'⚙️ 無料で試す',b2:'🏭 企業ライセンス'}},
+      voces:{eyebrow:'教育プラットフォーム',h:['変革する','教育。',''],ai:1,sub:'未来の声は適応型コンテンツを備えた完全な教育システムで、ダウンロードしてすぐ使えます。',s2:{chip:'学生向け',label:'どのように学ぶ？',h:'自分の<br><em style="font-style:normal;color:#eab308">ペース</em>で<br>学ぶ。',desc:'各学生のレベルに合わせた適応型コンテンツ。インターネット不要、制限なし。',items:[{e:'🎯',t:'適応型コンテンツ',d:'各レベルに合わせて調整'},{e:'📲',t:'完全オフライン',d:'インターネットなしで動作'},{e:'🏆',t:'認定証統合',d:'検証可能な修了証'}]},s3:{label:'教育機関・教師向け',h:'スケールする\n教室。',desc:'学校、自治体、組織がインターネット接続なしで質の高い教育にアクセスできます。',items:[{t:'完全な教師ダッシュボード',d:'生徒別追跡'},{t:'カスタマイズ可能なカリキュラム',d:'機関に合わせて調整'},{t:'一括ダウンロード',d:'学校全体向け'}],cta:'📥 プラットフォームをダウンロード'},s4:{h:['未来は','すでに','到来した。'],ai:1,desc:'何百人もの学生がすでに未来の声で質の高い教育を受けています。',b1:'📥 無料でダウンロード',b2:'🏫 機関ライセンス'}},
+      coin:{eyebrow:'科学的ブロックチェーン',h:['科学の','コイン。',''],ai:1,sub:'RIVALabsCoinは研究環境でのトランザクションのためのRIVA LABSエコシステム暗号通貨です。',s2:{chip:'研究者向け',label:'何のためにありますか？',h:'安全な<br><em style="font-style:normal;color:#f59e0b">科学的</em><br>取引。',desc:'シミュレーションサービスへの支払い、データベースへのアクセス、研究の収益化にRIVALabsCoinを使用。',items:[{e:'💳',t:'統合ウォレット',d:'初日から簡単に使用可能'},{e:'⛏️',t:'統合マイニング',d:'ハードウェアでコイン生成'},{e:'🔐',t:'安全なトランザクション',d:'検証可能なブロックチェーン'}]},s3:{label:'RIVAエコシステム向け',h:'スタック全体の\nワントークン。',desc:'BioSim、MatLab、RIVA Predict、すべてのRIVAサービスでRIVALabsCoinを使用。',items:[{t:'プレミアムサービスアクセス',d:'シミュレーション、データ、予測'},{t:'研究マーケットプレイス',d:'結果の売買'},{t:'分散型ガバナンス',d:'エコシステムのロードマップに投票'}],cta:'🪙 エコシステムに参加'},s4:{h:['今日、未来に','投資','せよ。'],ai:1,desc:'RIVA LABSエコシステムの研究者、企業、プラットフォームをつなぐトークン。',b1:'🪙 RIVALabsCoinを入手',b2:'📈 トークノミクスを見る'}},
+      angel:{eyebrow:'自律ロボティクス',h:['理解する','ロボット。',''],ai:1,sub:'LittleAngelはRIVA LABSの自律ロボットライン — ネイティブAIを備えた人型、四足歩行、ドローン。',s2:{chip:'企業向け',label:'何ができますか？',h:'自律的、<br><em style="font-style:normal;color:#d946ef">知的</em>、<br>あなたのもの。',desc:'生体認識、自律航行、リアルタイム適応を備えたプログラム可能なロボット。',items:[{e:'🦾',t:'人型・四足歩行ロボット',d:'産業・セキュリティ向け'},{e:'🚁',t:'自律ドローン',d:'監視、配送、点検'},{e:'👁️',t:'生体認識',d:'リアルタイム識別'}]},s3:{label:'産業・セキュリティ・物流向け',h:'重要なことを\n自動化する。',desc:'物流、セキュリティ、産業企業がLittleAngelで危険な作業を代替しています。',items:[{t:'カスタムプログラミング',d:'ワークフローに適応'},{t:'集中管理フリート',d:'ネットワーク内の複数ロボット制御'},{t:'予知保全',d:'統合された自律診断'}],cta:'🤖 ユニットを予約'},s4:{h:['待ち望んでいた','ロボット。',''],ai:1,desc:'先行販売中。アーリーアダプター向けの特別条件で限定ユニット。',b1:'🤖 今すぐ予約',b2:'🏭 エンタープライズソリューション'}},
+      predict:{eyebrow:'精密トレーディング',h:['精度で','トレード','せよ。'],ai:1,sub:'RIVA Predictは独自のHMM+GPRモデルを使用して80%以上の精度で日次トレードシグナルを提供します。',s2:{chip:'トレーダー向け',label:'どのように機能しますか？',h:'日次<br><em style="font-style:normal;color:#14b8a6">シグナル</em>、<br>精確。',desc:'HMM+GPR+Deep Learningモデルがグローバル市場を分析し、いつ何をトレードするかを伝えます。',items:[{e:'📊',t:'80%以上の精度シグナル',d:'実データでバックテスト済み'},{e:'🌍',t:'グローバル市場',d:'株式、外国為替、暗号資産、商品'},{e:'⚡',t:'リアルタイムアラート',d:'動きの前に通知'}]},s3:{label:'トレーダー・投資ファンド向け',h:'必要な\nエッジ。',desc:'個人トレーダーから機関投資家まで、RIVA Predictは統計的優位性を提供します。',items:[{t:'自動トレードAPI',d:'ブローカーに接続'},{t:'ポートフォリオダッシュボード',d:'P&LとポジションをリアルタイムEで確認'},{t:'リスクレポート',d:'ドローダウン、シャープレシオ、VaR'}],cta:'📈 本日のシグナルを見る'},s4:{h:['すべての取引、','情報に','基づく。'],ai:1,desc:'世界中のトレーダーがRIVA Predictを使って真の統計的優位性で取引しています。',b1:'📈 今すぐ始める',b2:'💼 機関向けプラン'}},
+    }
+  };
+  </script>
 
+  <script>
+  'use strict';
+  // ════ Benchmark data ════
+  const BENCH={
+    flights:{
+      bars:[
+        {label:'R² Precisión',riva:99.99,rivals:[{n:'Amadeus',v:72},{n:'Google Flights',v:68}],unit:'%',hi:true},
+        {label:'MAE Error',riva:2.52,rivals:[{n:'Amadeus',v:100},{n:'Skyscanner',v:80}],unit:'$',hi:false},
+        {label:'Aeropuertos',riva:9028,rivals:[{n:'Amadeus',v:5000},{n:'Skyscanner',v:4000}],unit:'',hi:true},
+      ],
+      records:[
+        {e:'🏆',val:'R²=0.9999',title:'Récord mundial absoluto',sub:'Mejor en literatura de predicción'},
+        {e:'📉',val:'$2.52 MAE',title:'Error más bajo del mundo',sub:'12-60× menor que competencia'},
+        {e:'✈️',val:'9,028',title:'Aeropuertos cubiertos',sub:'1.8× más que cualquier rival'},
+        {e:'🛫',val:'848',title:'Aerolíneas únicas',sub:'100% del mercado relevante'},
+      ]
+    },
+    mind:{
+      bars:[
+        {label:'MAE forense',riva:0.086,rivals:[{n:'GPT-4o',v:0.20},{n:'Llama 3 70B',v:0.16}],unit:'',hi:false},
+        {label:'Latencia',riva:1,rivals:[{n:'GPT-4o',v:8},{n:'Llama 3',v:3.5}],unit:'s',hi:false},
+        {label:'Loss final',riva:0.039,rivals:[{n:'GPT-4o',v:0.12},{n:'Llama 3',v:0.09}],unit:'',hi:false},
+      ],
+      records:[
+        {e:'🧠',val:'1.5-3×',title:'Mejor que GPT-4o',sub:'En tareas forenses/psicológicas'},
+        {e:'⚡',val:'<1s',title:'Latencia privada',sub:'On-premise, sin API externa'},
+        {e:'🔐',val:'100%',title:'On-premise',sub:'Control total de datos'},
+        {e:'📊',val:'0.039',title:'Loss final (época 200)',sub:'Overfit controlado'},
+      ]
+    },
+    biosim:{
+      bars:[
+        {label:'Propiedades totales',riva:2690000,rivals:[{n:'AlphaFold3',v:1000000},{n:'AutoDock',v:500000}],unit:'',hi:true},
+        {label:'MAE formación',riva:0.131,rivals:[{n:'AlphaFold3',v:0.20},{n:'AutoDock',v:0.25}],unit:'eV',hi:false},
+        {label:'Tareas multi',riva:23,rivals:[{n:'AlphaFold3',v:18},{n:'AutoDock',v:7}],unit:'',hi:true},
+      ],
+      records:[
+        {e:'🧬',val:'2.69M',title:'Propiedades totales',sub:'5× más que AlphaFold3'},
+        {e:'🎯',val:'0.131 eV',title:'MAE formación energía',sub:'1.5-2× mejor que competencia'},
+        {e:'🔬',val:'23 tareas',title:'Multi-propiedad',sub:'Más completo del mercado'},
+        {e:'💊',val:'155,982',title:'Materiales únicos',sub:'Top 3 mundial'},
+      ]
+    },
+    matlab:{
+      bars:[
+        {label:'R² XGBoost',riva:99.99,rivals:[{n:'Materials Proj.',v:65},{n:'AFLOW',v:70}],unit:'%',hi:true},
+        {label:'MAE formación',riva:0.131,rivals:[{n:'Materials Proj.',v:0.22},{n:'ALIGNN',v:0.18}],unit:'eV',hi:false},
+        {label:'Tareas simult.',riva:3,rivals:[{n:'CGCNN',v:1},{n:'ALIGNN',v:1.5}],unit:'',hi:true},
+      ],
+      records:[
+        {e:'🏆',val:'R²=0.9999',title:'Récord mundial',sub:'Predicción de materiales y precios'},
+        {e:'⚗️',val:'0.131 eV/atom',title:'MAE formación energía',sub:'Top 10% mundial'},
+        {e:'⚙️',val:'3 tareas',title:'Multi-task simultáneo',sub:'3× más eficiente que rivales'},
+        {e:'📊',val:'1.87M params',title:'MultiTaskCrystalGNN',sub:'Arquitectura propia superior'},
+      ]
+    },
+    voces:{
+      bars:[
+        {label:'Muestras salud mental',riva:48945,rivals:[{n:'ChatGPT Edu',v:10000},{n:'Google AI',v:5000}],unit:'',hi:true},
+        {label:'Diálogos consejería',riva:2775,rivals:[{n:'ChatGPT Edu',v:800},{n:'Google AI',v:400}],unit:'',hi:true},
+        {label:'Modo offline',riva:100,rivals:[{n:'ChatGPT Edu',v:0},{n:'Google AI',v:30}],unit:'%',hi:true},
+      ],
+      records:[
+        {e:'🧩',val:'48,945',title:'Muestras clínicas reales',sub:'5× más que cualquier competidor'},
+        {e:'📲',val:'100% offline',title:'Único en el mercado',sub:'Sin internet, sin límites'},
+        {e:'💬',val:'2,775',title:'Diálogos de consejería',sub:'Datos reales Counsel-Chat'},
+        {e:'🏫',val:'PsicoGNN',title:'Modelo psicológico propio',sub:'Loss 0.0704 en vulnerabilidad'},
+      ]
+    },
+    coin:{
+      bars:[
+        {label:'R² XGBoost',riva:99.99,rivals:[{n:'Bitcoin pred.',v:40},{n:'Ethereum pred.',v:47}],unit:'%',hi:true},
+        {label:'Ensemble R²',riva:99.62,rivals:[{n:'Bitcoin',v:35},{n:'Ethereum',v:43}],unit:'%',hi:true},
+        {label:'MAE predicción',riva:2.52,rivals:[{n:'Bitcoin',v:75},{n:'Ethereum',v:55}],unit:'$',hi:false},
+      ],
+      records:[
+        {e:'💎',val:'R²=0.9999',title:'Récord mundial predicción',sub:'3 órdenes de magnitud vs cripto'},
+        {e:'🔗',val:'99.62%',title:'Ensemble R² robusto',sub:'Estabilidad extrema'},
+        {e:'🪙',val:'$2.52 MAE',title:'Predicción de precios',sub:'Mejor del mercado global'},
+        {e:'⛏️',val:'Wallet+Mining',title:'Ecosistema integrado',sub:'Transacciones científicas'},
+      ]
+    },
+    angel:{
+      bars:[
+        {label:'Fusión RMSE',riva:0.189,rivals:[{n:'Boston Dynamics',v:0.50},{n:'Tesla Optimus',v:0.30}],unit:'m',hi:false},
+        {label:'Veloc. fusión',riva:200,rivals:[{n:'Boston Dynamics',v:100},{n:'Tesla Optimus',v:50}],unit:'Hz',hi:true},
+        {label:'RMSE v. fuerte',riva:0.86,rivals:[{n:'Boston Dynamics',v:2.5},{n:'Tesla Optimus',v:1.8}],unit:'m',hi:false},
+      ],
+      records:[
+        {e:'🤖',val:'0.189 m RMSE',title:'2.6× más preciso',sub:'vs Boston Dynamics (0.50 m)'},
+        {e:'⚡',val:'200 Hz',title:'Fusión sensorial',sub:'2-4× más rápido que rivales'},
+        {e:'🌪️',val:'0.86 m',title:'RMSE viento fuerte',sub:'Robusto en condiciones extremas'},
+        {e:'🗺️',val:'SLAM episódico',title:'14-17 experiencias',sub:'Aprendizaje continuo autónomo'},
+      ]
+    },
+    predict:{
+      bars:[
+        {label:'R² XGBoost',riva:99.99,rivals:[{n:'Bloomberg',v:75},{n:'Yahoo Finance',v:67}],unit:'%',hi:true},
+        {label:'MAE señales',riva:2.52,rivals:[{n:'Bloomberg',v:100},{n:'Yahoo Finance',v:140}],unit:'$',hi:false},
+        {label:'Latencia API',riva:10,rivals:[{n:'Bloomberg',v:350},{n:'Yahoo Finance',v:200}],unit:'ms',hi:false},
+      ],
+      records:[
+        {e:'📈',val:'R²=0.9999',title:'Récord mundial trading IA',sub:'Supera a Bloomberg Terminal'},
+        {e:'💹',val:'$2.52 MAE',title:'20-80× mejor que rivales',sub:'Señales diarias globales'},
+        {e:'⚡',val:'<10 ms',title:'Latencia API local',sub:'20-50× más rápido que Bloomberg'},
+        {e:'🎯',val:'+61%',title:'HMM vs benchmark',sub:'Supera predicción estocástica'},
+      ]
+    },
+  };
+
+  // ════ Slide renderers ════
+  function _s1(p){
+    const hl=p.s1.h.map((l,i)=>i===p.s1.ai?`<span style="color:${p.accent}">${l}</span>`:l).join('<br>');
+    return `<div class="rv-slide" style="background:#030712">
+      <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(6,182,212,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(6,182,212,.06) 1px,transparent 1px);background-size:40px 40px"></div>
+      <div style="position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:420px;height:420px;background:radial-gradient(circle,${p.accent}2e 0%,transparent 65%);pointer-events:none"></div>
+      <div style="position:absolute;bottom:-40px;right:-60px;width:260px;height:260px;background:radial-gradient(circle,${p.dark}22 0%,transparent 65%);pointer-events:none"></div>
+      <div class="rv-inner" style="padding:56px 26px 34px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="display:flex;align-items:center;gap:9px">
+            <div class="rv-logo-mark">RV</div>
+            <span style="font-size:12px;font-weight:600;color:rgba(255,255,255,.4);letter-spacing:1px">RIVA LABS</span>
+          </div>
+          <div style="display:inline-flex;align-items:center;gap:6px;background:${p.accent}1a;border:1px solid ${p.accent}40;border-radius:9999px;padding:5px 12px;font-size:10px;font-weight:700;color:${p.accent};letter-spacing:1.5px;text-transform:uppercase">
+            <span style="width:6px;height:6px;background:${p.accent};border-radius:50%;animation:blink 1.5s ease-in-out infinite"></span>${p.badge}
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font-size:10px;font-weight:600;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase">${p.s1.eyebrow}</div>
+          <div style="font-size:48px;font-weight:800;line-height:1;color:#fff;letter-spacing:-1.5px">${hl}</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,.48);line-height:1.6">${p.s1.sub}</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:flex-end">
+          <div><div style="font-size:10px;color:rgba(255,255,255,.18);letter-spacing:1px">@rivalabs.uy</div><div style="font-size:9px;color:rgba(255,255,255,.1);margin-top:2px">rivalabs.com</div></div>
+          <div style="font-size:40px;opacity:.1;transform:rotate(30deg);line-height:1">${p.emoji}</div>
+        </div>
+      </div></div>`;
+  }
+
+  function _s2(p){
+    const s=p.s2;
+    const cards=s.items.map(it=>`
+      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:11px;padding:10px 13px;display:flex;align-items:center;gap:11px">
+        <div style="width:32px;height:32px;border-radius:8px;background:${p.accent}18;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0">${it.e}</div>
+        <div><strong style="display:block;font-size:11.5px;font-weight:700;color:#0f172a;margin-bottom:1px">${it.t}</strong><span style="font-size:10.5px;color:#94a3b8">${it.d}</span></div>
+      </div>`).join('');
+    return `<div class="rv-slide" style="background:#fff">
+      <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,${p.accent},${p.dark},#a855f7)"></div>
+      <div class="rv-inner" style="padding:52px 26px 30px">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;font-weight:700;color:#0f172a">RIVA <span style="color:${p.accent}">${p.short}</span></div>
+          <div style="background:${p.accent}15;border:1px solid ${p.accent}45;border-radius:9999px;padding:3px 10px;font-size:10px;font-weight:600;color:${p.dark}">${s.chip}</div>
+        </div>
+        <div>
+          <div style="font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:${p.accent};margin-bottom:7px">${s.label}</div>
+          <div style="font-size:33px;font-weight:800;line-height:1.1;color:#0f172a;letter-spacing:-1px;margin-bottom:12px">${s.h}</div>
+          <div style="font-size:12.5px;color:#64748b;line-height:1.6;margin-bottom:16px">${s.desc}</div>
+          <div style="display:flex;flex-direction:column;gap:7px">${cards}</div>
+        </div>
+        <div style="text-align:center;font-size:10.5px;color:#cbd5e1;letter-spacing:1px">${p.emoji} rivalabs.com</div>
+      </div></div>`;
+  }
+
+  function _s3(p){
+    const s=p.s3;
+    const feats=s.items.map((it,i)=>`
+      <div style="display:flex;align-items:center;gap:10px;padding:10px 13px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:10px">
+        <span style="font-size:10px;font-weight:700;color:${p.accent};letter-spacing:1px;width:20px;flex-shrink:0">0${i+1}</span>
+        <div style="flex:1"><strong style="display:block;font-size:11.5px;font-weight:700;color:#fff;margin-bottom:1px">${it.t}</strong><span style="font-size:10.5px;color:rgba(255,255,255,.33)">${it.d}</span></div>
+        <span style="font-size:12px;color:${p.accent};opacity:.7">✓</span>
+      </div>`).join('');
+    return `<div class="rv-slide" style="background:#020617">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 15% 15%,${p.accent}30 0%,transparent 50%),radial-gradient(ellipse at 85% 85%,${p.dark}20 0%,transparent 50%)"></div>
+      <div class="rv-inner" style="padding:52px 26px 34px;position:relative;z-index:1">
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <div style="font-size:12px;font-weight:700;color:#fff">RIVA <span style="color:${p.accent}">${p.short}</span></div>
+          <div style="background:${p.accent}22;border:1px solid ${p.accent}45;border-radius:9999px;padding:3px 10px;font-size:10px;font-weight:700;color:${p.accent};letter-spacing:1px">B2B</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font-size:9.5px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:${p.accent}">${s.label}</div>
+          <div style="font-size:34px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-1px">${s.h.replace(/\n/g,'<br>')}</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,.43);line-height:1.6">${s.desc}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">${feats}</div>
+        <div style="display:flex;justify-content:center">
+          <div style="background:linear-gradient(135deg,${p.accent},${p.dark});border-radius:9999px;padding:10px 22px;font-size:12px;font-weight:700;color:#fff;box-shadow:0 8px 24px ${p.accent}45">${s.cta}</div>
+        </div>
+      </div></div>`;
+  }
+
+  function _s4(p){
+    const s=p.s4;
+    const hl=s.h.map((l,i)=>i===s.ai?`<span style="background:linear-gradient(135deg,${p.accent},${p.dark});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">${l}</span>`:l).join('<br>');
+    const dots=[true,false,true,false,true,false,false].map(lit=>`<div style="width:4px;height:4px;border-radius:50%;background:${lit?p.accent:'rgba(255,255,255,.12)'};${lit?`box-shadow:0 0 7px ${p.accent}`:''}"></div>`).join('');
+    return `<div class="rv-slide" style="background:#0c0f1a">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 28%,${p.accent}1e 0%,transparent 55%),radial-gradient(ellipse at 50% 88%,${p.dark}16 0%,transparent 55%)"></div>
+      <div style="position:absolute;left:50%;bottom:145px;transform:translateX(-50%);display:flex;flex-direction:column;gap:11px;align-items:center">${dots}</div>
+      <div class="rv-inner" style="padding:52px 26px 38px;align-items:center;text-align:center;position:relative;z-index:1">
+        <div style="display:flex;justify-content:space-between;align-items:center;width:100%">
+          <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.6)">RIVA <span style="color:${p.accent}">${p.short}</span></div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,.18);letter-spacing:1.5px;text-transform:uppercase">↑ Visitanos</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:14px">
+          <div style="position:relative;width:66px;height:66px;display:flex;align-items:center;justify-content:center">
+            <div style="position:absolute;inset:0;border-radius:50%;border:1.5px solid ${p.accent}30;animation:spin 8s linear infinite"></div>
+            <div style="font-size:32px;filter:drop-shadow(0 0 16px ${p.accent}80)">${p.emoji}</div>
+          </div>
+          <div style="font-size:40px;font-weight:800;line-height:1.05;color:#fff;letter-spacing:-1.5px">${hl}</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,.38);line-height:1.6;max-width:230px">${s.desc}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:center;width:100%">
+          <div style="width:100%;background:linear-gradient(135deg,${p.accent},${p.dark});border-radius:12px;padding:13px;font-size:13px;font-weight:700;color:#fff;box-shadow:0 8px 24px ${p.accent}40;display:flex;align-items:center;justify-content:center;gap:7px">${s.b1}</div>
+          <div style="width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:12px;padding:11px;font-size:11.5px;font-weight:600;color:rgba(255,255,255,.45);display:flex;align-items:center;justify-content:center;gap:7px">${s.b2}</div>
+          <div style="font-size:10.5px;color:rgba(255,255,255,.16);letter-spacing:1px">@rivalabs.uy · rivalabs.com</div>
+        </div>
+      </div></div>`;
+  }
+
+  function _s5(p){
+    const b=BENCH[p._id];
+    if(!b)return `<div class="rv-slide" style="background:#030712"></div>`;
+    function fmt(v,u){if(u==='%')return v.toFixed(2)+'%';if(v>=1e6)return (v/1e6).toFixed(1)+'M';if(v>=1000)return (v/1000).toFixed(1)+'k';return String(v);}
+    function pct(v,all,hi){const best=hi?Math.max(...all):Math.min(...all);const worst=hi?Math.min(...all):Math.max(...all);const rng=worst-best||1;return hi?Math.round(((v-worst)/rng)*82+10):Math.round(((worst-v)/rng)*82+10);}
+    const rows=b.bars.map(m=>{
+      const all=[m.riva,...m.rivals.map(r=>r.v)];
+      const rW=pct(m.riva,all,m.hi);
+      const rivalH=m.rivals.map(r=>{const w=pct(r.v,all,m.hi);return `<div style="display:flex;align-items:center;gap:6px"><span style="font-size:9px;color:rgba(255,255,255,.22);width:66px;flex-shrink:0;text-align:right;white-space:nowrap;overflow:hidden">${r.n}</span><div style="flex:1;background:rgba(255,255,255,.07);border-radius:9999px;height:6px;overflow:hidden"><div style="height:100%;width:${w}%;background:rgba(255,255,255,.2);border-radius:9999px"></div></div><span style="font-size:9px;color:rgba(255,255,255,.2);width:36px;flex-shrink:0">${fmt(r.v,m.unit)}</span></div>`;}).join('');
+      return `<div style="margin-bottom:13px"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:5px"><span style="font-size:10.5px;color:rgba(255,255,255,.45)">${m.label}</span><span style="font-size:10px;font-weight:700;color:${p.accent}">${fmt(m.riva,m.unit)} ${m.unit}</span></div><div style="display:flex;flex-direction:column;gap:4px"><div style="display:flex;align-items:center;gap:6px"><span style="font-size:9px;color:${p.accent};font-weight:700;width:66px;flex-shrink:0;text-align:right">RIVA</span><div style="flex:1;background:rgba(255,255,255,.07);border-radius:9999px;height:6px;overflow:hidden"><div style="height:100%;width:${rW}%;background:linear-gradient(90deg,${p.accent},${p.dark});border-radius:9999px"></div></div></div>${rivalH}</div></div>`;
+    }).join('');
+    return `<div class="rv-slide" style="background:#030712">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 0% 0%,${p.accent}18 0%,transparent 55%),radial-gradient(ellipse at 100% 100%,${p.dark}12 0%,transparent 55%)"></div>
+      <div class="rv-inner" style="padding:52px 22px 26px;position:relative;z-index:1">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px">
+          <div><div style="font-size:9.5px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:${p.accent};margin-bottom:4px">Benchmark</div><div style="font-size:20px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.15">RIVA ${p.short}<br><span style="background:linear-gradient(135deg,${p.accent},${p.dark});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">vs. Mercado</span></div></div>
+          <div style="background:${p.accent}1a;border:1px solid ${p.accent}35;border-radius:10px;padding:8px 10px;text-align:center"><div style="font-size:20px;line-height:1">${p.emoji}</div><div style="font-size:9px;color:${p.accent};font-weight:700;letter-spacing:1px;margin-top:2px">RIVA</div></div>
+        </div>
+        ${rows}
+        <div style="display:flex;align-items:center;gap:7px;padding-top:8px;border-top:1px solid rgba(255,255,255,.06)">
+          <div style="width:7px;height:7px;border-radius:50%;background:${p.accent};flex-shrink:0"></div>
+          <span style="font-size:9.5px;color:rgba(255,255,255,.2)">Datos públicos + benchmarks internos RIVA LABS 2026</span>
+        </div>
+      </div></div>`;
+  }
+
+  function _s6(p){
+    const b=BENCH[p._id];
+    if(!b)return `<div class="rv-slide" style="background:#0c0f1a"></div>`;
+    const cards=b.records.map((r,i)=>{
+      const alt=i%2!==0;
+      return `<div style="background:${alt?p.accent+'08':'rgba(255,255,255,.04)'};border:1px solid ${alt?p.accent+'28':'rgba(255,255,255,.07)'};border-radius:11px;padding:11px 13px;display:flex;align-items:center;gap:10px">
+        <div style="width:36px;height:36px;border-radius:9px;background:${p.accent}18;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0">${r.e}</div>
+        <div style="min-width:0"><div style="font-size:14px;font-weight:800;color:#fff;letter-spacing:-.3px;line-height:1">${r.val}</div><div style="font-size:10.5px;font-weight:700;color:${p.accent};margin-top:2px;line-height:1.2">${r.title}</div><div style="font-size:9.5px;color:rgba(255,255,255,.3);margin-top:1px;line-height:1.2">${r.sub}</div></div>
+      </div>`;}).join('');
+    return `<div class="rv-slide" style="background:#0c0f1a">
+      <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 15%,${p.accent}14 0%,transparent 55%)"></div>
+      <div class="rv-inner" style="padding:52px 20px 28px;position:relative;z-index:1">
+        <div style="text-align:center;margin-bottom:16px">
+          <div style="display:inline-flex;align-items:center;gap:7px;background:${p.accent}15;border:1px solid ${p.accent}35;border-radius:9999px;padding:5px 13px;margin-bottom:9px"><span style="font-size:13px">🏆</span><span style="font-size:9.5px;font-weight:700;color:${p.accent};letter-spacing:1.5px;text-transform:uppercase">Records &amp; Logros</span></div>
+          <div style="font-size:19px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.2">Lo que nos hace<br><span style="background:linear-gradient(135deg,${p.accent},${p.dark});-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">únicos</span></div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:7px">${cards}</div>
+        <div style="text-align:center;font-size:10px;color:rgba(255,255,255,.15);letter-spacing:1px;margin-top:8px">@rivalabs.uy · rivalabs.com</div>
+      </div></div>`;
+  }
+
+  // ════ Modal controls ════
+  let pmCurrent=0;
+  const PM_TOTAL=6;
+
+  function _mergeProduct(id){
+    const base=PM[id];
+    if(!base)return null;
+    const lang=(PM_LANG[currentLang]||{})[id]||{};
+    return Object.assign({},base,{_id:id,
+      s1:Object.assign({},base.s1,{eyebrow:lang.eyebrow||base.s1.eyebrow,h:lang.h||base.s1.h,ai:lang.ai!=null?lang.ai:base.s1.ai,sub:lang.sub||base.s1.sub}),
+      s2:Object.assign({},base.s2,lang.s2||{}),
+      s3:Object.assign({},base.s3,lang.s3||{}),
+      s4:Object.assign({},base.s4,lang.s4||{}),
+    });
+  }
+
+  function openProductModal(id){
+    const p=_mergeProduct(id);
+    if(!p)return;
+    const track=document.getElementById('pmTrack');
+    track.style.width=`${PM_TOTAL*100}%`;
+    track.innerHTML=_s1(p)+_s2(p)+_s3(p)+_s4(p)+_s5(p)+_s6(p);
+    const sw=`${100/PM_TOTAL}%`;
+    track.querySelectorAll('.rv-slide').forEach(s=>s.style.width=sw);
+    document.getElementById('pmDots').innerHTML=Array.from({length:PM_TOTAL},(_,i)=>`<div class="rv-dot${i===0?' active':''}" onclick="pmGoTo(${i})" role="tab" aria-label="Slide ${i+1}" aria-selected="${i===0}"></div>`).join('');
+    pmGoTo(0);
+    document.getElementById('productModal').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  function pmClose(){document.getElementById('productModal').classList.remove('open');document.body.style.overflow='';}
+
+  function pmGoTo(i){
+    pmCurrent=i;
+    document.getElementById('pmTrack').style.transform=`translateX(-${i*(100/PM_TOTAL)}%)`;
+    document.querySelectorAll('#pmDots .rv-dot').forEach((d,j)=>{d.classList.toggle('active',j===i);d.setAttribute('aria-selected',j===i);});
+    document.getElementById('pmPrev').setAttribute('aria-disabled',i===0);
+    document.getElementById('pmNext').setAttribute('aria-disabled',i===PM_TOTAL-1);
+    const sl=currentLang==='ja'?'スライド':'SLIDE';
+    document.getElementById('pmCounter').textContent=`${sl} ${i+1} / ${PM_TOTAL}`;
+  }
+
+  function pmNav(dir){const n=pmCurrent+dir;if(n>=0&&n<PM_TOTAL)pmGoTo(n);}
+
+  // ── Vuelos modal ──
+  let rvCurrent=0;
+  const RV_TOTAL=4;
+
+  function openRivaVuelos(e){
+    if(e)e.preventDefault();
+    const track=document.getElementById('rvTrack');
+    track.style.width=`${RV_TOTAL*100}%`;
+    track.querySelectorAll('.rv-slide').forEach(s=>s.style.width=`${100/RV_TOTAL}%`);
+    rvGoTo(0);
+    document.getElementById('rivaVuelosOverlay').classList.add('open');
+    document.body.style.overflow='hidden';
+  }
+
+  function closeRivaVuelos(){document.getElementById('rivaVuelosOverlay').classList.remove('open');document.body.style.overflow='';}
+
+  function rvGoTo(i){
+    rvCurrent=i;
+    document.getElementById('rvTrack').style.transform=`translateX(-${i*(100/RV_TOTAL)}%)`;
+    document.querySelectorAll('#rvDots .rv-dot').forEach((d,j)=>{d.classList.toggle('active',j===i);d.setAttribute('aria-selected',j===i);});
+    document.getElementById('rvPrev').setAttribute('aria-disabled',i===0);
+    document.getElementById('rvNext').setAttribute('aria-disabled',i===RV_TOTAL-1);
+    const sl=currentLang==='ja'?'スライド':'SLIDE';
+    document.getElementById('rvCounter').textContent=`${sl} ${i+1} / ${RV_TOTAL}`;
+  }
+
+  function rvNav(dir){const n=rvCurrent+dir;if(n>=0&&n<RV_TOTAL)rvGoTo(n);}
+
+  // ── Touch swipe ──
+  function addSwipe(trackId,navFn){
+    const el=document.getElementById(trackId);
+    if(!el)return;
+    let sx=null;
+    el.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;},{passive:true});
+    el.addEventListener('touchend',e=>{if(sx===null)return;const d=sx-e.changedTouches[0].clientX;if(Math.abs(d)>44)navFn(d>0?1:-1);sx=null;},{passive:true});
+  }
+  addSwipe('rvTrack',rvNav);
+  addSwipe('pmTrack',pmNav);
+
+  // ── Keyboard ──
+  document.addEventListener('keydown',e=>{
+    const vo=document.getElementById('rivaVuelosOverlay');
+    const po=document.getElementById('productModal');
+    if(vo.classList.contains('open')){if(e.key==='ArrowRight')rvNav(1);else if(e.key==='ArrowLeft')rvNav(-1);else if(e.key==='Escape')closeRivaVuelos();}
+    else if(po.classList.contains('open')){if(e.key==='ArrowRight')pmNav(1);else if(e.key==='ArrowLeft')pmNav(-1);else if(e.key==='Escape')pmClose();}
+  });
+
+  // ── Backdrop click ──
+  document.querySelectorAll('.rv-backdrop').forEach(el=>el.addEventListener('click',()=>{closeRivaVuelos();pmClose();}));
+
+  // ── Init Vuelos track dimensions ──
+  (function(){
+    const t=document.getElementById('rvTrack');
+    t.style.width=`${RV_TOTAL*100}%`;
+    t.querySelectorAll('.rv-slide').forEach(s=>s.style.width=`${100/RV_TOTAL}%`);
+  })();
+
+  </script>
 </body>
 </html>
